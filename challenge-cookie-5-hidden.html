@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Settings - Theme Configuration</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="challenge-layout">
+        <div class="challenge-main">
+            <div class="challenge-header">
+                <h2>System Settings</h2>
+                <p class="subtitle">Theme and Display Configuration</p>
+            </div>
+
+            <div class="card">
+                <h3 style="margin-bottom: 16px;">Theme Selection</h3>
+                <p style="color: var(--text-secondary);">Configure your preferred display theme. The setting is stored in a client-side cookie for persistence across sessions.</p>
+                
+                <div style="margin-top: 20px;">
+                    <p style="font-size: 0.9em; color: var(--text-secondary);">Current Theme:</p>
+                    <span class="status-badge" id="currentTheme">dark</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 style="margin-bottom: 16px;">Theme Options</h3>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <button type="button" class="btn btn-secondary" onclick="setTheme('light')">Light</button>
+                    <button type="button" class="btn btn-secondary" onclick="setTheme('dark')">Dark</button>
+                    <button type="button" class="btn btn-secondary" onclick="setTheme('system')">System</button>
+                </div>
+            </div>
+
+            <div class="card" id="hiddenPanel" style="display: none;">
+                <h3 style="margin-bottom: 16px; color: var(--accent-green);">Hidden Panel Activated</h3>
+                <p style="color: var(--text-secondary);">Special theme configuration detected. Hidden functionality revealed.</p>
+                <div class="console-output" style="margin-top: 16px;">
+                    <pre id="flagOutput"></pre>
+                </div>
+            </div>
+
+            <div class="card" id="normalPanel">
+                <h3 style="margin-bottom: 16px;">Standard Configuration</h3>
+                <p style="color: var(--text-secondary);">Theme setting applied successfully. No special features available for this configuration.</p>
+            </div>
+
+            <button type="button" class="btn" onclick="checkTheme()">Apply Theme</button>
+        </div>
+
+        <div class="challenge-sidebar">
+            <div class="security-advisory">
+                <h4>Security Advisory</h4>
+                <p>The theme cookie controls display settings. Certain theme values may trigger hidden functionality or reveal additional system features not documented in the interface.</p>
+            </div>
+
+            <div class="security-advisory">
+                <h4>System Notes</h4>
+                <p>Administrators may use specific theme values to access hidden panels or diagnostic tools. These values are not exposed in the standard UI options.</p>
+            </div>
+
+            <div class="card">
+                <h4 style="margin-bottom: 12px; color: var(--text-primary);">Cookie Information</h4>
+                <p style="font-size: 0.85em; color: var(--text-secondary);">
+                    Cookie Name: <span class="mono">theme</span><br>
+                    Current Value: <span class="mono" id="cookieValue">dark</span><br>
+                    Expected Values: <span class="mono">light, dark, system</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            return null;
+        }
+
+        function setCookie(name, value, days) {
+            const expires = new Date();
+            expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+            document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+        }
+
+        function setTheme(theme) {
+            setCookie('theme', theme, 7);
+            document.getElementById('currentTheme').textContent = theme;
+            document.getElementById('cookieValue').textContent = theme;
+        }
+
+        async function checkTheme() {
+            const theme = getCookie('theme') || 'dark';
+            document.getElementById('currentTheme').textContent = theme;
+            document.getElementById('cookieValue').textContent = theme;
+
+            try {
+                const response = await fetch('/challenge/cookie-hidden');
+                const data = await response.json();
+
+                if (data.flag) {
+                    document.getElementById('hiddenPanel').style.display = 'block';
+                    document.getElementById('normalPanel').style.display = 'none';
+                    document.getElementById('flagOutput').innerHTML = `<span class="success">${data.flag}</span>`;
+                } else {
+                    document.getElementById('hiddenPanel').style.display = 'none';
+                    document.getElementById('normalPanel').style.display = 'block';
+                    document.getElementById('normalPanel').querySelector('p').textContent = data.message;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!getCookie('theme')) {
+                setCookie('theme', 'dark', 7);
+            }
+            checkTheme();
+        });
+    </script>
+</body>
+</html>

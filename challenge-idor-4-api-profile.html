@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Profile Viewer - User Management</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="challenge-layout">
+        <div class="challenge-main">
+            <div class="challenge-header">
+                <h2>API Profile Viewer</h2>
+                <p class="subtitle">User Profile Management API</p>
+            </div>
+
+            <div class="api-endpoint">
+                <span class="method get">GET</span>
+                <span class="mono">/api/user/</span>
+            </div>
+
+            <div class="form-group">
+                <label for="profileId">Profile ID</label>
+                <div class="input-group">
+                    <span class="input-prefix">/api/user/</span>
+                    <input type="number" id="profileId" class="form-control" placeholder="Enter profile ID" value="245">
+                </div>
+            </div>
+
+            <button type="button" class="btn" onclick="fetchProfile()">View Profile</button>
+
+            <div id="profileResults" class="console-output" style="display: none;">
+                <pre id="profileOutput"></pre>
+            </div>
+
+            <div id="errorMessage" class="message error" style="display: none;"></div>
+        </div>
+
+        <div class="challenge-sidebar">
+            <div class="security-advisory">
+                <h4>Security Advisory</h4>
+                <p>The user profile API uses predictable sequential profile IDs. The endpoint does not implement authorization checks to verify if the requester has permission to view the requested profile.</p>
+            </div>
+
+            <div class="security-advisory">
+                <h4>System Notes</h4>
+                <p>Administrative profiles may contain sensitive metadata and elevated role assignments. These profiles are typically assigned higher profile ID numbers in the sequence.</p>
+            </div>
+
+            <div class="card">
+                <h4 style="margin-bottom: 12px; color: var(--text-primary);">Current Session</h4>
+                <p style="font-size: 0.85em; color: var(--text-secondary);">
+                    Profile ID: <span class="mono">245</span><br>
+                    Username: <span class="mono">user_245</span><br>
+                    Role: <span class="mono">user</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function fetchProfile() {
+            const profileId = document.getElementById('profileId').value;
+            const output = document.getElementById('profileOutput');
+            const results = document.getElementById('profileResults');
+            const errorMsg = document.getElementById('errorMessage');
+
+            if (!profileId) {
+                errorMsg.textContent = 'Please enter a profile ID';
+                errorMsg.style.display = 'block';
+                results.style.display = 'none';
+                return;
+            }
+
+            errorMsg.style.display = 'none';
+            results.style.display = 'block';
+            output.textContent = 'Loading...';
+
+            try {
+                const response = await fetch(`/api/user/${profileId}`);
+                const data = await response.json();
+
+                if (response.ok) {
+                    output.innerHTML = `<span class="success">Profile Details:</span>\n\n`;
+                    output.innerHTML += `Profile ID: <span class="mono">${data.profile_id}</span>\n`;
+                    output.innerHTML += `Username: ${data.username}\n`;
+                    output.innerHTML += `Email: ${data.email}\n`;
+                    output.innerHTML += `Role: <span class="mono">${data.role}</span>\n`;
+                    output.innerHTML += `Metadata: ${data.metadata || 'N/A'}\n`;
+                } else {
+                    output.textContent = `Error: ${data.error || 'Failed to fetch profile'}`;
+                }
+            } catch (error) {
+                output.textContent = `Error: ${error.message}`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchProfile();
+        });
+    </script>
+</body>
+</html>

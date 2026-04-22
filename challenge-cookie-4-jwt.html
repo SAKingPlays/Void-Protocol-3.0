@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Token-Based Authentication - JWT System</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="challenge-layout">
+        <div class="challenge-main">
+            <div class="challenge-header">
+                <h2>Token-Based Authentication</h2>
+                <p class="subtitle">JWT Token Management System</p>
+            </div>
+
+            <div class="card">
+                <h3 style="margin-bottom: 16px;">Current JWT Token</h3>
+                <p style="color: var(--text-secondary);">Authentication is handled via JWT tokens stored in cookies. The token contains role information in its payload.</p>
+                
+                <div style="margin-top: 20px;">
+                    <p style="font-size: 0.9em; color: var(--text-secondary);">JWT Cookie:</p>
+                    <div class="console-output">
+                        <pre id="jwtDisplay">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsInVzZXJfaWQiOjEwMjN9.invalid_signature</pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 style="margin-bottom: 16px;">Decoded Payload</h3>
+                <div class="console-output">
+                    <pre id="payloadDisplay">{
+  "role": "user",
+  "user_id": 1023
+}</pre>
+                </div>
+            </div>
+
+            <div class="card" id="adminPanel" style="display: none;">
+                <h3 style="margin-bottom: 16px; color: var(--accent-green);">Admin Access Granted</h3>
+                <p style="color: var(--text-secondary);">JWT token accepted with admin role. Privileges escalated.</p>
+                <div class="console-output" style="margin-top: 16px;">
+                    <pre id="flagOutput"></pre>
+                </div>
+            </div>
+
+            <div class="card" id="userPanel">
+                <h3 style="margin-bottom: 16px;">User Access</h3>
+                <p style="color: var(--text-secondary);">Standard user token. Limited functionality available.</p>
+            </div>
+
+            <button type="button" class="btn" onclick="verifyToken()">Verify Token</button>
+        </div>
+
+        <div class="challenge-sidebar">
+            <div class="security-advisory">
+                <h4>Security Advisory</h4>
+                <p>The JWT token signature is not verified by the server. Only the payload is decoded and validated. This allows token tampering without detection.</p>
+            </div>
+
+            <div class="security-advisory">
+                <h4>System Notes</h4>
+                <p>Modify the role field in the JWT payload to "admin" and re-encode using Base64 URL-safe encoding. The signature can be any value as it is not validated.</p>
+            </div>
+
+            <div class="card">
+                <h4 style="margin-bottom: 12px; color: var(--text-primary);">JWT Structure</h4>
+                <p style="font-size: 0.85em; color: var(--text-secondary);">
+                    Header: <span class="mono">Base64URL</span><br>
+                    Payload: <span class="mono">Base64URL</span><br>
+                    Signature: <span class="mono">Not validated</span><br>
+                    Key Field: <span class="mono">role</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            return null;
+        }
+
+        function setCookie(name, value, days) {
+            const expires = new Date();
+            expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+            document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+        }
+
+        function base64UrlEncode(str) {
+            return btoa(str).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+        }
+
+        function base64UrlDecode(str) {
+            str = str.replace(/-/g, '+').replace(/_/g, '/');
+            while (str.length % 4) str += '=';
+            try {
+                return atob(str);
+            } catch (e) {
+                return null;
+            }
+        }
+
+        async function verifyToken() {
+            const jwtCookie = getCookie('jwt');
+            
+            if (!jwtCookie) {
+                const header = base64UrlEncode(JSON.stringify({alg: 'HS256', typ: 'JWT'}));
+                const payload = base64UrlEncode(JSON.stringify({role: 'user', user_id: 1023}));
+                const signature = 'invalid_signature';
+                const defaultJwt = `${header}.${payload}.${signature}`;
+                setCookie('jwt', defaultJwt, 7);
+                document.getElementById('jwtDisplay').textContent = defaultJwt;
+            }
+
+            const currentJwt = getCookie('jwt') || jwtCookie;
+            document.getElementById('jwtDisplay').textContent = currentJwt;
+
+            const parts = currentJwt.split('.');
+            if (parts.length >= 2) {
+                const decodedPayload = base64UrlDecode(parts[1]);
+                if (decodedPayload) {
+                    try {
+                        const payloadData = JSON.parse(decodedPayload);
+                        document.getElementById('payloadDisplay').innerHTML = `<span class="info">${JSON.stringify(payloadData, null, 2)}</span>`;
+                    } catch (e) {
+                        document.getElementById('payloadDisplay').textContent = decodedPayload;
+                    }
+                }
+            }
+
+            try {
+                const response = await fetch('/challenge/cookie-jwt');
+                const data = await response.json();
+
+                if (data.flag) {
+                    document.getElementById('adminPanel').style.display = 'block';
+                    document.getElementById('userPanel').style.display = 'none';
+                    document.getElementById('flagOutput').innerHTML = `<span class="success">${data.flag}</span>`;
+                } else {
+                    document.getElementById('adminPanel').style.display = 'none';
+                    document.getElementById('userPanel').style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!getCookie('jwt')) {
+                const header = base64UrlEncode(JSON.stringify({alg: 'HS256', typ: 'JWT'}));
+                const payload = base64UrlEncode(JSON.stringify({role: 'user', user_id: 1023}));
+                const signature = 'invalid_signature';
+                const defaultJwt = `${header}.${payload}.${signature}`;
+                setCookie('jwt', defaultJwt, 7);
+            }
+            verifyToken();
+        });
+    </script>
+</body>
+</html>

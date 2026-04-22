@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Console - System Management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0d1117;
+            min-height: 100vh;
+            color: #c9d1d9;
+            line-height: 1.6;
+        }
+
+        .page-header {
+            background: #161b22;
+            border-bottom: 1px solid #30363d;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .page-header .logo {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #c9d1d9;
+        }
+
+        .page-header .session-info {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #8b949e;
+        }
+
+        .page-header .session-info span {
+            font-family: 'JetBrains Mono', monospace;
+            color: #58a6ff;
+        }
+
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 24px;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 24px;
+        }
+
+        @media (max-width: 1024px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sidebar {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 16px;
+            height: fit-content;
+        }
+
+        .sidebar-section {
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #21262d;
+        }
+
+        .sidebar-section:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .sidebar-section h3 {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #8b949e;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .nav-item {
+            display: block;
+            padding: 8px 12px;
+            color: #c9d1d9;
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-radius: 6px;
+            margin-bottom: 4px;
+            transition: background 0.15s ease;
+        }
+
+        .nav-item:hover {
+            background: #21262d;
+        }
+
+        .nav-item.active {
+            background: #1f6feb26;
+            color: #58a6ff;
+        }
+
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            font-size: 0.85rem;
+        }
+
+        .status-item .label {
+            color: #8b949e;
+        }
+
+        .status-item .value {
+            font-family: 'JetBrains Mono', monospace;
+            color: #c9d1d9;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .status-indicator.online {
+            background: #238636;
+        }
+
+        .status-indicator.warning {
+            background: #d29922;
+        }
+
+        .status-indicator.offline {
+            background: #f85149;
+        }
+
+        .content-area {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .panel {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 20px;
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #21262d;
+        }
+
+        .panel-header h2 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #c9d1d9;
+        }
+
+        .alert-banner {
+            background: #d2992226;
+            border: 1px solid #d29922;
+            border-radius: 6px;
+            padding: 12px 16px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .alert-banner svg {
+            width: 20px;
+            height: 20px;
+            color: #d29922;
+            flex-shrink: 0;
+        }
+
+        .alert-banner .message {
+            font-size: 0.9rem;
+            color: #d29922;
+            flex: 1;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .stat-card {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 16px;
+        }
+
+        .stat-card .label {
+            font-size: 0.8rem;
+            color: #8b949e;
+            margin-bottom: 8px;
+        }
+
+        .stat-card .value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #c9d1d9;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .stat-card .value.success {
+            color: #238636;
+        }
+
+        .stat-card .value.warning {
+            color: #d29922;
+        }
+
+        .stat-card .value.danger {
+            color: #f85149;
+        }
+
+        .log-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        .log-table th {
+            text-align: left;
+            padding: 10px 12px;
+            border-bottom: 1px solid #30363d;
+            color: #8b949e;
+            font-weight: 500;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .log-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #21262d;
+            color: #c9d1d9;
+        }
+
+        .log-table td:last-child {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .log-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .log-table .timestamp {
+            color: #8b949e;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .user-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        .user-table th {
+            text-align: left;
+            padding: 10px 12px;
+            border-bottom: 1px solid #30363d;
+            color: #8b949e;
+            font-weight: 500;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .user-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #21262d;
+            color: #c9d1d9;
+        }
+
+        .user-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .user-table .role-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .user-table .role-badge.admin {
+            background: #f8514926;
+            color: #f85149;
+        }
+
+        .user-table .role-badge.user {
+            background: #23863626;
+            color: #238636;
+        }
+
+        .user-table .status {
+            font-size: 0.8rem;
+            color: #8b949e;
+        }
+
+        .user-table .status.active {
+            color: #238636;
+        }
+
+        .user-table .status.inactive {
+            color: #8b949e;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-header">
+        <div class="logo">Admin Console</div>
+        <div class="session-info">
+            Session: <span>8X-7294</span>
+            User: <span>admin</span>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="sidebar">
+            <div class="sidebar-section">
+                <h3>Navigation</h3>
+                <a href="#" class="nav-item active">Dashboard</a>
+                <a href="#" class="nav-item">User Management</a>
+                <a href="#" class="nav-item">Access Logs</a>
+                <a href="#" class="nav-item">System Settings</a>
+                <a href="#" class="nav-item">Security Audit</a>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>System Status</h3>
+                <div class="status-item">
+                    <span class="label">Server</span>
+                    <span><span class="status-indicator online"></span>Online</span>
+                </div>
+                <div class="status-item">
+                    <span class="label">Database</span>
+                    <span><span class="status-indicator online"></span>Connected</span>
+                </div>
+                <div class="status-item">
+                    <span class="label">Security</span>
+                    <span><span class="status-indicator warning"></span>Warning</span>
+                </div>
+                <div class="status-item">
+                    <span class="label">Uptime</span>
+                    <span class="value">47d 12h 34m</span>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Quick Stats</h3>
+                <div class="status-item">
+                    <span class="label">Active Users</span>
+                    <span class="value">24</span>
+                </div>
+                <div class="status-item">
+                    <span class="label">Total Sessions</span>
+                    <span class="value">1,247</span>
+                </div>
+                <div class="status-item">
+                    <span class="label">Failed Logins</span>
+                    <span class="value">156</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-area">
+            <div class="panel">
+                <div class="alert-banner">
+                    <svg viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M8 1a7 7 0 100 14A7 7 0 008 1zM7 5a1 1 0 112 0v3a1 1 0 11-2 0V5zm1 7a1 1 0 100 2 1 1 0 000-2z"/>
+                    </svg>
+                    <div class="message">
+                        Restricted administrative access granted. Monitor system integrity and review sensitive operations.
+                    </div>
+                </div>
+
+                <div class="panel-header">
+                    <h2>System Overview</h2>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="label">Access Level</div>
+                        <div class="value">CLASSIFIED</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="label">Security Score</div>
+                        <div class="value warning">72/100</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="label">Active Sessions</div>
+                        <div class="value success">24</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="label">Security Events</div>
+                        <div class="value danger">3</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-header">
+                    <h2>Recent Access Logs</h2>
+                </div>
+
+                <table class="log-table">
+                    <thead>
+                        <tr>
+                            <th>Timestamp</th>
+                            <th>Event</th>
+                            <th>User</th>
+                            <th>IP Address</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="timestamp">2026-04-22 10:42:18</td>
+                            <td>Admin login detected</td>
+                            <td>admin</td>
+                            <td>192.168.1.55</td>
+                        </tr>
+                        <tr>
+                            <td class="timestamp">2026-04-22 10:42:17</td>
+                            <td>Security protocols bypassed</td>
+                            <td>admin</td>
+                            <td>192.168.1.55</td>
+                        </tr>
+                        <tr>
+                            <td class="timestamp">2026-04-22 10:42:16</td>
+                            <td>Access granted to restricted subsystem</td>
+                            <td>admin</td>
+                            <td>192.168.1.55</td>
+                        </tr>
+                        <tr>
+                            <td class="timestamp">2026-04-22 10:42:15</td>
+                            <td>Unusual activity detected</td>
+                            <td>admin</td>
+                            <td>192.168.1.55</td>
+                        </tr>
+                        <tr>
+                            <td class="timestamp">2026-04-22 10:41:30</td>
+                            <td>Failed login attempt</td>
+                            <td>unknown</td>
+                            <td>10.0.0.45</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="panel">
+                <div class="panel-header">
+                    <h2>User Management</h2>
+                </div>
+
+                <table class="user-table">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th>Last Login</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>admin</td>
+                            <td><span class="role-badge admin">Administrator</span></td>
+                            <td class="status active">Active</td>
+                            <td>2026-04-22 10:42:18</td>
+                        </tr>
+                        <tr>
+                            <td>user</td>
+                            <td><span class="role-badge user">Standard</span></td>
+                            <td class="status active">Active</td>
+                            <td>2026-04-22 09:15:33</td>
+                        </tr>
+                        <tr>
+                            <td>analyst_01</td>
+                            <td><span class="role-badge user">Analyst</span></td>
+                            <td class="status active">Active</td>
+                            <td>2026-04-22 08:45:12</td>
+                        </tr>
+                        <tr>
+                            <td>auditor</td>
+                            <td><span class="role-badge user">Auditor</span></td>
+                            <td class="status inactive">Inactive</td>
+                            <td>2026-04-21 16:30:45</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="challenge-auth-enum-dashboard.js"></script>
+</body>
+</html>

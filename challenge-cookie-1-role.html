@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - Role Management</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="challenge-layout">
+        <div class="challenge-main">
+            <div class="challenge-header">
+                <h2>User Dashboard</h2>
+                <p class="subtitle">Role-Based Access Control System</p>
+            </div>
+
+            <div class="card">
+                <h3 style="margin-bottom: 16px;">Dashboard Overview</h3>
+                <p style="color: var(--text-secondary);">Welcome to your user dashboard. Access level is determined by your role assignment.</p>
+                
+                <div style="margin-top: 20px;">
+                    <p style="font-size: 0.9em; color: var(--text-secondary);">Current Role:</p>
+                    <span class="status-badge" id="currentRole">user</span>
+                </div>
+            </div>
+
+            <div class="card" id="adminPanel" style="display: none;">
+                <h3 style="margin-bottom: 16px; color: var(--accent-green);">Admin Panel</h3>
+                <p style="color: var(--text-secondary);">Administrative access granted. Flag revealed below.</p>
+                <div class="console-output" style="margin-top: 16px;">
+                    <pre id="flagOutput"></pre>
+                </div>
+            </div>
+
+            <div class="card" id="userPanel">
+                <h3 style="margin-bottom: 16px;">User Panel</h3>
+                <p style="color: var(--text-secondary);">Standard user access. Limited functionality available.</p>
+                <p style="font-size: 0.85em; color: var(--text-muted); margin-top: 12px;">Contact administrator for elevated access requests.</p>
+            </div>
+
+            <button type="button" class="btn" onclick="checkRole()">Check Access Level</button>
+        </div>
+
+        <div class="challenge-sidebar">
+            <div class="security-advisory">
+                <h4>Security Advisory</h4>
+                <p>The system determines user roles based on client-side cookie values. Role assignments are not validated server-side beyond checking the cookie value.</p>
+            </div>
+
+            <div class="security-advisory">
+                <h4>System Notes</h4>
+                <p>Administrative functions and sensitive data are only accessible when the role cookie is set to specific values. The cookie can be modified by the client.</p>
+            </div>
+
+            <div class="card">
+                <h4 style="margin-bottom: 12px; color: var(--text-primary);">Cookie Information</h4>
+                <p style="font-size: 0.85em; color: var(--text-secondary);">
+                    Cookie Name: <span class="mono">role</span><br>
+                    Current Value: <span class="mono" id="cookieValue">user</span><br>
+                    Expected Admin Value: <span class="mono">admin</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            return null;
+        }
+
+        function setCookie(name, value, days) {
+            const expires = new Date();
+            expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+            document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+        }
+
+        async function checkRole() {
+            const role = getCookie('role') || 'user';
+            document.getElementById('currentRole').textContent = role;
+            document.getElementById('cookieValue').textContent = role;
+
+            try {
+                const response = await fetch('/challenge/cookie-role');
+                const data = await response.json();
+
+                if (data.flag) {
+                    document.getElementById('adminPanel').style.display = 'block';
+                    document.getElementById('userPanel').style.display = 'none';
+                    document.getElementById('flagOutput').innerHTML = `<span class="success">${data.flag}</span>`;
+                } else {
+                    document.getElementById('adminPanel').style.display = 'none';
+                    document.getElementById('userPanel').style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set initial cookie if not present
+            if (!getCookie('role')) {
+                setCookie('role', 'user', 7);
+            }
+            checkRole();
+        });
+    </script>
+</body>
+</html>

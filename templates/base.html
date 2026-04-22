@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}VOID PROTOCOL - CTF Platform{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    {% if session.user_id %}
+    <nav class="navbar">
+        <a href="{{ url_for('dashboard') }}" class="nav-brand">VOID PROTOCOL</a>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('dashboard') }}" class="{% if request.endpoint == 'dashboard' %}active{% endif %}">Dashboard</a></li>
+            <li><a href="{{ url_for('challenges') }}" class="{% if request.endpoint == 'challenges' or request.endpoint == 'view_challenge' %}active{% endif %}">Challenges</a></li>
+            <li><a href="{{ url_for('scoreboard') }}" class="{% if request.endpoint == 'scoreboard' %}active{% endif %}">Scoreboard</a></li>
+            <li><a href="{{ url_for('profile') }}" class="{% if request.endpoint == 'profile' %}active{% endif %}">Profile</a></li>
+            {% if user.is_admin %}
+            <li><a href="{{ url_for('admin') }}" class="{% if request.endpoint.startswith('admin') %}active{% endif %}">Admin</a></li>
+            {% endif %}
+        </ul>
+        <div class="nav-user">
+            <div class="nav-user-info">
+                {{ user.username }} <span>{{ user.score }} pts</span>
+            </div>
+            <a href="{{ url_for('logout') }}" class="nav-logout">Logout</a>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div class="sidebar" id="sidebar">
+        <ul class="sidebar-links">
+            <li><a href="{{ url_for('dashboard') }}" class="{% if request.endpoint == 'dashboard' %}active{% endif %}">Dashboard</a></li>
+            <li><a href="{{ url_for('challenges') }}" class="{% if request.endpoint == 'challenges' or request.endpoint == 'view_challenge' %}active{% endif %}">Challenges</a></li>
+            <li><a href="{{ url_for('scoreboard') }}" class="{% if request.endpoint == 'scoreboard' %}active{% endif %}">Scoreboard</a></li>
+            <li><a href="{{ url_for('profile') }}" class="{% if request.endpoint == 'profile' %}active{% endif %}">Profile</a></li>
+            {% if user.is_admin %}
+            <li><a href="{{ url_for('admin') }}" class="{% if request.endpoint.startswith('admin') %}active{% endif %}">Admin Panel</a></li>
+            {% endif %}
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        </ul>
+    </div>
+    {% endif %}
+    
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+    
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

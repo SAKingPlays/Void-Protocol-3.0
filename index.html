@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOID PROTOCOL - Security Challenges</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0f0f23 100%);
+            min-height: 100vh;
+            color: #fff;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00ff88;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px #00ff88;
+            letter-spacing: 3px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 40px;
+            font-size: 0.9em;
+        }
+
+        .challenges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .challenge-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 15px;
+            padding: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .challenge-card:hover {
+            border-color: rgba(0, 255, 136, 0.5);
+            background: rgba(0, 255, 136, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 255, 136, 0.2);
+        }
+
+        .challenge-number {
+            color: #00ff88;
+            font-weight: 700;
+            font-size: 0.8em;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .challenge-title {
+            color: #00ff88;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .challenge-desc {
+            color: #aaa;
+            font-size: 0.9em;
+            line-height: 1.6;
+            flex-grow: 1;
+            margin-bottom: 15px;
+        }
+
+        .difficulty {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 5px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+
+        .difficulty.easy {
+            background: rgba(0, 255, 136, 0.2);
+            color: #00ff88;
+        }
+
+        .difficulty.medium {
+            background: rgba(255, 193, 7, 0.2);
+            color: #ffc107;
+        }
+
+        .difficulty.hard {
+            background: rgba(255, 0, 0, 0.2);
+            color: #ff6b6b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>VOID PROTOCOL</h1>
+        <p class="subtitle">Security Challenge Scenarios</p>
+
+        <div class="challenges-grid">
+            <a href="challenge-main.html" class="challenge-card">
+                <div class="challenge-number">// MAIN</div>
+                <div class="challenge-title">Admin Access</div>
+                <div class="challenge-desc">Gain admin access to the main system and retrieve the hidden flag through authentication bypass.</div>
+                <div class="difficulty medium">Medium</div>
+            </a>
+
+            <a href="challenge-cookie1.html" class="challenge-card">
+                <div class="challenge-number">// COOKIE 1</div>
+                <div class="challenge-title">Role Escalation</div>
+                <div class="challenge-desc">Exploit insecure cookie handling to escalate from user to admin role.</div>
+                <div class="difficulty easy">Easy</div>
+            </a>
+
+            <a href="challenge-cookie2.html" class="challenge-card">
+                <div class="challenge-number">// COOKIE 2</div>
+                <div class="challenge-title">Base64 Decoding</div>
+                <div class="challenge-desc">Decode and manipulate Base64-encoded cookies to bypass authentication.</div>
+                <div class="difficulty easy">Easy</div>
+            </a>
+
+            <a href="challenge-cookie3.html" class="challenge-card">
+                <div class="challenge-number">// COOKIE 3</div>
+                <div class="challenge-title">Budget Manipulation</div>
+                <div class="challenge-desc">Modify budget values in encoded cookies to unlock premium features.</div>
+                <div class="difficulty medium">Medium</div>
+            </a>
+
+            <a href="challenge-cookie4.html" class="challenge-card">
+                <div class="challenge-number">// COOKIE 4</div>
+                <div class="challenge-title">Signature Bypass</div>
+                <div class="challenge-desc">Break weak cookie signatures to forge admin credentials.</div>
+                <div class="difficulty medium">Medium</div>
+            </a>
+
+            <a href="challenge-cookie5.html" class="challenge-card">
+                <div class="challenge-number">// COOKIE 5</div>
+                <div class="challenge-title">Time Travel</div>
+                <div class="challenge-desc">Manipulate timestamp-based cookies to gain unauthorized access.</div>
+                <div class="difficulty medium">Medium</div>
+            </a>
+
+            <a href="challenge-idor.html" class="challenge-card">
+                <div class="challenge-number">// IDOR</div>
+                <div class="challenge-title">Insecure Direct Object Reference</div>
+                <div class="challenge-desc">Access other users' profiles by manipulating object IDs.</div>
+                <div class="difficulty medium">Medium</div>
+            </a>
+
+            <a href="challenge-idor6.html" class="challenge-card">
+                <div class="challenge-number">// IDOR 6</div>
+                <div class="challenge-title">Profile Enumeration</div>
+                <div class="challenge-desc">Enumerate user profiles and extract sensitive information.</div>
+                <div class="difficulty easy">Easy</div>
+            </a>
+
+            <a href="challenge-idor7.html" class="challenge-card">
+                <div class="challenge-number">// IDOR 7</div>
+                <div class="challenge-title">Notes Access</div>
+                <div class="challenge-desc">Access private notes from other users through direct object reference.</div>
+                <div class="difficulty medium">Medium</div>
+            </a>
+
+            <a href="challenge-idor8.html" class="challenge-card">
+                <div class="challenge-number">// IDOR 8</div>
+                <div class="challenge-title">Invoice Retrieval</div>
+                <div class="challenge-desc">Retrieve sensitive financial data from other users' invoices.</div>
+                <div class="difficulty medium">Medium</div>
+            </a>
+
+            <a href="challenge-idor9.html" class="challenge-card">
+                <div class="challenge-number">// IDOR 9</div>
+                <div class="challenge-title">API Enumeration</div>
+                <div class="challenge-desc">Exploit weak API endpoint protection to access restricted data.</div>
+                <div class="difficulty hard">Hard</div>
+            </a>
+
+            <a href="challenge-idor10.html" class="challenge-card">
+                <div class="challenge-number">// IDOR 10</div>
+                <div class="challenge-title">File Download</div>
+                <div class="challenge-desc">Download files from other users' accounts through path traversal.</div>
+                <div class="difficulty hard">Hard</div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

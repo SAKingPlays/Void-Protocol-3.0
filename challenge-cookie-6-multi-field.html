@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Field Cookie Manipulation</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="challenge-layout">
+        <div class="challenge-main">
+            <div class="challenge-header">
+                <h2>Multi-Field Cookie Manipulation</h2>
+                <p class="subtitle">Multi-Cookie Session System</p>
+            </div>
+
+            <div class="card">
+                <h3 style="margin-bottom: 16px;">Current Session Cookies</h3>
+                <p style="color: var(--text-secondary);">Session is stored across multiple cookies. All fields must align correctly for admin access. Each cookie controls a different aspect of the session.</p>
+                
+                <div style="margin-top: 20px;">
+                    <p style="font-size: 0.9em; color: var(--text-secondary);">Current Cookies:</p>
+                    <div class="console-output">
+                        <pre id="cookieDisplay">user_id=102
+role=user
+access_level=1</pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 style="margin-bottom: 16px;">Cookie Configuration</h3>
+                <div class="form-group">
+                    <label>user_id</label>
+                    <input type="text" id="userIdCookie" class="form-control" value="102">
+                </div>
+                <div class="form-group" style="margin-top: 12px;">
+                    <label>role</label>
+                    <input type="text" id="roleCookie" class="form-control" value="user">
+                </div>
+                <div class="form-group" style="margin-top: 12px;">
+                    <label>access_level</label>
+                    <input type="text" id="accessLevelCookie" class="form-control" value="1">
+                </div>
+            </div>
+
+            <div class="card" id="adminPanel" style="display: none;">
+                <h3 style="margin-bottom: 16px; color: var(--accent-green);">Admin Access Granted</h3>
+                <p style="color: var(--text-secondary);">All cookie fields aligned correctly. Administrative privileges confirmed.</p>
+                <div class="console-output" style="margin-top: 16px;">
+                    <pre id="flagOutput"></pre>
+                </div>
+            </div>
+
+            <div class="card" id="accessDenied">
+                <h3 style="margin-bottom: 16px; color: var(--accent-red);">Access Denied</h3>
+                <p style="color: var(--text-secondary);">Cookie fields do not align. All three fields must be set correctly for admin access.</p>
+            </div>
+
+            <button type="button" class="btn" onclick="updateCookies()">Update Cookies</button>
+            <button type="button" class="btn" onclick="checkAccess()">Verify Access</button>
+        </div>
+
+        <div class="challenge-sidebar">
+            <div class="security-advisory">
+                <h4>Security Advisory</h4>
+                <p>The session system uses multiple cookies (user_id, role, access_level). All fields must align for admin access. No server-side validation of cookie consistency.</p>
+            </div>
+
+            <div class="security-advisory">
+                <h4>System Notes</h4>
+                <p>For admin access: user_id must be set, role must be "admin", and access_level must be "5". All three conditions must be met simultaneously.</p>
+            </div>
+
+            <div class="card">
+                <h4 style="margin-bottom: 12px; color: var(--text-primary);">Required Configuration</h4>
+                <p style="font-size: 0.85em; color: var(--text-secondary);">
+                    user_id: <span class="mono">any value</span><br>
+                    role: <span class="mono">admin</span><br>
+                    access_level: <span class="mono">5</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            return null;
+        }
+
+        function setCookie(name, value, days) {
+            const expires = new Date();
+            expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+            document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+        }
+
+        function updateCookies() {
+            const userId = document.getElementById('userIdCookie').value;
+            const role = document.getElementById('roleCookie').value;
+            const accessLevel = document.getElementById('accessLevelCookie').value;
+
+            setCookie('user_id', userId, 7);
+            setCookie('role', role, 7);
+            setCookie('access_level', accessLevel, 7);
+
+            document.getElementById('cookieDisplay').textContent = `user_id=${userId}\nrole=${role}\naccess_level=${accessLevel}`;
+        }
+
+        async function checkAccess() {
+            const userId = getCookie('user_id');
+            const role = getCookie('role');
+            const accessLevel = getCookie('access_level');
+
+            document.getElementById('userIdCookie').value = userId || '';
+            document.getElementById('roleCookie').value = role || '';
+            document.getElementById('accessLevelCookie').value = accessLevel || '';
+
+            try {
+                const response = await fetch('/challenge/cookie-multi-field');
+                const data = await response.json();
+
+                if (data.flag) {
+                    document.getElementById('adminPanel').style.display = 'block';
+                    document.getElementById('accessDenied').style.display = 'none';
+                    document.getElementById('flagOutput').innerHTML = `<span class="success">${data.flag}</span>`;
+                } else {
+                    document.getElementById('adminPanel').style.display = 'none';
+                    document.getElementById('accessDenied').style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!getCookie('user_id')) setCookie('user_id', '102', 7);
+            if (!getCookie('role')) setCookie('role', 'user', 7);
+            if (!getCookie('access_level')) setCookie('access_level', '1', 7);
+            checkAccess();
+        });
+    </script>
+</body>
+</html>

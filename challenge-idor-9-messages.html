@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Messaging System</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="challenge-layout">
+        <div class="challenge-main">
+            <div class="challenge-header">
+                <h2>Private Messaging System</h2>
+                <p class="subtitle">Internal Communication Platform</p>
+            </div>
+
+            <div class="api-endpoint">
+                <span class="method get">GET</span>
+                <span class="mono">/messages/thread/</span>
+            </div>
+
+            <div class="form-group">
+                <label for="threadId">Thread ID</label>
+                <div class="input-group">
+                    <span class="input-prefix">/messages/thread/</span>
+                    <input type="number" id="threadId" class="form-control" placeholder="Enter thread ID" value="339">
+                </div>
+            </div>
+
+            <button type="button" class="btn" onclick="fetchThread()">View Thread</button>
+
+            <div id="threadResults" class="console-output" style="display: none;">
+                <pre id="threadOutput"></pre>
+            </div>
+
+            <div id="errorMessage" class="message error" style="display: none;"></div>
+        </div>
+
+        <div class="challenge-sidebar">
+            <div class="security-advisory">
+                <h4>Security Advisory</h4>
+                <p>Message threads belong to multiple users. Access control only verifies login status, not thread ownership. Any authenticated user can access any thread by ID.</p>
+            </div>
+
+            <div class="security-advisory">
+                <h4>System Notes</h4>
+                <p>Enumerate thread IDs to find admin conversations. Administrative threads may contain sensitive information and security discussions. Thread IDs are sequential.</p>
+            </div>
+
+            <div class="card">
+                <h4 style="margin-bottom: 12px; color: var(--text-primary);">Current Session</h4>
+                <p style="font-size: 0.85em; color: var(--text-secondary);">
+                    User ID: <span class="mono">1023</span><br>
+                    Username: <span class="mono">user_1023</span><br>
+                    Access Level: <span class="mono">standard</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function fetchThread() {
+            const threadId = document.getElementById('threadId').value;
+            const output = document.getElementById('threadOutput');
+            const results = document.getElementById('threadResults');
+            const errorMsg = document.getElementById('errorMessage');
+
+            if (!threadId) {
+                errorMsg.textContent = 'Please enter a thread ID';
+                errorMsg.style.display = 'block';
+                results.style.display = 'none';
+                return;
+            }
+
+            errorMsg.style.display = 'none';
+            results.style.display = 'block';
+            output.textContent = 'Loading...';
+
+            try {
+                const response = await fetch(`/messages/thread/${threadId}`);
+                const data = await response.json();
+
+                if (response.ok) {
+                    output.innerHTML = `<span class="success">Thread Details:</span>\n\n`;
+                    output.innerHTML += `Thread ID: <span class="mono">${data.thread_id}</span>\n`;
+                    output.innerHTML += `Subject: ${data.subject}\n`;
+                    output.innerHTML += `Participants: ${data.participants}\n`;
+                    output.innerHTML += `Created: ${data.created_at}\n\n`;
+                    output.innerHTML += `<span class="info">Messages:</span>\n${data.messages}\n`;
+                } else {
+                    output.textContent = `Error: ${data.error || 'Failed to fetch thread'}`;
+                }
+            } catch (error) {
+                output.textContent = `Error: ${error.message}`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchThread();
+        });
+    </script>
+</body>
+</html>

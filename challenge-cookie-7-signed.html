@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signed Cookie (Weak Validation)</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="challenge-layout">
+        <div class="challenge-main">
+            <div class="challenge-header">
+                <h2>Signed Cookie (Weak Validation)</h2>
+                <p class="subtitle">Weak Signature Verification System</p>
+            </div>
+
+            <div class="card">
+                <h3 style="margin-bottom: 16px;">Current Signed Session</h3>
+                <p style="color: var(--text-secondary);">Session includes a signature for integrity. Signature validation is weak and only checks basic properties.</p>
+                
+                <div style="margin-top: 20px;">
+                    <p style="font-size: 0.9em; color: var(--text-secondary);">Current Cookies:</p>
+                    <div class="console-output">
+                        <pre id="cookieDisplay">data=eyJyb2xlIjoidXNlciIsInVzZXJfaWQiOjEwMjN9
+sig=12345</pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 style="margin-bottom: 16px;">Cookie Configuration</h3>
+                <div class="form-group">
+                    <label>data (Base64)</label>
+                    <input type="text" id="dataCookie" class="form-control" value="eyJyb2xlIjoidXNlciIsInVzZXJfaWQiOjEwMjN9">
+                </div>
+                <div class="form-group" style="margin-top: 12px;">
+                    <label>sig (Signature)</label>
+                    <input type="text" id="sigCookie" class="form-control" value="12345">
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 style="margin-bottom: 16px;">Decoded Data</h3>
+                <div class="console-output">
+                    <pre id="decodedOutput">{"role":"user","user_id":1023}</pre>
+                </div>
+            </div>
+
+            <div class="card" id="adminPanel" style="display: none;">
+                <h3 style="margin-bottom: 16px; color: var(--accent-green);">Admin Access Granted</h3>
+                <p style="color: var(--text-secondary);">Signature bypassed. Administrative privileges confirmed.</p>
+                <div class="console-output" style="margin-top: 16px;">
+                    <pre id="flagOutput"></pre>
+                </div>
+            </div>
+
+            <div class="card" id="accessDenied">
+                <h3 style="margin-bottom: 16px; color: var(--accent-red);">Access Denied</h3>
+                <p style="color: var(--text-secondary);">Signature validation failed or data invalid.</p>
+            </div>
+
+            <button type="button" class="btn" onclick="updateCookies()">Update Cookies</button>
+            <button type="button" class="btn" onclick="checkAccess()">Verify Access</button>
+        </div>
+
+        <div class="challenge-sidebar">
+            <div class="security-advisory">
+                <h4>Security Advisory</h4>
+                <p>The signature validation is weak. It only checks if the signature is a positive number, not if it cryptographically verifies the data. Any numeric signature greater than 0 is accepted.</p>
+            </div>
+
+            <div class="security-advisory">
+                <h4>System Notes</h4>
+                <p>Modify the data cookie (decode, change role to admin, re-encode) and keep any numeric signature greater than 0. The weak validation will accept it.</p>
+            </div>
+
+            <div class="card">
+                <h4 style="margin-bottom: 12px; color: var(--text-primary);">Signature Logic</h4>
+                <p style="font-size: 0.85em; color: var(--text-secondary);">
+                    Validation: <span class="mono">sig > 0</span><br>
+                    Check: <span class="mono">numeric only</span><br>
+                    No cryptographic verification
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            return null;
+        }
+
+        function setCookie(name, value, days) {
+            const expires = new Date();
+            expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+            document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+        }
+
+        function base64Encode(str) {
+            return btoa(str);
+        }
+
+        function base64Decode(str) {
+            try {
+                return atob(str);
+            } catch (e) {
+                return null;
+            }
+        }
+
+        function updateCookies() {
+            const data = document.getElementById('dataCookie').value;
+            const sig = document.getElementById('sigCookie').value;
+
+            setCookie('data', data, 7);
+            setCookie('sig', sig, 7);
+
+            document.getElementById('cookieDisplay').textContent = `data=${data}\nsig=${sig}`;
+
+            const decoded = base64Decode(data);
+            if (decoded) {
+                document.getElementById('decodedOutput').textContent = decoded;
+            }
+        }
+
+        async function checkAccess() {
+            const data = getCookie('data');
+            const sig = getCookie('sig');
+
+            document.getElementById('dataCookie').value = data || '';
+            document.getElementById('sigCookie').value = sig || '';
+
+            const decoded = base64Decode(data);
+            if (decoded) {
+                document.getElementById('decodedOutput').textContent = decoded;
+            }
+
+            try {
+                const response = await fetch('/challenge/cookie-signed');
+                const responseData = await response.json();
+
+                if (responseData.flag) {
+                    document.getElementById('adminPanel').style.display = 'block';
+                    document.getElementById('accessDenied').style.display = 'none';
+                    document.getElementById('flagOutput').innerHTML = `<span class="success">${responseData.flag}</span>`;
+                } else {
+                    document.getElementById('adminPanel').style.display = 'none';
+                    document.getElementById('accessDenied').style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!getCookie('data')) {
+                const defaultData = base64Encode(JSON.stringify({role: 'user', user_id: 1023}));
+                setCookie('data', defaultData, 7);
+            }
+            if (!getCookie('sig')) {
+                setCookie('sig', '12345', 7);
+            }
+            checkAccess();
+        });
+    </script>
+</body>
+</html>

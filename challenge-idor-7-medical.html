@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Records Portal</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="challenge-layout">
+        <div class="challenge-main">
+            <div class="challenge-header">
+                <h2>Medical Records Portal</h2>
+                <p class="subtitle">Patient Record Management System</p>
+            </div>
+
+            <div class="api-endpoint">
+                <span class="method get">GET</span>
+                <span class="mono">/records/view?record_id=</span>
+            </div>
+
+            <div class="form-group">
+                <label for="recordId">Record ID</label>
+                <div class="input-group">
+                    <span class="input-prefix">record_id=</span>
+                    <input type="number" id="recordId" class="form-control" placeholder="Enter record ID" value="8821">
+                </div>
+            </div>
+
+            <button type="button" class="btn" onclick="fetchRecord()">View Record</button>
+
+            <div id="recordResults" class="console-output" style="display: none;">
+                <pre id="recordOutput"></pre>
+            </div>
+
+            <div id="errorMessage" class="message error" style="display: none;"></div>
+        </div>
+
+        <div class="challenge-sidebar">
+            <div class="security-advisory">
+                <h4>Security Advisory</h4>
+                <p>Patient records are distributed with partially predictable IDs. Observe patterns in record IDs (gaps, increments) to identify potential privileged accounts. The API does not verify record ownership.</p>
+            </div>
+
+            <div class="security-advisory">
+                <h4>System Notes</h4>
+                <p>Records are not perfectly sequential. Analyze existing record IDs to understand the distribution pattern. High-value records may follow specific ranges or patterns.</p>
+            </div>
+
+            <div class="card">
+                <h4 style="margin-bottom: 12px; color: var(--text-primary);">Current Session</h4>
+                <p style="font-size: 0.85em; color: var(--text-secondary);">
+                    User ID: <span class="mono">1023</span><br>
+                    Role: <span class="mono">patient</span><br>
+                    Access Level: <span class="mono">self_only</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function fetchRecord() {
+            const recordId = document.getElementById('recordId').value;
+            const output = document.getElementById('recordOutput');
+            const results = document.getElementById('recordResults');
+            const errorMsg = document.getElementById('errorMessage');
+
+            if (!recordId) {
+                errorMsg.textContent = 'Please enter a record ID';
+                errorMsg.style.display = 'block';
+                results.style.display = 'none';
+                return;
+            }
+
+            errorMsg.style.display = 'none';
+            results.style.display = 'block';
+            output.textContent = 'Loading...';
+
+            try {
+                const response = await fetch(`/records/view?record_id=${recordId}`);
+                const data = await response.json();
+
+                if (response.ok) {
+                    output.innerHTML = `<span class="success">Medical Record:</span>\n\n`;
+                    output.innerHTML += `Record ID: <span class="mono">${data.record_id}</span>\n`;
+                    output.innerHTML += `Patient Name: ${data.patient_name}\n`;
+                    output.innerHTML += `Diagnosis: ${data.diagnosis}\n`;
+                    output.innerHTML += `Treatment: ${data.treatment}\n`;
+                    output.innerHTML += `Doctor Notes: ${data.doctor_notes}\n`;
+                    output.innerHTML += `Admission Date: ${data.admission_date}\n`;
+                } else {
+                    output.textContent = `Error: ${data.error || 'Failed to fetch record'}`;
+                }
+            } catch (error) {
+                output.textContent = `Error: ${error.message}`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchRecord();
+        });
+    </script>
+</body>
+</html>

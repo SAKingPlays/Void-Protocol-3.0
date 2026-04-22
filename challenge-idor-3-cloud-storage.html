@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Storage Viewer - Document Management</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="challenge-layout">
+        <div class="challenge-main">
+            <div class="challenge-header">
+                <h2>Cloud Storage Viewer</h2>
+                <p class="subtitle">Document Management System</p>
+            </div>
+
+            <div class="api-endpoint">
+                <span class="method get">GET</span>
+                <span class="mono">/api/files/view?file_id=</span>
+            </div>
+
+            <div class="form-group">
+                <label for="fileId">File ID</label>
+                <div class="input-group">
+                    <span class="input-prefix">file_id=</span>
+                    <input type="number" id="fileId" class="form-control" placeholder="Enter file ID" value="7845">
+                </div>
+            </div>
+
+            <button class="btn" onclick="fetchFile()">View File</button>
+
+            <div id="fileResults" class="console-output" style="display: none;">
+                <pre id="fileOutput"></pre>
+            </div>
+
+            <div id="errorMessage" class="message error" style="display: none;"></div>
+        </div>
+
+        <div class="challenge-sidebar">
+            <div class="security-advisory">
+                <h4>Security Advisory</h4>
+                <p>File indexing follows a sequential numeric pattern. The API endpoint returns file content without verifying ownership or access permissions. Confidential documents may be accessible through ID enumeration.</p>
+            </div>
+
+            <div class="security-advisory">
+                <h4>System Notes</h4>
+                <p>Strategic and confidential documents are typically assigned higher file IDs. These files may contain sensitive business information and internal communications.</p>
+            </div>
+
+            <div class="card">
+                <h4 style="margin-bottom: 12px; color: var(--text-primary);">Current Session</h4>
+                <p style="font-size: 0.85em; color: var(--text-secondary);">
+                    User ID: <span class="mono">1000</span><br>
+                    Access Level: <span class="mono">standard</span><br>
+                    Storage Quota: <span class="mono">10GB</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function fetchFile() {
+            const fileId = document.getElementById('fileId').value;
+            const output = document.getElementById('fileOutput');
+            const results = document.getElementById('fileResults');
+            const errorMsg = document.getElementById('errorMessage');
+
+            if (!fileId) {
+                errorMsg.textContent = 'Please enter a file ID';
+                errorMsg.style.display = 'block';
+                results.style.display = 'none';
+                return;
+            }
+
+            errorMsg.style.display = 'none';
+            results.style.display = 'block';
+            output.textContent = 'Loading...';
+
+            try {
+                const response = await fetch(`/api/files/view?file_id=${fileId}`);
+                const data = await response.json();
+
+                if (response.ok) {
+                    output.innerHTML = `<span class="success">File Details:</span>\n\n`;
+                    output.innerHTML += `File ID: <span class="mono">${data.file_id}</span>\n`;
+                    output.innerHTML += `Filename: ${data.filename}\n`;
+                    output.innerHTML += `Owner ID: <span class="mono">${data.owner_id}</span>\n`;
+                    output.innerHTML += `Created: ${data.created_at}\n\n`;
+                    output.innerHTML += `<span class="info">Content:</span>\n${data.content}\n`;
+                } else {
+                    output.textContent = `Error: ${data.error || 'Failed to fetch file'}`;
+                }
+            } catch (error) {
+                output.textContent = `Error: ${error.message}`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchFile();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Payroll Portal - HR Management</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="challenge-layout">
+        <div class="challenge-main">
+            <div class="challenge-header">
+                <h2>Employee Payroll Portal</h2>
+                <p class="subtitle">Human Resources Management System</p>
+            </div>
+
+            <div class="api-endpoint">
+                <span class="method get">GET</span>
+                <span class="mono">/api/payroll/view?id=</span>
+            </div>
+
+            <div class="form-group">
+                <label for="employeeId">Employee ID</label>
+                <div class="input-group">
+                    <span class="input-prefix">id=</span>
+                    <input type="text" id="employeeId" class="form-control" placeholder="Enter employee ID" value="EMP102">
+                </div>
+            </div>
+
+            <button class="btn" onclick="fetchPayroll()">View Record</button>
+
+            <div id="payrollResults" class="console-output" style="display: none;">
+                <pre id="payrollOutput"></pre>
+            </div>
+
+            <div id="errorMessage" class="message error" style="display: none;"></div>
+        </div>
+
+        <div class="challenge-sidebar">
+            <div class="security-advisory">
+                <h4>Security Advisory</h4>
+                <p>Employee identifiers follow a structured format: EMP followed by a sequential number (e.g., EMP100, EMP101). The API endpoint does not validate requester authorization before returning payroll data.</p>
+            </div>
+
+            <div class="security-advisory">
+                <h4>System Notes</h4>
+                <p>Executive-level compensation records may contain sensitive notes and higher salary figures. These records are typically assigned higher-numbered employee IDs in the sequence.</p>
+            </div>
+
+            <div class="card">
+                <h4 style="margin-bottom: 12px; color: var(--text-primary);">Current Session</h4>
+                <p style="font-size: 0.85em; color: var(--text-secondary);">
+                    Employee ID: <span class="mono">EMP102</span><br>
+                    Department: <span class="mono">Engineering</span><br>
+                    Access Level: <span class="mono">standard</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function fetchPayroll() {
+            const employeeId = document.getElementById('employeeId').value;
+            const output = document.getElementById('payrollOutput');
+            const results = document.getElementById('payrollResults');
+            const errorMsg = document.getElementById('errorMessage');
+
+            if (!employeeId) {
+                errorMsg.textContent = 'Please enter an employee ID';
+                errorMsg.style.display = 'block';
+                results.style.display = 'none';
+                return;
+            }
+
+            errorMsg.style.display = 'none';
+            results.style.display = 'block';
+            output.textContent = 'Loading...';
+
+            try {
+                const response = await fetch(`/api/payroll/view?id=${employeeId}`);
+                const data = await response.json();
+
+                if (response.ok) {
+                    output.innerHTML = `<span class="success">Employee Record:</span>\n\n`;
+                    output.innerHTML += `Employee ID: <span class="mono">${data.employee_id}</span>\n`;
+                    output.innerHTML += `Name: ${data.name}\n`;
+                    output.innerHTML += `Department: ${data.department}\n`;
+                    output.innerHTML += `Position: ${data.position}\n`;
+                    output.innerHTML += `Salary: $${data.salary.toLocaleString()}\n`;
+                    output.innerHTML += `Notes: ${data.notes || 'N/A'}\n`;
+                } else {
+                    output.textContent = `Error: ${data.error || 'Failed to fetch payroll record'}`;
+                }
+            } catch (error) {
+                output.textContent = `Error: ${error.message}`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchPayroll();
+        });
+    </script>
+</body>
+</html>

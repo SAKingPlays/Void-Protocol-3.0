@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Management System - Order Processing</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="challenge-layout">
+        <div class="challenge-main">
+            <div class="challenge-header">
+                <h2>Order Management System</h2>
+                <p class="subtitle">Order Processing Portal</p>
+            </div>
+
+            <div class="api-endpoint">
+                <span class="method get">GET</span>
+                <span class="mono">/api/orders/</span>
+            </div>
+
+            <div class="form-group">
+                <label for="orderId">Order ID</label>
+                <div class="input-group">
+                    <span class="input-prefix">/api/orders/</span>
+                    <input type="number" id="orderId" class="form-control" placeholder="Enter order ID" value="55621">
+                </div>
+            </div>
+
+            <button type="button" class="btn" onclick="fetchOrder()">View Order</button>
+
+            <div id="orderResults" class="console-output" style="display: none;">
+                <pre id="orderOutput"></pre>
+            </div>
+
+            <div id="errorMessage" class="message error" style="display: none;"></div>
+        </div>
+
+        <div class="challenge-sidebar">
+            <div class="security-advisory">
+                <h4>Security Advisory</h4>
+                <p>Order IDs follow a sequential numbering pattern. The API endpoint returns order details without verifying if the requester has authorization to view the specific order.</p>
+            </div>
+
+            <div class="security-advisory">
+                <h4>System Notes</h4>
+                <p>Internal and procurement orders may contain sensitive information in the notes field. These orders are typically assigned higher sequential order IDs.</p>
+            </div>
+
+            <div class="card">
+                <h4 style="margin-bottom: 12px; color: var(--text-primary);">Current Session</h4>
+                <p style="font-size: 0.85em; color: var(--text-secondary);">
+                    Customer ID: <span class="mono">1000</span><br>
+                    Access Level: <span class="mono">standard</span><br>
+                    Department: <span class="mono">Sales</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function fetchOrder() {
+            const orderId = document.getElementById('orderId').value;
+            const output = document.getElementById('orderOutput');
+            const results = document.getElementById('orderResults');
+            const errorMsg = document.getElementById('errorMessage');
+
+            if (!orderId) {
+                errorMsg.textContent = 'Please enter an order ID';
+                errorMsg.style.display = 'block';
+                results.style.display = 'none';
+                return;
+            }
+
+            errorMsg.style.display = 'none';
+            results.style.display = 'block';
+            output.textContent = 'Loading...';
+
+            try {
+                const response = await fetch(`/api/orders/${orderId}`);
+                const data = await response.json();
+
+                if (response.ok) {
+                    output.innerHTML = `<span class="success">Order Details:</span>\n\n`;
+                    output.innerHTML += `Order ID: <span class="mono">${data.order_id}</span>\n`;
+                    output.innerHTML += `Customer ID: <span class="mono">${data.customer_id}</span>\n`;
+                    output.innerHTML += `Customer Name: ${data.customer_name}\n`;
+                    output.innerHTML += `Items: ${data.items}\n`;
+                    output.innerHTML += `Total Amount: $${data.total_amount.toFixed(2)}\n`;
+                    output.innerHTML += `Status: <span class="mono">${data.status}</span>\n`;
+                    output.innerHTML += `Notes: ${data.notes || 'N/A'}\n`;
+                } else {
+                    output.textContent = `Error: ${data.error || 'Failed to fetch order'}`;
+                }
+            } catch (error) {
+                output.textContent = `Error: ${error.message}`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchOrder();
+        });
+    </script>
+</body>
+</html>

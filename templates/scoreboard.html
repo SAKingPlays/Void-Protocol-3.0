@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}Scoreboard - VOID PROTOCOL{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>// SCOREBOARD</h1>
+    <p style="color: var(--text-secondary); margin-bottom: 30px;">Live competition rankings</p>
+    
+    {% if scoreboard and scoreboard|length > 0 %}
+    <div class="scoreboard-table-wrapper">
+        <table class="scoreboard-table" id="scoreboardTable">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>User</th>
+                    <th>Score</th>
+                    <th>Solves</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in scoreboard %}
+                {% if entry and entry.user %}
+                <tr class="{% if entry.user.id == user.id %}current-user{% endif %}">
+                    <td>
+                        <span class="rank-badge rank-{{ entry.rank }}">{{ entry.rank }}</span>
+                    </td>
+                    <td style="color: var(--accent-green);">{{ entry.user.username or 'Unknown' }}</td>
+                    <td style="font-family: 'JetBrains Mono', monospace; font-weight: 700;">{{ entry.user.score or 0 }}</td>
+                    <td>{{ entry.solve_count or 0 }}</td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="card">
+        <p style="color: var(--text-secondary); text-align: center; padding: 40px;">No scoreboard data available.</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Auto-refresh scoreboard every 10 seconds
+setInterval(async () => {
+    try {
+        const response = await fetch('/api/scoreboard');
+        const data = await response.json();
+        
+        const tbody = document.querySelector('#scoreboardTable tbody');
+        if (!tbody) return;
+        
+        let html = '';
+        
+        if (data && data.length > 0) {
+            data.forEach((entry, index) => {
+                const rank = index + 1;
+                const rankClass = rank === 1 ? 'rank-1' : rank === 2 ? 'rank-2' : rank === 3 ? 'rank-3' : '';
+                const isCurrentUser = entry.username === '{{ user.username or "" }}';
+                
+                html += `
+                    <tr class="${rankClass} ${isCurrentUser ? 'current-user' : ''}">
+                        <td><span class="rank-badge rank-${rank}">${rank}</span></td>
+                        <td style="color: var(--text-primary); font-weight: 500;">
+                            ${isCurrentUser ? '<span style="color: var(--accent-green);">' + (entry.username || 'Unknown') + '</span> (You)' : (entry.username || 'Unknown')}
+                        </td>
+                        <td style="color: var(--accent-green); font-weight: 700; font-family: 'JetBrains Mono', monospace;">${entry.score || 0}</td>
+                        <td style="color: var(--text-secondary);">${entry.solve_count || 0}</td>
+                    </tr>
+                `;
+            });
+        }
+        
+        tbody.innerHTML = html;
+    } catch (error) {
+        console.error('Error updating scoreboard:', error);
+    }
+}, 10000);
+</script>
+{% endblock %}

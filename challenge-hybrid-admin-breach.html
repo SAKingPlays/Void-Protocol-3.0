@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel Breach - Hybrid Challenge</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="challenge-layout">
+        <div class="challenge-main">
+            <div class="challenge-header">
+                <h2>Admin Panel Breach</h2>
+                <p class="subtitle">Advanced Hybrid Challenge</p>
+            </div>
+
+            <div class="card">
+                <h3 style="margin-bottom: 16px;">Multi-Vector Attack Required</h3>
+                <p style="color: var(--text-secondary);">This challenge requires exploiting both IDOR vulnerabilities and cookie manipulation to achieve full administrative access. Both attack vectors must be combined successfully.</p>
+            </div>
+
+            <div class="card">
+                <h3 style="margin-bottom: 16px;">Step 1: User Enumeration</h3>
+                <div class="api-endpoint">
+                    <span class="method get">GET</span>
+                    <span class="mono">/challenge/hybrid/admin-panel?user_id=</span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="targetUserId">Target User ID</label>
+                    <div class="input-group">
+                        <span class="input-prefix">user_id=</span>
+                        <input type="number" id="targetUserId" class="form-control" placeholder="Enter target user ID" value="1023">
+                    </div>
+                </div>
+
+                <button type="button" class="btn" onclick="enumerateUser()">Enumerate User</button>
+            </div>
+
+            <div class="card">
+                <h3 style="margin-bottom: 16px;">Step 2: Cookie Manipulation</h3>
+                <p style="color: var(--text-secondary);">After identifying an admin user, set the required cookie to complete the breach.</p>
+                
+                <div style="margin-top: 16px;">
+                    <p style="font-size: 0.9em; color: var(--text-secondary);">Required Cookie:</p>
+                    <div class="console-output">
+                        <pre>admin_access: granted</pre>
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-secondary" onclick="setAdminCookie()">Set Admin Cookie</button>
+            </div>
+
+            <div id="userResults" class="console-output" style="display: none;">
+                <pre id="userOutput"></pre>
+            </div>
+
+            <div class="card" id="successPanel" style="display: none;">
+                <h3 style="margin-bottom: 16px; color: var(--accent-green);">Admin Panel Breached</h3>
+                <p style="color: var(--text-secondary);">Both vulnerabilities successfully exploited. Full admin access achieved.</p>
+                <div class="console-output" style="margin-top: 16px;">
+                    <pre id="flagOutput"></pre>
+                </div>
+            </div>
+
+            <div class="card" id="failurePanel" style="display: none;">
+                <h3 style="margin-bottom: 16px; color: var(--accent-red);">Access Denied</h3>
+                <p style="color: var(--text-secondary);">Insufficient privileges. Both IDOR and cookie vulnerabilities must be exploited.</p>
+            </div>
+
+            <button type="button" class="btn" onclick="attemptBreach()">Attempt Breach</button>
+        </div>
+
+        <div class="challenge-sidebar">
+            <div class="security-advisory">
+                <h4>Security Advisory</h4>
+                <p>This system implements defense-in-depth with multiple layers. Both user identity verification (via IDOR) and session validation (via cookies) must be bypassed simultaneously.</p>
+            </div>
+
+            <div class="security-advisory">
+                <h4>Attack Strategy</h4>
+                <p>1. Use IDOR to enumerate users and identify the admin account.<br>2. Set the admin_access cookie to "granted".<br>3. Request the admin panel with the admin user_id.</p>
+            </div>
+
+            <div class="card">
+                <h4 style="margin-bottom: 12px; color: var(--text-primary);">Current Status</h4>
+                <p style="font-size: 0.85em; color: var(--text-secondary);">
+                    Target User ID: <span class="mono" id="statusUserId">1023</span><br>
+                    Admin Cookie: <span class="mono" id="statusCookie">not set</span><br>
+                    User Found: <span class="mono" id="statusUserFound">pending</span>
+                </p>
+            </div>
+
+            <div class="card">
+                <h4 style="margin-bottom: 12px; color: var(--text-primary);">Flag Location</h4>
+                <p style="font-size: 0.85em; color: var(--text-secondary);">
+                    The flag is hidden in admin-only JavaScript as a Base64 encoded comment.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            return null;
+        }
+
+        function setCookie(name, value, days) {
+            const expires = new Date();
+            expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+            document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+        }
+
+        function updateStatus() {
+            const userId = document.getElementById('targetUserId').value;
+            const adminCookie = getCookie('admin_access');
+            
+            document.getElementById('statusUserId').textContent = userId || '1023';
+            document.getElementById('statusCookie').textContent = adminCookie || 'not set';
+        }
+
+        async function enumerateUser() {
+            const userId = document.getElementById('targetUserId').value;
+            const output = document.getElementById('userOutput');
+            const results = document.getElementById('userResults');
+
+            if (!userId) {
+                alert('Please enter a user ID');
+                return;
+            }
+
+            results.style.display = 'block';
+            output.textContent = 'Enumerating user...';
+
+            try {
+                const response = await fetch(`/challenge/hybrid/admin-panel?user_id=${userId}`);
+                const data = await response.json();
+
+                if (response.ok) {
+                    output.innerHTML = `<span class="success">User Found:</span>\n\n${JSON.stringify(data, null, 2)}`;
+                    document.getElementById('statusUserFound').textContent = 'yes';
+                } else {
+                    output.textContent = `Error: ${data.error || 'User not found'}`;
+                    document.getElementById('statusUserFound').textContent = 'no';
+                }
+            } catch (error) {
+                output.textContent = `Error: ${error.message}`;
+                document.getElementById('statusUserFound').textContent = 'error';
+            }
+
+            updateStatus();
+        }
+
+        function setAdminCookie() {
+            setCookie('admin_access', 'granted', 7);
+            updateStatus();
+            alert('Admin cookie set to: granted');
+        }
+
+        async function attemptBreach() {
+            const userId = document.getElementById('targetUserId').value;
+            const output = document.getElementById('userOutput');
+            const results = document.getElementById('userResults');
+            const successPanel = document.getElementById('successPanel');
+            const failurePanel = document.getElementById('failurePanel');
+
+            if (!userId) {
+                alert('Please enter a user ID');
+                return;
+            }
+
+            results.style.display = 'block';
+            output.textContent = 'Attempting breach...';
+
+            try {
+                const response = await fetch(`/challenge/hybrid/admin-panel?user_id=${userId}`);
+                const data = await response.json();
+
+                if (data.flag) {
+                    output.innerHTML = `<span class="success">Breach Successful:</span>\n\n${JSON.stringify(data, null, 2)}`;
+                    successPanel.style.display = 'block';
+                    failurePanel.style.display = 'none';
+                    document.getElementById('flagOutput').innerHTML = `<span class="success">${data.flag}</span>`;
+                } else {
+                    output.textContent = `Breach Failed: ${data.message || 'Access denied'}`;
+                    successPanel.style.display = 'none';
+                    failurePanel.style.display = 'block';
+                }
+            } catch (error) {
+                output.textContent = `Error: ${error.message}`;
+                successPanel.style.display = 'none';
+                failurePanel.style.display = 'block';
+            }
+
+            updateStatus();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateStatus();
+        });
+    </script>
+</body>
+</html>

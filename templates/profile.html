@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% block title %}Profile - VOID PROTOCOL{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>// PROFILE</h1>
+    <p style="color: var(--text-secondary); margin-bottom: 30px;">Your competition statistics</p>
+    
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-value">{{ user.score or 0 }}</div>
+            <div class="stat-label">Total Points</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">{{ solves|length if solves else 0 }}</div>
+            <div class="stat-label">Challenges Solved</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">{{ submissions|length if submissions else 0 }}</div>
+            <div class="stat-label">Total Submissions</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">{{ user.created_at.strftime('%Y-%m-%d') if user.created_at else 'N/A' }}</div>
+            <div class="stat-label">Joined</div>
+        </div>
+    </div>
+    
+    <div class="card">
+        <h2 style="margin-bottom: 20px;">Account Information</h2>
+        <div class="scoreboard-table-wrapper">
+        <table class="scoreboard-table">
+            <tr>
+                <td style="color: var(--accent-cyan);">Username</td>
+                <td style="color: var(--text-primary); font-weight: 500;">{{ user.username or 'Unknown' }}</td>
+            </tr>
+            <tr>
+                <td style="color: var(--accent-cyan);">Email</td>
+                <td style="color: var(--text-primary);">{{ user.email or 'N/A' }}</td>
+            </tr>
+            <tr>
+                <td style="color: var(--accent-cyan);">Account Type</td>
+                <td>
+                    {% if user.is_admin %}
+                    <span style="color: var(--accent-red);">Administrator</span>
+                    {% else %}
+                    <span style="color: var(--accent-green);">Competitor</span>
+                    {% endif %}
+                </td>
+            </tr>
+        </table>
+        </div>
+    </div>
+    
+    <div class="card">
+        <h2 style="margin-bottom: 20px;">Solved Challenges</h2>
+        {% if solves and solves|length > 0 %}
+        <div class="scoreboard-table-wrapper">
+        <table class="scoreboard-table">
+            <thead>
+                <tr>
+                    <th>Challenge</th>
+                    <th>Points</th>
+                    <th>Bonus</th>
+                    <th>Solved At</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for solve in solves %}
+                {% if solve and solve.challenge %}
+                <tr>
+                    <td style="color: var(--accent-green);">{{ solve.challenge.title or 'Unknown' }}</td>
+                    <td>{{ solve.points_earned or 0 }}</td>
+                    <td style="color: var(--accent-yellow);">+{{ solve.bonus_points or 0 }}</td>
+                    <td style="color: var(--text-secondary); font-size: 0.85em;">{{ solve.solved_at.strftime('%Y-%m-%d %H:%M:%S') if solve.solved_at else 'N/A' }}</td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+        {% else %}
+        <p style="color: var(--text-secondary); text-align: center; padding: 30px;">No challenges solved yet.</p>
+        {% endif %}
+    </div>
+    
+    <div class="card">
+        <h2 style="margin-bottom: 20px;">Recent Submissions</h2>
+        {% if submissions and submissions|length > 0 %}
+        <div class="scoreboard-table-wrapper">
+        <table class="scoreboard-table">
+            <thead>
+                <tr>
+                    <th>Challenge</th>
+                    <th>Flag</th>
+                    <th>Status</th>
+                    <th>Submitted At</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for submission in submissions %}
+                {% if submission and submission.challenge %}
+                <tr>
+                    <td style="color: var(--accent-green);">{{ submission.challenge.title or 'Unknown' }}</td>
+                    <td style="font-family: 'Courier New', monospace; font-size: 0.85em;">{{ (submission.flag[:30] + '...') if submission.flag and submission.flag|length > 30 else (submission.flag or 'N/A') }}</td>
+                    <td>
+                        {% if submission.is_correct %}
+                        <span style="color: var(--accent-green);">✓ Correct</span>
+                        {% else %}
+                        <span style="color: var(--accent-red);">✗ Incorrect</span>
+                        {% endif %}
+                    </td>
+                    <td style="color: var(--text-secondary); font-size: 0.85em;">{{ submission.submitted_at.strftime('%Y-%m-%d %H:%M:%S') if submission.submitted_at else 'N/A' }}</td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+        {% else %}
+        <p style="color: var(--text-secondary); text-align: center; padding: 30px;">No submissions yet.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

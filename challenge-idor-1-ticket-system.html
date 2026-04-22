@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internal Ticket System - Support Portal</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="challenge-layout">
+        <div class="challenge-main">
+            <div class="challenge-header">
+                <h2>Internal Ticket System</h2>
+                <p class="subtitle">Support Ticket Management Portal</p>
+            </div>
+
+            <div class="api-endpoint">
+                <span class="method get">GET</span>
+                <span class="mono">/api/tickets?user_id=</span>
+            </div>
+
+            <div class="form-group">
+                <label for="userId">User ID</label>
+                <div class="input-group">
+                    <span class="input-prefix">user_id=</span>
+                    <input type="number" id="userId" class="form-control" placeholder="Enter user ID" value="1023">
+                </div>
+            </div>
+
+            <button class="btn" onclick="fetchTickets()">View Tickets</button>
+
+            <div id="ticketResults" class="console-output" style="display: none;">
+                <pre id="ticketOutput"></pre>
+            </div>
+
+            <div id="errorMessage" class="message error" style="display: none;"></div>
+        </div>
+
+        <div class="challenge-sidebar">
+            <div class="security-advisory">
+                <h4>Security Advisory</h4>
+                <p>Analysts have observed that the ticket system API accepts user_id parameters directly from client requests. The identifiers appear to follow sequential patterns starting from 1000. No authorization checks are performed on the requested user_id parameter.</p>
+            </div>
+
+            <div class="security-advisory">
+                <h4>System Notes</h4>
+                <p>Administrative tickets may contain sensitive information including security advisories and incident reports. These are typically associated with low-numbered user IDs.</p>
+            </div>
+
+            <div class="card">
+                <h4 style="margin-bottom: 12px; color: var(--text-primary);">Current Session</h4>
+                <p style="font-size: 0.85em; color: var(--text-secondary);">
+                    User ID: <span class="mono">1023</span><br>
+                    Role: <span class="mono">user</span><br>
+                    Access Level: <span class="mono">standard</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function fetchTickets() {
+            const userId = document.getElementById('userId').value;
+            const output = document.getElementById('ticketOutput');
+            const results = document.getElementById('ticketResults');
+            const errorMsg = document.getElementById('errorMessage');
+
+            if (!userId) {
+                errorMsg.textContent = 'Please enter a user ID';
+                errorMsg.style.display = 'block';
+                results.style.display = 'none';
+                return;
+            }
+
+            errorMsg.style.display = 'none';
+            results.style.display = 'block';
+            output.textContent = 'Loading...';
+
+            try {
+                const response = await fetch(`/api/tickets?user_id=${userId}`);
+                const data = await response.json();
+
+                if (response.ok) {
+                    if (data.length === 0) {
+                        output.textContent = 'No tickets found for this user ID.';
+                    } else {
+                        output.innerHTML = `<span class="info">Found ${data.length} ticket(s):</span>\n\n`;
+                        data.forEach((ticket, index) => {
+                            output.innerHTML += `<span class="info">Ticket #${index + 1}:</span>\n`;
+                            output.innerHTML += `  ID: <span class="mono">${ticket.id}</span>\n`;
+                            output.innerHTML += `  Title: ${ticket.title}\n`;
+                            output.innerHTML += `  Description: ${ticket.description}\n`;
+                            output.innerHTML += `  Status: <span class="mono">${ticket.status}</span>\n`;
+                            output.innerHTML += `  Priority: <span class="mono">${ticket.priority}</span>\n`;
+                            output.innerHTML += `  Created: ${ticket.created_at}\n\n`;
+                        });
+                    }
+                } else {
+                    output.textContent = `Error: ${data.error || 'Failed to fetch tickets'}`;
+                }
+            } catch (error) {
+                output.textContent = `Error: ${error.message}`;
+            }
+        }
+
+        // Auto-fetch on load
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchTickets();
+        });
+    </script>
+</body>
+</html>

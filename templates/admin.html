@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Panel - VOID PROTOCOL{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>// ADMIN PANEL</h1>
+    <p style="color: var(--text-secondary); margin-bottom: 30px;">Full system control</p>
+    
+    <!-- Users Management -->
+    <div class="admin-section">
+        <h3>// USER MANAGEMENT</h3>
+        <div class="card">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Score</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for u in users %}
+                    <tr>
+                        <td>{{ u.id }}</td>
+                        <td style="color: var(--accent-green);">{{ u.username }}</td>
+                        <td>{{ u.email }}</td>
+                        <td style="color: var(--accent-green); font-weight: 700;">{{ u.score }}</td>
+                        <td>
+                            {% if u.is_admin %}
+                            <span style="color: var(--accent-red);">Admin</span>
+                            {% elif u.is_banned %}
+                            <span style="color: var(--accent-red);">Banned</span>
+                            {% else %}
+                            <span style="color: var(--accent-green);">Active</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if u.username != 'GuildMaster' %}
+                            <button class="btn btn-sm btn-secondary" onclick="banUser({{ u.id }}, {{ 'true' if not u.is_banned else 'false' }})">
+                                {{ 'Ban' if not u.is_banned else 'Unban' }}
+                            </button>
+                            <button class="btn btn-sm btn-danger" onclick="resetUserScore({{ u.id }})">Reset Score</button>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+async function banUser(userId, shouldBan) {
+    if (!confirm(shouldBan ? 'Are you sure you want to ban this user?' : 'Are you sure you want to unban this user?')) return;
+    
+    try {
+        const response = await fetch(`/admin/users/${userId}/ban`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ ban: shouldBan })
+        });
+        const data = await response.json();
+        if (data.success) {
+            location.reload();
+        }
+    } catch (error) {
+        alert('Error: ' + error.message);
+    }
+}
+
+async function resetUserScore(userId) {
+    if (!confirm('Are you sure you want to reset this user\'s score?')) return;
+    
+    try {
+        const response = await fetch(`/admin/users/${userId}/reset-score`, { method: 'POST' });
+        const data = await response.json();
+        if (data.success) {
+            location.reload();
+        }
+    } catch (error) {
+        alert('Error: ' + error.message);
+    }
+}
+</script>
+{% endblock %}

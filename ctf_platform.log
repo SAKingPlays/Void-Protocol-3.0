@@ -1,0 +1,1256 @@
+2026-04-22 10:03:44,762 - __main__ - INFO - Initializing challenges...
+2026-04-22 10:03:44,789 - __main__ - INFO - Challenge already exists: Admin Access
+2026-04-22 10:03:44,791 - __main__ - INFO - Challenge already exists: Role Escalation
+2026-04-22 10:03:44,792 - __main__ - INFO - Challenge already exists: Base64 Decoding
+2026-04-22 10:03:44,794 - __main__ - INFO - Challenge already exists: Budget Manipulation
+2026-04-22 10:03:44,830 - __main__ - INFO - Challenge already exists: Signature Bypass
+2026-04-22 10:03:44,833 - __main__ - INFO - Challenge already exists: Time Travel
+2026-04-22 10:03:44,864 - __main__ - INFO - Challenge already exists: Insecure Direct Object Reference
+2026-04-22 10:03:44,867 - __main__ - INFO - Challenge already exists: Profile Enumeration
+2026-04-22 10:03:44,870 - __main__ - INFO - Challenge already exists: Notes Access
+2026-04-22 10:03:44,872 - __main__ - INFO - Challenge already exists: Invoice Retrieval
+2026-04-22 10:03:44,875 - __main__ - INFO - Challenge already exists: API Enumeration
+2026-04-22 10:03:44,878 - __main__ - INFO - Challenge already exists: File Download
+2026-04-22 10:03:44,908 - __main__ - INFO - Total challenges in database: 12
+2026-04-22 10:03:45,871 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.55:5000
+2026-04-22 10:03:45,872 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-22 10:03:45,878 - werkzeug - INFO -  * Restarting with stat
+2026-04-22 10:03:47,227 - __main__ - INFO - Initializing challenges...
+2026-04-22 10:03:47,253 - __main__ - INFO - Challenge already exists: Admin Access
+2026-04-22 10:03:47,255 - __main__ - INFO - Challenge already exists: Role Escalation
+2026-04-22 10:03:47,256 - __main__ - INFO - Challenge already exists: Base64 Decoding
+2026-04-22 10:03:47,258 - __main__ - INFO - Challenge already exists: Budget Manipulation
+2026-04-22 10:03:47,260 - __main__ - INFO - Challenge already exists: Signature Bypass
+2026-04-22 10:03:47,261 - __main__ - INFO - Challenge already exists: Time Travel
+2026-04-22 10:03:47,264 - __main__ - INFO - Challenge already exists: Insecure Direct Object Reference
+2026-04-22 10:03:47,266 - __main__ - INFO - Challenge already exists: Profile Enumeration
+2026-04-22 10:03:47,268 - __main__ - INFO - Challenge already exists: Notes Access
+2026-04-22 10:03:47,271 - __main__ - INFO - Challenge already exists: Invoice Retrieval
+2026-04-22 10:03:47,272 - __main__ - INFO - Challenge already exists: API Enumeration
+2026-04-22 10:03:47,274 - __main__ - INFO - Challenge already exists: File Download
+2026-04-22 10:03:47,282 - __main__ - INFO - Total challenges in database: 12
+2026-04-22 10:03:47,324 - werkzeug - WARNING -  * Debugger is active!
+2026-04-22 10:03:47,333 - werkzeug - INFO -  * Debugger PIN: 623-192-245
+2026-04-22 10:03:58,840 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:03:58] "[32mGET / HTTP/1.1[0m" 302 -
+2026-04-22 10:03:59,109 - __main__ - INFO - Loading dashboard
+2026-04-22 10:03:59,180 - __main__ - INFO - Dashboard loaded for user shayan
+2026-04-22 10:03:59,324 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:03:59] "GET /dashboard HTTP/1.1" 200 -
+2026-04-22 10:03:59,728 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:03:59] "GET /static/css/style.css HTTP/1.1" 200 -
+2026-04-22 10:03:59,896 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:03:59] "GET /static/js/main.js HTTP/1.1" 200 -
+2026-04-22 10:04:02,706 - __main__ - INFO - Fetching challenges list
+2026-04-22 10:04:02,718 - __main__ - INFO - Returning 12 challenges for user shayan
+2026-04-22 10:04:02,741 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:04:02] "GET /challenges HTTP/1.1" 200 -
+2026-04-22 10:04:02,846 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:04:02] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 10:04:02,969 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:04:02] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-04-22 10:04:05,445 - __main__ - INFO - Viewing challenge 1
+2026-04-22 10:04:05,458 - __main__ - INFO - Rendering challenge Admin Access for user shayan
+2026-04-22 10:04:05,494 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:04:05] "GET /challenge/1 HTTP/1.1" 200 -
+2026-04-22 10:04:05,751 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:04:05] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 10:04:05,978 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:04:05] "[36mGET /challenge-file/challenge-main.html HTTP/1.1[0m" 304 -
+2026-04-22 10:04:05,980 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:04:05] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-04-22 10:04:34,209 - __main__ - INFO - Loading dashboard
+2026-04-22 10:04:34,234 - __main__ - INFO - Dashboard loaded for user shayan
+2026-04-22 10:04:34,248 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:04:34] "GET /dashboard HTTP/1.1" 200 -
+2026-04-22 10:04:34,323 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:04:34] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 10:04:34,646 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:04:34] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-04-22 10:04:35,508 - __main__ - INFO - Fetching challenges list
+2026-04-22 10:04:35,512 - __main__ - INFO - Returning 12 challenges for user shayan
+2026-04-22 10:04:35,523 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:04:35] "GET /challenges HTTP/1.1" 200 -
+2026-04-22 10:04:35,641 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:04:35] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 10:04:35,747 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:04:35] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-04-22 10:04:37,957 - __main__ - INFO - Viewing challenge 3
+2026-04-22 10:04:37,965 - __main__ - INFO - Rendering challenge Base64 Decoding for user shayan
+2026-04-22 10:04:37,970 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:04:37] "GET /challenge/3 HTTP/1.1" 200 -
+2026-04-22 10:04:38,262 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:04:38] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 10:04:38,359 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:04:38] "GET /challenge-file/challenge-cookie2.html HTTP/1.1" 200 -
+2026-04-22 10:04:38,373 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:04:38] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-04-22 10:10:52,711 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.55:5000
+2026-04-22 10:10:52,712 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-22 10:10:52,717 - werkzeug - INFO -  * Restarting with stat
+2026-04-22 10:10:54,886 - werkzeug - WARNING -  * Debugger is active!
+2026-04-22 10:10:54,900 - werkzeug - INFO -  * Debugger PIN: 623-192-245
+2026-04-22 10:45:10,057 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Shayan Ahmed\\Desktop\\New folder\\app.py', reloading
+2026-04-22 10:45:10,978 - werkzeug - INFO -  * Restarting with stat
+2026-04-22 10:45:16,298 - werkzeug - WARNING -  * Debugger is active!
+2026-04-22 10:45:16,310 - werkzeug - INFO -  * Debugger PIN: 623-192-245
+2026-04-22 10:45:24,658 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Shayan Ahmed\\Desktop\\New folder\\app.py', reloading
+2026-04-22 10:45:25,055 - werkzeug - INFO -  * Restarting with stat
+2026-04-22 10:45:27,176 - werkzeug - WARNING -  * Debugger is active!
+2026-04-22 10:45:27,189 - werkzeug - INFO -  * Debugger PIN: 623-192-245
+2026-04-22 10:45:31,416 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Shayan Ahmed\\Desktop\\New folder\\app.py', reloading
+2026-04-22 10:45:31,900 - werkzeug - INFO -  * Restarting with stat
+2026-04-22 10:45:33,902 - __main__ - INFO - Initializing challenges...
+2026-04-22 10:45:33,941 - __main__ - INFO - Added challenge: Authentication & Enumeration
+2026-04-22 10:45:33,966 - __main__ - INFO - Total challenges in database: 13
+2026-04-22 10:45:34,008 - werkzeug - WARNING -  * Debugger is active!
+2026-04-22 10:45:34,017 - werkzeug - INFO -  * Debugger PIN: 623-192-245
+2026-04-22 10:46:30,218 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Shayan Ahmed\\Desktop\\New folder\\app.py', reloading
+2026-04-22 10:46:31,587 - werkzeug - INFO -  * Restarting with stat
+2026-04-22 10:46:36,174 - __main__ - INFO - Initializing challenges...
+2026-04-22 10:46:36,296 - __main__ - INFO - Challenge already exists: Authentication & Enumeration
+2026-04-22 10:46:36,351 - __main__ - INFO - Total challenges in database: 13
+2026-04-22 10:46:36,551 - werkzeug - WARNING -  * Debugger is active!
+2026-04-22 10:46:36,571 - werkzeug - INFO -  * Debugger PIN: 623-192-245
+2026-04-22 10:47:47,837 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Shayan Ahmed\\Desktop\\New folder\\app.py', reloading
+2026-04-22 10:47:48,449 - werkzeug - INFO -  * Restarting with stat
+2026-04-22 10:47:51,474 - __main__ - INFO - Initializing challenges...
+2026-04-22 10:47:51,542 - __main__ - INFO - Challenge already exists: Authentication & Enumeration
+2026-04-22 10:47:51,557 - __main__ - INFO - Total challenges in database: 13
+2026-04-22 10:47:51,618 - werkzeug - WARNING -  * Debugger is active!
+2026-04-22 10:47:51,629 - werkzeug - INFO -  * Debugger PIN: 623-192-245
+2026-04-22 10:51:55,482 - __main__ - INFO - Initializing challenges...
+2026-04-22 10:51:55,507 - __main__ - INFO - Challenge already exists: Authentication & Enumeration
+2026-04-22 10:51:55,517 - __main__ - INFO - Total challenges in database: 13
+2026-04-22 10:51:56,452 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.55:5000
+2026-04-22 10:51:56,452 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-22 10:51:56,456 - werkzeug - INFO -  * Restarting with stat
+2026-04-22 10:51:59,087 - __main__ - INFO - Initializing challenges...
+2026-04-22 10:51:59,121 - __main__ - INFO - Challenge already exists: Authentication & Enumeration
+2026-04-22 10:51:59,129 - __main__ - INFO - Total challenges in database: 13
+2026-04-22 10:51:59,189 - werkzeug - WARNING -  * Debugger is active!
+2026-04-22 10:51:59,201 - werkzeug - INFO -  * Debugger PIN: 623-192-245
+2026-04-22 10:55:04,578 - __main__ - INFO - Initializing challenges...
+2026-04-22 10:55:04,603 - __main__ - INFO - Challenge already exists: Authentication & Enumeration
+2026-04-22 10:55:04,610 - __main__ - INFO - Total challenges in database: 13
+2026-04-22 10:55:05,544 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.55:5000
+2026-04-22 10:55:05,546 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-22 10:55:05,551 - werkzeug - INFO -  * Restarting with stat
+2026-04-22 10:55:06,923 - __main__ - INFO - Initializing challenges...
+2026-04-22 10:55:06,947 - __main__ - INFO - Challenge already exists: Authentication & Enumeration
+2026-04-22 10:55:06,955 - __main__ - INFO - Total challenges in database: 13
+2026-04-22 10:55:07,001 - werkzeug - WARNING -  * Debugger is active!
+2026-04-22 10:55:07,008 - werkzeug - INFO -  * Debugger PIN: 623-192-245
+2026-04-22 10:55:14,121 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:55:14] "[32mGET / HTTP/1.1[0m" 302 -
+2026-04-22 10:55:14,399 - __main__ - INFO - Loading dashboard
+2026-04-22 10:55:14,455 - __main__ - INFO - Dashboard loaded for user shayan
+2026-04-22 10:55:14,568 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:55:14] "GET /dashboard HTTP/1.1" 200 -
+2026-04-22 10:55:14,880 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:55:14] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 10:55:15,066 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:55:15] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-04-22 10:55:18,906 - __main__ - INFO - Fetching challenges list
+2026-04-22 10:55:18,915 - __main__ - INFO - Returning 13 challenges for user shayan
+2026-04-22 10:55:18,966 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:55:18] "GET /challenges HTTP/1.1" 200 -
+2026-04-22 10:55:19,046 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:55:19] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 10:55:19,176 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:55:19] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-04-22 10:56:22,961 - __main__ - INFO - Initializing challenges...
+2026-04-22 10:56:23,041 - __main__ - INFO - Added challenge: Authentication & Enumeration
+2026-04-22 10:56:23,129 - __main__ - INFO - Total challenges in database: 1
+2026-04-22 10:56:24,760 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.55:5000
+2026-04-22 10:56:24,761 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-22 10:56:24,792 - werkzeug - INFO -  * Restarting with stat
+2026-04-22 10:56:29,939 - __main__ - INFO - Initializing challenges...
+2026-04-22 10:56:29,987 - __main__ - INFO - Challenge already exists: Authentication & Enumeration
+2026-04-22 10:56:30,002 - __main__ - INFO - Total challenges in database: 1
+2026-04-22 10:56:30,083 - werkzeug - WARNING -  * Debugger is active!
+2026-04-22 10:56:30,094 - werkzeug - INFO -  * Debugger PIN: 623-192-245
+2026-04-22 10:56:30,160 - __main__ - INFO - Fetching challenges list
+2026-04-22 10:56:30,162 - __main__ - ERROR - User not found in session: 2
+2026-04-22 10:56:30,164 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:56:30] "[32mGET /challenges HTTP/1.1[0m" 302 -
+2026-04-22 10:56:30,205 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:56:30] "[32mGET /logout HTTP/1.1[0m" 302 -
+2026-04-22 10:56:30,241 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:56:30] "GET / HTTP/1.1" 200 -
+2026-04-22 10:56:30,805 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:56:30] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 10:56:43,436 - __main__ - INFO - Login attempt
+2026-04-22 10:56:43,445 - __main__ - INFO - Login attempt for username: shayan
+2026-04-22 10:56:43,450 - __main__ - WARNING - Login failed: Invalid credentials for username: shayan
+2026-04-22 10:56:43,452 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:56:43] "POST /login HTTP/1.1" 200 -
+2026-04-22 10:56:43,832 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:56:43] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 10:57:49,454 - __main__ - INFO - Login attempt
+2026-04-22 10:57:49,455 - __main__ - INFO - Login attempt for username: GuildMaster
+2026-04-22 10:57:49,732 - __main__ - INFO - Login successful for user: GuildMaster (ID: 1)
+2026-04-22 10:57:49,736 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:57:49] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-04-22 10:57:49,752 - __main__ - INFO - Loading dashboard
+2026-04-22 10:57:49,783 - __main__ - INFO - Dashboard loaded for user GuildMaster
+2026-04-22 10:57:49,869 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:57:49] "GET /dashboard HTTP/1.1" 200 -
+2026-04-22 10:57:49,952 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:57:49] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 10:57:50,446 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:57:50] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-04-22 10:57:52,951 - __main__ - INFO - Fetching challenges list
+2026-04-22 10:57:52,968 - __main__ - INFO - Returning 1 challenges for user GuildMaster
+2026-04-22 10:57:53,015 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:57:53] "GET /challenges HTTP/1.1" 200 -
+2026-04-22 10:57:53,098 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:57:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 10:57:53,323 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:57:53] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-04-22 10:57:55,891 - __main__ - INFO - Viewing challenge 1
+2026-04-22 10:57:55,902 - __main__ - INFO - Rendering challenge Authentication & Enumeration for user GuildMaster
+2026-04-22 10:57:55,925 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:57:55] "GET /challenge/1 HTTP/1.1" 200 -
+2026-04-22 10:57:55,996 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:57:55] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 10:57:56,200 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:57:56] "GET /challenge-file/challenge-auth-enum.html HTTP/1.1" 200 -
+2026-04-22 10:57:56,400 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:57:56] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-04-22 10:57:57,237 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:57:57] "GET /challenge-file/challenge-auth-enum.js HTTP/1.1" 200 -
+2026-04-22 10:59:08,034 - __main__ - INFO - Viewing challenge 1
+2026-04-22 10:59:08,044 - __main__ - INFO - Rendering challenge Authentication & Enumeration for user GuildMaster
+2026-04-22 10:59:08,051 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:59:08] "GET /challenge/1 HTTP/1.1" 200 -
+2026-04-22 10:59:08,208 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:59:08] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 10:59:08,240 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:59:08] "GET /challenge-file/challenge-auth-enum.html HTTP/1.1" 200 -
+2026-04-22 10:59:08,812 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:59:08] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-04-22 10:59:09,399 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 10:59:09] "[36mGET /challenge-file/challenge-auth-enum.js HTTP/1.1[0m" 304 -
+2026-04-22 11:00:34,333 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:00:34] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 11:00:35,156 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:00:35] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2026-04-22 11:10:13,012 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Shayan Ahmed\\Desktop\\New folder\\app.py', reloading
+2026-04-22 11:10:13,345 - werkzeug - INFO -  * Restarting with stat
+2026-04-22 11:14:06,985 - __main__ - INFO - Initializing challenges...
+2026-04-22 11:14:07,037 - __main__ - INFO - Added IDOR challenge: Internal Ticket System
+2026-04-22 11:14:07,045 - __main__ - INFO - Added IDOR challenge: Employee Payroll Portal
+2026-04-22 11:14:07,049 - __main__ - INFO - Added IDOR challenge: Cloud Storage Viewer
+2026-04-22 11:14:07,053 - __main__ - INFO - Added IDOR challenge: API Profile Viewer
+2026-04-22 11:14:07,057 - __main__ - INFO - Added IDOR challenge: Order Management System
+2026-04-22 11:14:07,060 - __main__ - INFO - Added Cookie challenge: Role-Based Cookie Manipulation
+2026-04-22 11:14:07,063 - __main__ - INFO - Added Cookie challenge: Base64 Encoded Session Cookie
+2026-04-22 11:14:07,065 - __main__ - INFO - Added Cookie challenge: Cookie Integrity Flaw
+2026-04-22 11:14:07,068 - __main__ - INFO - Added Cookie challenge: JWT Misconfiguration
+2026-04-22 11:14:07,070 - __main__ - INFO - Added Cookie challenge: Hidden Cookie Behavior
+2026-04-22 11:14:07,072 - __main__ - INFO - Added Hybrid challenge: Admin Panel Breach
+2026-04-22 11:14:07,092 - __main__ - INFO - Total challenges in database: 12
+2026-04-22 11:14:07,092 - __main__ - INFO - Initializing IDOR challenge data...
+2026-04-22 11:14:07,103 - __main__ - INFO - Added tickets data
+2026-04-22 11:14:07,124 - __main__ - INFO - Added payroll data
+2026-04-22 11:14:07,141 - __main__ - INFO - Added cloud files data
+2026-04-22 11:14:07,170 - __main__ - INFO - Added API profiles data
+2026-04-22 11:14:07,188 - __main__ - INFO - Added orders data
+2026-04-22 11:14:07,202 - __main__ - INFO - IDOR challenge data initialization complete
+2026-04-22 11:14:08,170 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.55:5000
+2026-04-22 11:14:08,171 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-22 11:14:08,175 - werkzeug - INFO -  * Restarting with stat
+2026-04-22 11:14:10,266 - __main__ - INFO - Initializing challenges...
+2026-04-22 11:14:10,328 - __main__ - INFO - Challenge already exists: Internal Ticket System
+2026-04-22 11:14:10,331 - __main__ - INFO - Challenge already exists: Employee Payroll Portal
+2026-04-22 11:14:10,346 - __main__ - INFO - Challenge already exists: Cloud Storage Viewer
+2026-04-22 11:14:10,376 - __main__ - INFO - Challenge already exists: API Profile Viewer
+2026-04-22 11:14:10,379 - __main__ - INFO - Challenge already exists: Order Management System
+2026-04-22 11:14:10,382 - __main__ - INFO - Challenge already exists: Role-Based Cookie Manipulation
+2026-04-22 11:14:10,384 - __main__ - INFO - Challenge already exists: Base64 Encoded Session Cookie
+2026-04-22 11:14:10,387 - __main__ - INFO - Challenge already exists: Cookie Integrity Flaw
+2026-04-22 11:14:10,389 - __main__ - INFO - Challenge already exists: JWT Misconfiguration
+2026-04-22 11:14:10,413 - __main__ - INFO - Challenge already exists: Hidden Cookie Behavior
+2026-04-22 11:14:10,416 - __main__ - INFO - Challenge already exists: Admin Panel Breach
+2026-04-22 11:14:10,460 - __main__ - INFO - Total challenges in database: 12
+2026-04-22 11:14:10,460 - __main__ - INFO - Initializing IDOR challenge data...
+2026-04-22 11:14:10,584 - __main__ - INFO - IDOR challenge data initialization complete
+2026-04-22 11:14:10,675 - werkzeug - WARNING -  * Debugger is active!
+2026-04-22 11:14:10,684 - werkzeug - INFO -  * Debugger PIN: 623-192-245
+2026-04-22 11:15:38,892 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:15:38] "GET / HTTP/1.1" 200 -
+2026-04-22 11:15:39,135 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:15:39] "GET /static/css/style.css HTTP/1.1" 200 -
+2026-04-22 11:15:41,195 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:15:41] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-22 11:15:56,814 - __main__ - INFO - Login attempt
+2026-04-22 11:15:56,818 - __main__ - INFO - Login attempt for username: GuildMaster
+2026-04-22 11:15:57,044 - __main__ - INFO - Login successful for user: GuildMaster (ID: 1)
+2026-04-22 11:15:57,045 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:15:57] "[32mPOST /login HTTP/1.1[0m" 302 -
+2026-04-22 11:15:57,070 - __main__ - INFO - Loading dashboard
+2026-04-22 11:15:57,090 - __main__ - INFO - Dashboard loaded for user GuildMaster
+2026-04-22 11:15:57,146 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:15:57] "GET /dashboard HTTP/1.1" 200 -
+2026-04-22 11:15:57,214 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:15:57] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 11:15:57,219 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:15:57] "GET /static/js/main.js HTTP/1.1" 200 -
+2026-04-22 11:16:00,957 - __main__ - INFO - Fetching challenges list
+2026-04-22 11:16:00,969 - __main__ - INFO - Returning 12 challenges for user GuildMaster
+2026-04-22 11:16:01,003 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:16:01] "GET /challenges HTTP/1.1" 200 -
+2026-04-22 11:16:01,111 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:16:01] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 11:16:01,295 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:16:01] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-04-22 11:16:04,538 - __main__ - INFO - Viewing challenge 2
+2026-04-22 11:16:04,554 - __main__ - INFO - Rendering challenge Internal Ticket System for user GuildMaster
+2026-04-22 11:16:04,573 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:16:04] "GET /challenge/2 HTTP/1.1" 200 -
+2026-04-22 11:16:04,638 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:16:04] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 11:16:04,644 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:16:04] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-04-22 11:16:04,660 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:16:04] "GET /challenge-file/challenge-idor-1-ticket-system.html HTTP/1.1" 200 -
+2026-04-22 11:16:04,855 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:16:04] "GET /challenge-file/static/css/style.css HTTP/1.1" 200 -
+2026-04-22 11:16:05,678 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:16:05] "GET /api/tickets?user_id=1023 HTTP/1.1" 200 -
+2026-04-22 11:16:27,888 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:16:27] "GET /api/tickets?user_id=1024 HTTP/1.1" 200 -
+2026-04-22 11:16:30,818 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:16:30] "GET /api/tickets?user_id=1025 HTTP/1.1" 200 -
+2026-04-22 11:16:32,628 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:16:32] "GET /api/tickets?user_id=1026 HTTP/1.1" 200 -
+2026-04-22 11:16:34,632 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:16:34] "GET /api/tickets?user_id=1027 HTTP/1.1" 200 -
+2026-04-22 11:16:36,553 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:16:36] "GET /api/tickets?user_id=1028 HTTP/1.1" 200 -
+2026-04-22 11:16:38,287 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:16:38] "GET /api/tickets?user_id=1029 HTTP/1.1" 200 -
+2026-04-22 11:16:40,195 - __main__ - INFO - Loading scoreboard
+2026-04-22 11:16:40,206 - __main__ - INFO - Scoreboard loaded with 1 entries
+2026-04-22 11:16:40,228 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:16:40] "GET /scoreboard HTTP/1.1" 200 -
+2026-04-22 11:16:40,304 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:16:40] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 11:16:40,310 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:16:40] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-04-22 11:16:44,095 - __main__ - INFO - Loading profile
+2026-04-22 11:16:44,114 - __main__ - INFO - Profile loaded for user GuildMaster
+2026-04-22 11:16:44,162 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:16:44] "GET /profile HTTP/1.1" 200 -
+2026-04-22 11:16:44,225 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:16:44] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 11:16:44,231 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:16:44] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-04-22 11:16:46,938 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:16:46] "[35m[1mGET /admin HTTP/1.1[0m" 500 -
+2026-04-22 11:16:47,036 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:16:47] "GET /admin?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2026-04-22 11:16:47,102 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:16:47] "GET /admin?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2026-04-22 11:16:47,354 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:16:47] "GET /admin?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2026-04-22 11:16:48,101 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:16:48] "[36mGET /admin?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2026-04-22 11:17:01,096 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Shayan Ahmed\\Desktop\\New folder\\app.py', reloading
+2026-04-22 11:17:02,566 - werkzeug - INFO -  * Restarting with stat
+2026-04-22 11:17:05,366 - __main__ - INFO - Initializing challenges...
+2026-04-22 11:17:05,416 - __main__ - INFO - Challenge already exists: Internal Ticket System
+2026-04-22 11:17:05,419 - __main__ - INFO - Challenge already exists: Employee Payroll Portal
+2026-04-22 11:17:05,421 - __main__ - INFO - Challenge already exists: Cloud Storage Viewer
+2026-04-22 11:17:05,423 - __main__ - INFO - Challenge already exists: API Profile Viewer
+2026-04-22 11:17:05,424 - __main__ - INFO - Challenge already exists: Order Management System
+2026-04-22 11:17:05,426 - __main__ - INFO - Challenge already exists: Role-Based Cookie Manipulation
+2026-04-22 11:17:05,428 - __main__ - INFO - Challenge already exists: Base64 Encoded Session Cookie
+2026-04-22 11:17:05,430 - __main__ - INFO - Challenge already exists: Cookie Integrity Flaw
+2026-04-22 11:17:05,433 - __main__ - INFO - Challenge already exists: JWT Misconfiguration
+2026-04-22 11:17:05,436 - __main__ - INFO - Challenge already exists: Hidden Cookie Behavior
+2026-04-22 11:17:05,440 - __main__ - INFO - Challenge already exists: Admin Panel Breach
+2026-04-22 11:17:05,455 - __main__ - INFO - Total challenges in database: 12
+2026-04-22 11:17:05,455 - __main__ - INFO - Initializing IDOR challenge data...
+2026-04-22 11:17:05,499 - __main__ - INFO - IDOR challenge data initialization complete
+2026-04-22 11:17:05,555 - werkzeug - WARNING -  * Debugger is active!
+2026-04-22 11:17:05,566 - werkzeug - INFO -  * Debugger PIN: 623-192-245
+2026-04-22 11:17:58,162 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:17:58] "[32mGET / HTTP/1.1[0m" 302 -
+2026-04-22 11:17:58,440 - __main__ - INFO - Loading dashboard
+2026-04-22 11:17:58,485 - __main__ - INFO - Dashboard loaded for user GuildMaster
+2026-04-22 11:17:58,601 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:17:58] "GET /dashboard HTTP/1.1" 200 -
+2026-04-22 11:17:58,966 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:17:58] "GET /static/css/style.css HTTP/1.1" 200 -
+2026-04-22 11:17:59,093 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:17:59] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-04-22 11:18:01,785 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:18:01] "GET /admin HTTP/1.1" 200 -
+2026-04-22 11:18:01,885 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:18:01] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 11:18:01,999 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:18:01] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-04-22 11:18:08,889 - __main__ - INFO - Fetching challenges list
+2026-04-22 11:18:08,894 - __main__ - INFO - Returning 12 challenges for user GuildMaster
+2026-04-22 11:18:08,919 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:18:08] "GET /challenges HTTP/1.1" 200 -
+2026-04-22 11:18:08,981 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:18:08] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 11:18:09,170 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:18:09] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-04-22 11:18:11,367 - __main__ - INFO - Viewing challenge 4
+2026-04-22 11:18:11,374 - __main__ - INFO - Rendering challenge Cloud Storage Viewer for user GuildMaster
+2026-04-22 11:18:11,389 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:18:11] "GET /challenge/4 HTTP/1.1" 200 -
+2026-04-22 11:18:11,453 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:18:11] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 11:18:11,635 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:18:11] "GET /challenge-file/challenge-idor-3-cloud-storage.html HTTP/1.1" 200 -
+2026-04-22 11:18:11,766 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:18:11] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-04-22 11:18:12,334 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:18:12] "GET /challenge-file/static/css/style.css HTTP/1.1" 200 -
+2026-04-22 11:18:12,678 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:18:12] "[33mGET /api/files/view?file_id=7845 HTTP/1.1[0m" 404 -
+2026-04-22 11:18:31,935 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:18:31] "[33mGET /challenge/api/files/view?file_id=7845 HTTP/1.1[0m" 404 -
+2026-04-22 11:18:47,309 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:18:47] "[33mGET /api/files/view?file_id=1000 HTTP/1.1[0m" 404 -
+2026-04-22 11:18:51,509 - __main__ - INFO - Fetching challenges list
+2026-04-22 11:18:51,518 - __main__ - INFO - Returning 12 challenges for user GuildMaster
+2026-04-22 11:18:51,526 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:18:51] "GET /challenges HTTP/1.1" 200 -
+2026-04-22 11:18:51,823 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:18:51] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 11:18:51,945 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:18:51] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-04-22 11:18:56,235 - __main__ - INFO - Viewing challenge 7
+2026-04-22 11:18:56,240 - __main__ - INFO - Rendering challenge Role-Based Cookie Manipulation for user GuildMaster
+2026-04-22 11:18:56,242 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:18:56] "GET /challenge/7 HTTP/1.1" 200 -
+2026-04-22 11:18:56,310 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:18:56] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 11:18:56,598 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:18:56] "GET /challenge-file/challenge-cookie-1-role.html HTTP/1.1" 200 -
+2026-04-22 11:18:56,643 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:18:56] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-04-22 11:18:57,462 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:18:57] "[36mGET /challenge-file/static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 11:18:57,729 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:18:57] "GET /challenge/cookie-role HTTP/1.1" 200 -
+2026-04-22 11:19:04,721 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:19:04] "GET /challenge/cookie-role HTTP/1.1" 200 -
+2026-04-22 11:19:06,375 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:19:06] "GET /challenge/cookie-role HTTP/1.1" 200 -
+2026-04-22 11:19:06,610 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:19:06] "GET /challenge/cookie-role HTTP/1.1" 200 -
+2026-04-22 11:19:06,706 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:19:06] "GET /challenge/cookie-role HTTP/1.1" 200 -
+2026-04-22 11:19:06,974 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:19:06] "GET /challenge/cookie-role HTTP/1.1" 200 -
+2026-04-22 11:19:07,185 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:19:07] "GET /challenge/cookie-role HTTP/1.1" 200 -
+2026-04-22 11:19:11,945 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:19:11] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 11:19:11,949 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:19:11] "[36mGET /challenge-file/static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 11:19:12,031 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:19:12] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2026-04-22 11:19:20,892 - __main__ - INFO - Viewing challenge 7
+2026-04-22 11:19:20,898 - __main__ - INFO - Rendering challenge Role-Based Cookie Manipulation for user GuildMaster
+2026-04-22 11:19:20,901 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:19:20] "GET /challenge/7 HTTP/1.1" 200 -
+2026-04-22 11:19:21,198 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:19:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 11:19:21,286 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:19:21] "[36mGET /challenge-file/challenge-cookie-1-role.html HTTP/1.1[0m" 304 -
+2026-04-22 11:19:21,356 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:19:21] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-04-22 11:19:22,203 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:19:22] "[36mGET /challenge-file/static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 11:19:22,338 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:19:22] "GET /challenge/cookie-role HTTP/1.1" 200 -
+2026-04-22 11:19:27,901 - __main__ - INFO - === Flag Submission Started ===
+2026-04-22 11:19:27,905 - __main__ - INFO - User: GuildMaster (ID: 1)
+2026-04-22 11:19:27,905 - __main__ - INFO - Challenge ID: 7
+2026-04-22 11:19:27,905 - __main__ - INFO - Submitted flag: flag{cookie_role_escalation_success}
+2026-04-22 11:19:27,907 - __main__ - INFO - Challenge found: Role-Based Cookie Manipulation
+2026-04-22 11:19:27,907 - __main__ - INFO - Expected flag: flag{cookie_role_escalation_success}
+2026-04-22 11:19:27,912 - __main__ - INFO - Flag comparison: CORRECT
+2026-04-22 11:19:27,925 - __main__ - INFO - Correct flag! Solve order: 1, Bonus: 50, Total: 150
+2026-04-22 11:19:27,950 - __main__ - INFO - User GuildMaster score updated to: 150
+2026-04-22 11:19:27,956 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:19:27] "POST /submit-flag HTTP/1.1" 200 -
+2026-04-22 11:19:30,006 - __main__ - INFO - Viewing challenge 7
+2026-04-22 11:19:30,011 - __main__ - INFO - Rendering challenge Role-Based Cookie Manipulation for user GuildMaster
+2026-04-22 11:19:30,015 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:19:30] "GET /challenge/7 HTTP/1.1" 200 -
+2026-04-22 11:19:30,309 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:19:30] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 11:19:30,411 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:19:30] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-04-22 11:19:30,412 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:19:30] "[36mGET /challenge-file/challenge-cookie-1-role.html HTTP/1.1[0m" 304 -
+2026-04-22 11:19:30,967 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:19:30] "[36mGET /challenge-file/static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 11:19:31,220 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:19:31] "GET /challenge/cookie-role HTTP/1.1" 200 -
+2026-04-22 11:19:34,746 - __main__ - INFO - Loading scoreboard
+2026-04-22 11:19:34,762 - __main__ - INFO - Scoreboard loaded with 1 entries
+2026-04-22 11:19:34,781 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:19:34] "GET /scoreboard HTTP/1.1" 200 -
+2026-04-22 11:19:34,885 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:19:34] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 11:19:35,032 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:19:35] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-04-22 11:19:36,801 - __main__ - INFO - Fetching challenges list
+2026-04-22 11:19:36,812 - __main__ - INFO - Returning 12 challenges for user GuildMaster
+2026-04-22 11:19:36,818 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:19:36] "GET /challenges HTTP/1.1" 200 -
+2026-04-22 11:19:37,114 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:19:37] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 11:19:37,200 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:19:37] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-04-22 11:23:35,332 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Shayan Ahmed\\Desktop\\New folder\\app.py', reloading
+2026-04-22 11:23:37,582 - werkzeug - INFO -  * Restarting with stat
+2026-04-22 11:35:57,382 - __main__ - INFO - Initializing challenges...
+2026-04-22 11:35:57,441 - __main__ - INFO - Challenge already exists: Internal Ticket System
+2026-04-22 11:35:57,444 - __main__ - INFO - Challenge already exists: Employee Payroll Portal
+2026-04-22 11:35:57,446 - __main__ - INFO - Challenge already exists: Cloud Storage Viewer
+2026-04-22 11:35:57,449 - __main__ - INFO - Challenge already exists: API Profile Viewer
+2026-04-22 11:35:57,451 - __main__ - INFO - Challenge already exists: Order Management System
+2026-04-22 11:35:57,454 - __main__ - INFO - Challenge already exists: Role-Based Cookie Manipulation
+2026-04-22 11:35:57,457 - __main__ - INFO - Challenge already exists: Base64 Encoded Session Cookie
+2026-04-22 11:35:57,458 - __main__ - INFO - Challenge already exists: Cookie Integrity Flaw
+2026-04-22 11:35:57,461 - __main__ - INFO - Challenge already exists: JWT Misconfiguration
+2026-04-22 11:35:57,463 - __main__ - INFO - Challenge already exists: Hidden Cookie Behavior
+2026-04-22 11:35:57,465 - __main__ - INFO - Challenge already exists: Admin Panel Breach
+2026-04-22 11:35:57,468 - __main__ - INFO - Added Advanced IDOR challenge: Project Collaboration Workspace
+2026-04-22 11:35:57,477 - __main__ - INFO - Added Advanced IDOR challenge: Medical Records Portal
+2026-04-22 11:35:57,480 - __main__ - INFO - Added Advanced IDOR challenge: Invoice Management API
+2026-04-22 11:35:57,482 - __main__ - INFO - Added Advanced IDOR challenge: Private Messaging System
+2026-04-22 11:35:57,486 - __main__ - INFO - Added Advanced IDOR challenge: Task Management Board
+2026-04-22 11:35:57,489 - __main__ - INFO - Added Advanced Cookie challenge: Multi-Field Cookie Manipulation
+2026-04-22 11:35:57,494 - __main__ - INFO - Added Advanced Cookie challenge: Signed Cookie (Weak Validation)
+2026-04-22 11:35:57,498 - __main__ - INFO - Added Advanced Cookie challenge: Time-Based Cookie Access
+2026-04-22 11:35:57,503 - __main__ - INFO - Added Advanced Cookie challenge: Nested Encoding Cookie
+2026-04-22 11:35:57,507 - __main__ - INFO - Added Advanced Cookie challenge: Feature Flag Cookie
+2026-04-22 11:35:57,510 - __main__ - INFO - Added Advanced Hybrid challenge: Secure API Gateway Breach
+2026-04-22 11:35:57,530 - __main__ - INFO - Total challenges in database: 23
+2026-04-22 11:35:57,531 - __main__ - INFO - Initializing IDOR challenge data...
+2026-04-22 11:35:57,573 - __main__ - INFO - IDOR challenge data initialization complete
+2026-04-22 11:35:57,574 - __main__ - INFO - Initializing advanced challenge data...
+2026-04-22 11:35:57,583 - __main__ - INFO - Added projects data
+2026-04-22 11:35:57,604 - __main__ - INFO - Added medical records data
+2026-04-22 11:35:57,620 - __main__ - INFO - Added invoices data
+2026-04-22 11:35:57,632 - __main__ - INFO - Added message threads data
+2026-04-22 11:35:57,647 - __main__ - INFO - Added tasks data
+2026-04-22 11:35:57,665 - __main__ - INFO - Advanced challenge data initialization complete
+2026-04-22 11:35:58,611 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.55:5000
+2026-04-22 11:35:58,611 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-22 11:35:58,615 - werkzeug - INFO -  * Restarting with stat
+2026-04-22 11:36:00,361 - __main__ - INFO - Initializing challenges...
+2026-04-22 11:36:00,400 - __main__ - INFO - Challenge already exists: Internal Ticket System
+2026-04-22 11:36:00,403 - __main__ - INFO - Challenge already exists: Employee Payroll Portal
+2026-04-22 11:36:00,406 - __main__ - INFO - Challenge already exists: Cloud Storage Viewer
+2026-04-22 11:36:00,408 - __main__ - INFO - Challenge already exists: API Profile Viewer
+2026-04-22 11:36:00,411 - __main__ - INFO - Challenge already exists: Order Management System
+2026-04-22 11:36:00,413 - __main__ - INFO - Challenge already exists: Role-Based Cookie Manipulation
+2026-04-22 11:36:00,415 - __main__ - INFO - Challenge already exists: Base64 Encoded Session Cookie
+2026-04-22 11:36:00,417 - __main__ - INFO - Challenge already exists: Cookie Integrity Flaw
+2026-04-22 11:36:00,419 - __main__ - INFO - Challenge already exists: JWT Misconfiguration
+2026-04-22 11:36:00,422 - __main__ - INFO - Challenge already exists: Hidden Cookie Behavior
+2026-04-22 11:36:00,424 - __main__ - INFO - Challenge already exists: Admin Panel Breach
+2026-04-22 11:36:00,426 - __main__ - INFO - Challenge already exists: Project Collaboration Workspace
+2026-04-22 11:36:00,428 - __main__ - INFO - Challenge already exists: Medical Records Portal
+2026-04-22 11:36:00,430 - __main__ - INFO - Challenge already exists: Invoice Management API
+2026-04-22 11:36:00,431 - __main__ - INFO - Challenge already exists: Private Messaging System
+2026-04-22 11:36:00,433 - __main__ - INFO - Challenge already exists: Task Management Board
+2026-04-22 11:36:00,435 - __main__ - INFO - Challenge already exists: Multi-Field Cookie Manipulation
+2026-04-22 11:36:00,437 - __main__ - INFO - Challenge already exists: Signed Cookie (Weak Validation)
+2026-04-22 11:36:00,438 - __main__ - INFO - Challenge already exists: Time-Based Cookie Access
+2026-04-22 11:36:00,440 - __main__ - INFO - Challenge already exists: Nested Encoding Cookie
+2026-04-22 11:36:00,442 - __main__ - INFO - Challenge already exists: Feature Flag Cookie
+2026-04-22 11:36:00,444 - __main__ - INFO - Challenge already exists: Secure API Gateway Breach
+2026-04-22 11:36:00,454 - __main__ - INFO - Total challenges in database: 23
+2026-04-22 11:36:00,454 - __main__ - INFO - Initializing IDOR challenge data...
+2026-04-22 11:36:00,488 - __main__ - INFO - IDOR challenge data initialization complete
+2026-04-22 11:36:00,488 - __main__ - INFO - Initializing advanced challenge data...
+2026-04-22 11:36:00,532 - __main__ - INFO - Advanced challenge data initialization complete
+2026-04-22 11:36:00,576 - werkzeug - WARNING -  * Debugger is active!
+2026-04-22 11:36:00,587 - werkzeug - INFO -  * Debugger PIN: 623-192-245
+2026-04-22 11:41:00,394 - app - INFO - Initializing challenges...
+2026-04-22 11:41:00,438 - app - INFO - Challenge already exists: Internal Ticket System
+2026-04-22 11:41:00,440 - app - INFO - Challenge already exists: Employee Payroll Portal
+2026-04-22 11:41:00,443 - app - INFO - Challenge already exists: Cloud Storage Viewer
+2026-04-22 11:41:00,444 - app - INFO - Challenge already exists: API Profile Viewer
+2026-04-22 11:41:00,447 - app - INFO - Challenge already exists: Order Management System
+2026-04-22 11:41:00,450 - app - INFO - Challenge already exists: Role-Based Cookie Manipulation
+2026-04-22 11:41:00,452 - app - INFO - Challenge already exists: Base64 Encoded Session Cookie
+2026-04-22 11:41:00,454 - app - INFO - Challenge already exists: Cookie Integrity Flaw
+2026-04-22 11:41:00,456 - app - INFO - Challenge already exists: JWT Misconfiguration
+2026-04-22 11:41:00,458 - app - INFO - Challenge already exists: Hidden Cookie Behavior
+2026-04-22 11:41:00,460 - app - INFO - Challenge already exists: Admin Panel Breach
+2026-04-22 11:41:00,462 - app - INFO - Challenge already exists: Project Collaboration Workspace
+2026-04-22 11:41:00,464 - app - INFO - Challenge already exists: Medical Records Portal
+2026-04-22 11:41:00,466 - app - INFO - Challenge already exists: Invoice Management API
+2026-04-22 11:41:00,468 - app - INFO - Challenge already exists: Private Messaging System
+2026-04-22 11:41:00,469 - app - INFO - Challenge already exists: Task Management Board
+2026-04-22 11:41:00,471 - app - INFO - Challenge already exists: Multi-Field Cookie Manipulation
+2026-04-22 11:41:00,473 - app - INFO - Challenge already exists: Signed Cookie (Weak Validation)
+2026-04-22 11:41:00,475 - app - INFO - Challenge already exists: Time-Based Cookie Access
+2026-04-22 11:41:00,476 - app - INFO - Challenge already exists: Nested Encoding Cookie
+2026-04-22 11:41:00,478 - app - INFO - Challenge already exists: Feature Flag Cookie
+2026-04-22 11:41:00,480 - app - INFO - Challenge already exists: Secure API Gateway Breach
+2026-04-22 11:41:00,488 - app - INFO - Total challenges in database: 23
+2026-04-22 11:41:00,489 - app - INFO - Initializing IDOR challenge data...
+2026-04-22 11:41:00,522 - app - INFO - IDOR challenge data initialization complete
+2026-04-22 11:41:00,522 - app - INFO - Initializing advanced challenge data...
+2026-04-22 11:41:00,558 - app - INFO - Advanced challenge data initialization complete
+2026-04-22 11:41:14,588 - app - INFO - Initializing challenges...
+2026-04-22 11:41:14,633 - app - INFO - Challenge already exists: Internal Ticket System
+2026-04-22 11:41:14,635 - app - INFO - Challenge already exists: Employee Payroll Portal
+2026-04-22 11:41:14,637 - app - INFO - Challenge already exists: Cloud Storage Viewer
+2026-04-22 11:41:14,638 - app - INFO - Challenge already exists: API Profile Viewer
+2026-04-22 11:41:14,640 - app - INFO - Challenge already exists: Order Management System
+2026-04-22 11:41:14,643 - app - INFO - Challenge already exists: Role-Based Cookie Manipulation
+2026-04-22 11:41:14,644 - app - INFO - Challenge already exists: Base64 Encoded Session Cookie
+2026-04-22 11:41:14,646 - app - INFO - Challenge already exists: Cookie Integrity Flaw
+2026-04-22 11:41:14,648 - app - INFO - Challenge already exists: JWT Misconfiguration
+2026-04-22 11:41:14,651 - app - INFO - Challenge already exists: Hidden Cookie Behavior
+2026-04-22 11:41:14,654 - app - INFO - Challenge already exists: Admin Panel Breach
+2026-04-22 11:41:14,657 - app - INFO - Challenge already exists: Project Collaboration Workspace
+2026-04-22 11:41:14,659 - app - INFO - Challenge already exists: Medical Records Portal
+2026-04-22 11:41:14,662 - app - INFO - Challenge already exists: Invoice Management API
+2026-04-22 11:41:14,663 - app - INFO - Challenge already exists: Private Messaging System
+2026-04-22 11:41:14,665 - app - INFO - Challenge already exists: Task Management Board
+2026-04-22 11:41:14,667 - app - INFO - Challenge already exists: Multi-Field Cookie Manipulation
+2026-04-22 11:41:14,669 - app - INFO - Challenge already exists: Signed Cookie (Weak Validation)
+2026-04-22 11:41:14,671 - app - INFO - Challenge already exists: Time-Based Cookie Access
+2026-04-22 11:41:14,672 - app - INFO - Challenge already exists: Nested Encoding Cookie
+2026-04-22 11:41:14,674 - app - INFO - Challenge already exists: Feature Flag Cookie
+2026-04-22 11:41:14,676 - app - INFO - Challenge already exists: Secure API Gateway Breach
+2026-04-22 11:41:14,684 - app - INFO - Total challenges in database: 23
+2026-04-22 11:41:14,684 - app - INFO - Initializing IDOR challenge data...
+2026-04-22 11:41:14,724 - app - INFO - IDOR challenge data initialization complete
+2026-04-22 11:41:14,724 - app - INFO - Initializing advanced challenge data...
+2026-04-22 11:41:14,759 - app - INFO - Advanced challenge data initialization complete
+2026-04-22 11:41:21,066 - app - INFO - Initializing challenges...
+2026-04-22 11:41:21,117 - app - INFO - Challenge already exists: Internal Ticket System
+2026-04-22 11:41:21,119 - app - INFO - Challenge already exists: Employee Payroll Portal
+2026-04-22 11:41:21,120 - app - INFO - Challenge already exists: Cloud Storage Viewer
+2026-04-22 11:41:21,122 - app - INFO - Challenge already exists: API Profile Viewer
+2026-04-22 11:41:21,124 - app - INFO - Challenge already exists: Order Management System
+2026-04-22 11:41:21,125 - app - INFO - Challenge already exists: Role-Based Cookie Manipulation
+2026-04-22 11:41:21,128 - app - INFO - Challenge already exists: Base64 Encoded Session Cookie
+2026-04-22 11:41:21,130 - app - INFO - Challenge already exists: Cookie Integrity Flaw
+2026-04-22 11:41:21,133 - app - INFO - Challenge already exists: JWT Misconfiguration
+2026-04-22 11:41:21,135 - app - INFO - Challenge already exists: Hidden Cookie Behavior
+2026-04-22 11:41:21,137 - app - INFO - Challenge already exists: Admin Panel Breach
+2026-04-22 11:41:21,139 - app - INFO - Challenge already exists: Project Collaboration Workspace
+2026-04-22 11:41:21,141 - app - INFO - Challenge already exists: Medical Records Portal
+2026-04-22 11:41:21,143 - app - INFO - Challenge already exists: Invoice Management API
+2026-04-22 11:41:21,145 - app - INFO - Challenge already exists: Private Messaging System
+2026-04-22 11:41:21,146 - app - INFO - Challenge already exists: Task Management Board
+2026-04-22 11:41:21,149 - app - INFO - Challenge already exists: Multi-Field Cookie Manipulation
+2026-04-22 11:41:21,151 - app - INFO - Challenge already exists: Signed Cookie (Weak Validation)
+2026-04-22 11:41:21,153 - app - INFO - Challenge already exists: Time-Based Cookie Access
+2026-04-22 11:41:21,155 - app - INFO - Challenge already exists: Nested Encoding Cookie
+2026-04-22 11:41:21,157 - app - INFO - Challenge already exists: Feature Flag Cookie
+2026-04-22 11:41:21,159 - app - INFO - Challenge already exists: Secure API Gateway Breach
+2026-04-22 11:41:21,170 - app - INFO - Total challenges in database: 23
+2026-04-22 11:41:21,171 - app - INFO - Initializing IDOR challenge data...
+2026-04-22 11:41:21,204 - app - INFO - IDOR challenge data initialization complete
+2026-04-22 11:41:21,204 - app - INFO - Initializing advanced challenge data...
+2026-04-22 11:41:21,248 - app - INFO - Advanced challenge data initialization complete
+2026-04-22 11:41:27,277 - app - INFO - Initializing challenges...
+2026-04-22 11:41:27,321 - app - INFO - Challenge already exists: Internal Ticket System
+2026-04-22 11:41:27,323 - app - INFO - Challenge already exists: Employee Payroll Portal
+2026-04-22 11:41:27,325 - app - INFO - Challenge already exists: Cloud Storage Viewer
+2026-04-22 11:41:27,327 - app - INFO - Challenge already exists: API Profile Viewer
+2026-04-22 11:41:27,329 - app - INFO - Challenge already exists: Order Management System
+2026-04-22 11:41:27,331 - app - INFO - Challenge already exists: Role-Based Cookie Manipulation
+2026-04-22 11:41:27,332 - app - INFO - Challenge already exists: Base64 Encoded Session Cookie
+2026-04-22 11:41:27,338 - app - INFO - Challenge already exists: Cookie Integrity Flaw
+2026-04-22 11:41:27,341 - app - INFO - Challenge already exists: JWT Misconfiguration
+2026-04-22 11:41:27,343 - app - INFO - Challenge already exists: Hidden Cookie Behavior
+2026-04-22 11:41:27,346 - app - INFO - Challenge already exists: Admin Panel Breach
+2026-04-22 11:41:27,349 - app - INFO - Challenge already exists: Project Collaboration Workspace
+2026-04-22 11:41:27,352 - app - INFO - Challenge already exists: Medical Records Portal
+2026-04-22 11:41:27,354 - app - INFO - Challenge already exists: Invoice Management API
+2026-04-22 11:41:27,355 - app - INFO - Challenge already exists: Private Messaging System
+2026-04-22 11:41:27,358 - app - INFO - Challenge already exists: Task Management Board
+2026-04-22 11:41:27,359 - app - INFO - Challenge already exists: Multi-Field Cookie Manipulation
+2026-04-22 11:41:27,361 - app - INFO - Challenge already exists: Signed Cookie (Weak Validation)
+2026-04-22 11:41:27,363 - app - INFO - Challenge already exists: Time-Based Cookie Access
+2026-04-22 11:41:27,365 - app - INFO - Challenge already exists: Nested Encoding Cookie
+2026-04-22 11:41:27,367 - app - INFO - Challenge already exists: Feature Flag Cookie
+2026-04-22 11:41:27,369 - app - INFO - Challenge already exists: Secure API Gateway Breach
+2026-04-22 11:41:27,377 - app - INFO - Total challenges in database: 23
+2026-04-22 11:41:27,377 - app - INFO - Initializing IDOR challenge data...
+2026-04-22 11:41:27,411 - app - INFO - IDOR challenge data initialization complete
+2026-04-22 11:41:27,411 - app - INFO - Initializing advanced challenge data...
+2026-04-22 11:41:27,450 - app - INFO - Advanced challenge data initialization complete
+2026-04-22 11:41:33,400 - app - INFO - Initializing challenges...
+2026-04-22 11:41:33,439 - app - INFO - Challenge already exists: Internal Ticket System
+2026-04-22 11:41:33,441 - app - INFO - Challenge already exists: Employee Payroll Portal
+2026-04-22 11:41:33,443 - app - INFO - Challenge already exists: Cloud Storage Viewer
+2026-04-22 11:41:33,445 - app - INFO - Challenge already exists: API Profile Viewer
+2026-04-22 11:41:33,446 - app - INFO - Challenge already exists: Order Management System
+2026-04-22 11:41:33,449 - app - INFO - Challenge already exists: Role-Based Cookie Manipulation
+2026-04-22 11:41:33,451 - app - INFO - Challenge already exists: Base64 Encoded Session Cookie
+2026-04-22 11:41:33,454 - app - INFO - Challenge already exists: Cookie Integrity Flaw
+2026-04-22 11:41:33,456 - app - INFO - Challenge already exists: JWT Misconfiguration
+2026-04-22 11:41:33,459 - app - INFO - Challenge already exists: Hidden Cookie Behavior
+2026-04-22 11:41:33,460 - app - INFO - Challenge already exists: Admin Panel Breach
+2026-04-22 11:41:33,462 - app - INFO - Challenge already exists: Project Collaboration Workspace
+2026-04-22 11:41:33,464 - app - INFO - Challenge already exists: Medical Records Portal
+2026-04-22 11:41:33,466 - app - INFO - Challenge already exists: Invoice Management API
+2026-04-22 11:41:33,469 - app - INFO - Challenge already exists: Private Messaging System
+2026-04-22 11:41:33,471 - app - INFO - Challenge already exists: Task Management Board
+2026-04-22 11:41:33,472 - app - INFO - Challenge already exists: Multi-Field Cookie Manipulation
+2026-04-22 11:41:33,475 - app - INFO - Challenge already exists: Signed Cookie (Weak Validation)
+2026-04-22 11:41:33,477 - app - INFO - Challenge already exists: Time-Based Cookie Access
+2026-04-22 11:41:33,479 - app - INFO - Challenge already exists: Nested Encoding Cookie
+2026-04-22 11:41:33,481 - app - INFO - Challenge already exists: Feature Flag Cookie
+2026-04-22 11:41:33,484 - app - INFO - Challenge already exists: Secure API Gateway Breach
+2026-04-22 11:41:33,497 - app - INFO - Total challenges in database: 23
+2026-04-22 11:41:33,497 - app - INFO - Initializing IDOR challenge data...
+2026-04-22 11:41:33,538 - app - INFO - IDOR challenge data initialization complete
+2026-04-22 11:41:33,538 - app - INFO - Initializing advanced challenge data...
+2026-04-22 11:41:33,575 - app - INFO - Advanced challenge data initialization complete
+2026-04-22 11:41:40,188 - app - INFO - Initializing challenges...
+2026-04-22 11:41:40,237 - app - INFO - Challenge already exists: Internal Ticket System
+2026-04-22 11:41:40,239 - app - INFO - Challenge already exists: Employee Payroll Portal
+2026-04-22 11:41:40,242 - app - INFO - Challenge already exists: Cloud Storage Viewer
+2026-04-22 11:41:40,243 - app - INFO - Challenge already exists: API Profile Viewer
+2026-04-22 11:41:40,245 - app - INFO - Challenge already exists: Order Management System
+2026-04-22 11:41:40,247 - app - INFO - Challenge already exists: Role-Based Cookie Manipulation
+2026-04-22 11:41:40,250 - app - INFO - Challenge already exists: Base64 Encoded Session Cookie
+2026-04-22 11:41:40,253 - app - INFO - Challenge already exists: Cookie Integrity Flaw
+2026-04-22 11:41:40,255 - app - INFO - Challenge already exists: JWT Misconfiguration
+2026-04-22 11:41:40,257 - app - INFO - Challenge already exists: Hidden Cookie Behavior
+2026-04-22 11:41:40,260 - app - INFO - Challenge already exists: Admin Panel Breach
+2026-04-22 11:41:40,262 - app - INFO - Challenge already exists: Project Collaboration Workspace
+2026-04-22 11:41:40,264 - app - INFO - Challenge already exists: Medical Records Portal
+2026-04-22 11:41:40,266 - app - INFO - Challenge already exists: Invoice Management API
+2026-04-22 11:41:40,268 - app - INFO - Challenge already exists: Private Messaging System
+2026-04-22 11:41:40,270 - app - INFO - Challenge already exists: Task Management Board
+2026-04-22 11:41:40,272 - app - INFO - Challenge already exists: Multi-Field Cookie Manipulation
+2026-04-22 11:41:40,274 - app - INFO - Challenge already exists: Signed Cookie (Weak Validation)
+2026-04-22 11:41:40,276 - app - INFO - Challenge already exists: Time-Based Cookie Access
+2026-04-22 11:41:40,278 - app - INFO - Challenge already exists: Nested Encoding Cookie
+2026-04-22 11:41:40,280 - app - INFO - Challenge already exists: Feature Flag Cookie
+2026-04-22 11:41:40,282 - app - INFO - Challenge already exists: Secure API Gateway Breach
+2026-04-22 11:41:40,290 - app - INFO - Total challenges in database: 23
+2026-04-22 11:41:40,291 - app - INFO - Initializing IDOR challenge data...
+2026-04-22 11:41:40,324 - app - INFO - IDOR challenge data initialization complete
+2026-04-22 11:41:40,324 - app - INFO - Initializing advanced challenge data...
+2026-04-22 11:41:40,358 - app - INFO - Advanced challenge data initialization complete
+2026-04-22 11:41:53,601 - app - INFO - Initializing challenges...
+2026-04-22 11:41:53,656 - app - INFO - Challenge already exists: Internal Ticket System
+2026-04-22 11:41:53,660 - app - INFO - Challenge already exists: Employee Payroll Portal
+2026-04-22 11:41:53,663 - app - INFO - Challenge already exists: Cloud Storage Viewer
+2026-04-22 11:41:53,665 - app - INFO - Challenge already exists: API Profile Viewer
+2026-04-22 11:41:53,667 - app - INFO - Challenge already exists: Order Management System
+2026-04-22 11:41:53,670 - app - INFO - Challenge already exists: Role-Based Cookie Manipulation
+2026-04-22 11:41:53,672 - app - INFO - Challenge already exists: Base64 Encoded Session Cookie
+2026-04-22 11:41:53,674 - app - INFO - Challenge already exists: Cookie Integrity Flaw
+2026-04-22 11:41:53,675 - app - INFO - Challenge already exists: JWT Misconfiguration
+2026-04-22 11:41:53,677 - app - INFO - Challenge already exists: Hidden Cookie Behavior
+2026-04-22 11:41:53,680 - app - INFO - Challenge already exists: Admin Panel Breach
+2026-04-22 11:41:53,682 - app - INFO - Challenge already exists: Project Collaboration Workspace
+2026-04-22 11:41:53,684 - app - INFO - Challenge already exists: Medical Records Portal
+2026-04-22 11:41:53,686 - app - INFO - Challenge already exists: Invoice Management API
+2026-04-22 11:41:53,688 - app - INFO - Challenge already exists: Private Messaging System
+2026-04-22 11:41:53,690 - app - INFO - Challenge already exists: Task Management Board
+2026-04-22 11:41:53,692 - app - INFO - Challenge already exists: Multi-Field Cookie Manipulation
+2026-04-22 11:41:53,696 - app - INFO - Challenge already exists: Signed Cookie (Weak Validation)
+2026-04-22 11:41:53,699 - app - INFO - Challenge already exists: Time-Based Cookie Access
+2026-04-22 11:41:53,701 - app - INFO - Challenge already exists: Nested Encoding Cookie
+2026-04-22 11:41:53,703 - app - INFO - Challenge already exists: Feature Flag Cookie
+2026-04-22 11:41:53,705 - app - INFO - Challenge already exists: Secure API Gateway Breach
+2026-04-22 11:41:53,714 - app - INFO - Total challenges in database: 23
+2026-04-22 11:41:53,715 - app - INFO - Initializing IDOR challenge data...
+2026-04-22 11:41:53,755 - app - INFO - IDOR challenge data initialization complete
+2026-04-22 11:41:53,755 - app - INFO - Initializing advanced challenge data...
+2026-04-22 11:41:53,789 - app - INFO - Advanced challenge data initialization complete
+2026-04-22 11:42:00,993 - app - INFO - Initializing challenges...
+2026-04-22 11:42:01,041 - app - INFO - Challenge already exists: Internal Ticket System
+2026-04-22 11:42:01,044 - app - INFO - Challenge already exists: Employee Payroll Portal
+2026-04-22 11:42:01,046 - app - INFO - Challenge already exists: Cloud Storage Viewer
+2026-04-22 11:42:01,048 - app - INFO - Challenge already exists: API Profile Viewer
+2026-04-22 11:42:01,052 - app - INFO - Challenge already exists: Order Management System
+2026-04-22 11:42:01,054 - app - INFO - Challenge already exists: Role-Based Cookie Manipulation
+2026-04-22 11:42:01,055 - app - INFO - Challenge already exists: Base64 Encoded Session Cookie
+2026-04-22 11:42:01,057 - app - INFO - Challenge already exists: Cookie Integrity Flaw
+2026-04-22 11:42:01,059 - app - INFO - Challenge already exists: JWT Misconfiguration
+2026-04-22 11:42:01,060 - app - INFO - Challenge already exists: Hidden Cookie Behavior
+2026-04-22 11:42:01,062 - app - INFO - Challenge already exists: Admin Panel Breach
+2026-04-22 11:42:01,063 - app - INFO - Challenge already exists: Project Collaboration Workspace
+2026-04-22 11:42:01,065 - app - INFO - Challenge already exists: Medical Records Portal
+2026-04-22 11:42:01,066 - app - INFO - Challenge already exists: Invoice Management API
+2026-04-22 11:42:01,068 - app - INFO - Challenge already exists: Private Messaging System
+2026-04-22 11:42:01,070 - app - INFO - Challenge already exists: Task Management Board
+2026-04-22 11:42:01,073 - app - INFO - Challenge already exists: Multi-Field Cookie Manipulation
+2026-04-22 11:42:01,075 - app - INFO - Challenge already exists: Signed Cookie (Weak Validation)
+2026-04-22 11:42:01,076 - app - INFO - Challenge already exists: Time-Based Cookie Access
+2026-04-22 11:42:01,077 - app - INFO - Challenge already exists: Nested Encoding Cookie
+2026-04-22 11:42:01,079 - app - INFO - Challenge already exists: Feature Flag Cookie
+2026-04-22 11:42:01,080 - app - INFO - Challenge already exists: Secure API Gateway Breach
+2026-04-22 11:42:01,090 - app - INFO - Total challenges in database: 23
+2026-04-22 11:42:01,090 - app - INFO - Initializing IDOR challenge data...
+2026-04-22 11:42:01,123 - app - INFO - IDOR challenge data initialization complete
+2026-04-22 11:42:01,123 - app - INFO - Initializing advanced challenge data...
+2026-04-22 11:42:01,157 - app - INFO - Advanced challenge data initialization complete
+2026-04-22 11:42:15,562 - app - INFO - Initializing challenges...
+2026-04-22 11:42:15,605 - app - INFO - Challenge already exists: Internal Ticket System
+2026-04-22 11:42:15,607 - app - INFO - Challenge already exists: Employee Payroll Portal
+2026-04-22 11:42:15,610 - app - INFO - Challenge already exists: Cloud Storage Viewer
+2026-04-22 11:42:15,612 - app - INFO - Challenge already exists: API Profile Viewer
+2026-04-22 11:42:15,615 - app - INFO - Challenge already exists: Order Management System
+2026-04-22 11:42:15,617 - app - INFO - Challenge already exists: Role-Based Cookie Manipulation
+2026-04-22 11:42:15,620 - app - INFO - Challenge already exists: Base64 Encoded Session Cookie
+2026-04-22 11:42:15,622 - app - INFO - Challenge already exists: Cookie Integrity Flaw
+2026-04-22 11:42:15,624 - app - INFO - Challenge already exists: JWT Misconfiguration
+2026-04-22 11:42:15,627 - app - INFO - Challenge already exists: Hidden Cookie Behavior
+2026-04-22 11:42:15,629 - app - INFO - Challenge already exists: Admin Panel Breach
+2026-04-22 11:42:15,632 - app - INFO - Challenge already exists: Project Collaboration Workspace
+2026-04-22 11:42:15,635 - app - INFO - Challenge already exists: Medical Records Portal
+2026-04-22 11:42:15,637 - app - INFO - Challenge already exists: Invoice Management API
+2026-04-22 11:42:15,640 - app - INFO - Challenge already exists: Private Messaging System
+2026-04-22 11:42:15,643 - app - INFO - Challenge already exists: Task Management Board
+2026-04-22 11:42:15,646 - app - INFO - Challenge already exists: Multi-Field Cookie Manipulation
+2026-04-22 11:42:15,649 - app - INFO - Challenge already exists: Signed Cookie (Weak Validation)
+2026-04-22 11:42:15,653 - app - INFO - Challenge already exists: Time-Based Cookie Access
+2026-04-22 11:42:15,655 - app - INFO - Challenge already exists: Nested Encoding Cookie
+2026-04-22 11:42:15,658 - app - INFO - Challenge already exists: Feature Flag Cookie
+2026-04-22 11:42:15,660 - app - INFO - Challenge already exists: Secure API Gateway Breach
+2026-04-22 11:42:15,668 - app - INFO - Total challenges in database: 23
+2026-04-22 11:42:15,669 - app - INFO - Initializing IDOR challenge data...
+2026-04-22 11:42:15,700 - app - INFO - IDOR challenge data initialization complete
+2026-04-22 11:42:15,700 - app - INFO - Initializing advanced challenge data...
+2026-04-22 11:42:15,733 - app - INFO - Advanced challenge data initialization complete
+2026-04-22 11:42:22,942 - app - INFO - Initializing challenges...
+2026-04-22 11:42:22,986 - app - INFO - Challenge already exists: Internal Ticket System
+2026-04-22 11:42:22,988 - app - INFO - Challenge already exists: Employee Payroll Portal
+2026-04-22 11:42:22,990 - app - INFO - Challenge already exists: Cloud Storage Viewer
+2026-04-22 11:42:22,991 - app - INFO - Challenge already exists: API Profile Viewer
+2026-04-22 11:42:22,993 - app - INFO - Challenge already exists: Order Management System
+2026-04-22 11:42:22,994 - app - INFO - Challenge already exists: Role-Based Cookie Manipulation
+2026-04-22 11:42:22,996 - app - INFO - Challenge already exists: Base64 Encoded Session Cookie
+2026-04-22 11:42:22,998 - app - INFO - Challenge already exists: Cookie Integrity Flaw
+2026-04-22 11:42:23,000 - app - INFO - Challenge already exists: JWT Misconfiguration
+2026-04-22 11:42:23,003 - app - INFO - Challenge already exists: Hidden Cookie Behavior
+2026-04-22 11:42:23,005 - app - INFO - Challenge already exists: Admin Panel Breach
+2026-04-22 11:42:23,007 - app - INFO - Challenge already exists: Project Collaboration Workspace
+2026-04-22 11:42:23,008 - app - INFO - Challenge already exists: Medical Records Portal
+2026-04-22 11:42:23,010 - app - INFO - Challenge already exists: Invoice Management API
+2026-04-22 11:42:23,011 - app - INFO - Challenge already exists: Private Messaging System
+2026-04-22 11:42:23,013 - app - INFO - Challenge already exists: Task Management Board
+2026-04-22 11:42:23,014 - app - INFO - Challenge already exists: Multi-Field Cookie Manipulation
+2026-04-22 11:42:23,016 - app - INFO - Challenge already exists: Signed Cookie (Weak Validation)
+2026-04-22 11:42:23,017 - app - INFO - Challenge already exists: Time-Based Cookie Access
+2026-04-22 11:42:23,019 - app - INFO - Challenge already exists: Nested Encoding Cookie
+2026-04-22 11:42:23,021 - app - INFO - Challenge already exists: Feature Flag Cookie
+2026-04-22 11:42:23,022 - app - INFO - Challenge already exists: Secure API Gateway Breach
+2026-04-22 11:42:23,030 - app - INFO - Total challenges in database: 23
+2026-04-22 11:42:23,031 - app - INFO - Initializing IDOR challenge data...
+2026-04-22 11:42:23,062 - app - INFO - IDOR challenge data initialization complete
+2026-04-22 11:42:23,062 - app - INFO - Initializing advanced challenge data...
+2026-04-22 11:42:23,103 - app - INFO - Advanced challenge data initialization complete
+2026-04-22 11:42:30,903 - app - INFO - Initializing challenges...
+2026-04-22 11:42:30,958 - app - INFO - Challenge already exists: Internal Ticket System
+2026-04-22 11:42:30,961 - app - INFO - Challenge already exists: Employee Payroll Portal
+2026-04-22 11:42:30,963 - app - INFO - Challenge already exists: Cloud Storage Viewer
+2026-04-22 11:42:30,965 - app - INFO - Challenge already exists: API Profile Viewer
+2026-04-22 11:42:30,966 - app - INFO - Challenge already exists: Order Management System
+2026-04-22 11:42:30,969 - app - INFO - Challenge already exists: Role-Based Cookie Manipulation
+2026-04-22 11:42:30,970 - app - INFO - Challenge already exists: Base64 Encoded Session Cookie
+2026-04-22 11:42:30,972 - app - INFO - Challenge already exists: Cookie Integrity Flaw
+2026-04-22 11:42:30,973 - app - INFO - Challenge already exists: JWT Misconfiguration
+2026-04-22 11:42:30,975 - app - INFO - Challenge already exists: Hidden Cookie Behavior
+2026-04-22 11:42:30,978 - app - INFO - Challenge already exists: Admin Panel Breach
+2026-04-22 11:42:30,981 - app - INFO - Challenge already exists: Project Collaboration Workspace
+2026-04-22 11:42:30,983 - app - INFO - Challenge already exists: Medical Records Portal
+2026-04-22 11:42:30,986 - app - INFO - Challenge already exists: Invoice Management API
+2026-04-22 11:42:30,988 - app - INFO - Challenge already exists: Private Messaging System
+2026-04-22 11:42:30,990 - app - INFO - Challenge already exists: Task Management Board
+2026-04-22 11:42:30,993 - app - INFO - Challenge already exists: Multi-Field Cookie Manipulation
+2026-04-22 11:42:30,995 - app - INFO - Challenge already exists: Signed Cookie (Weak Validation)
+2026-04-22 11:42:30,999 - app - INFO - Challenge already exists: Time-Based Cookie Access
+2026-04-22 11:42:31,001 - app - INFO - Challenge already exists: Nested Encoding Cookie
+2026-04-22 11:42:31,004 - app - INFO - Challenge already exists: Feature Flag Cookie
+2026-04-22 11:42:31,005 - app - INFO - Challenge already exists: Secure API Gateway Breach
+2026-04-22 11:42:31,017 - app - INFO - Total challenges in database: 23
+2026-04-22 11:42:31,018 - app - INFO - Initializing IDOR challenge data...
+2026-04-22 11:42:31,059 - app - INFO - IDOR challenge data initialization complete
+2026-04-22 11:42:31,059 - app - INFO - Initializing advanced challenge data...
+2026-04-22 11:42:31,096 - app - INFO - Advanced challenge data initialization complete
+2026-04-22 11:43:47,971 - __main__ - INFO - Initializing challenges...
+2026-04-22 11:43:48,015 - __main__ - INFO - Challenge already exists: Internal Ticket System
+2026-04-22 11:43:48,018 - __main__ - INFO - Challenge already exists: Employee Payroll Portal
+2026-04-22 11:43:48,020 - __main__ - INFO - Challenge already exists: Cloud Storage Viewer
+2026-04-22 11:43:48,022 - __main__ - INFO - Challenge already exists: API Profile Viewer
+2026-04-22 11:43:48,023 - __main__ - INFO - Challenge already exists: Order Management System
+2026-04-22 11:43:48,025 - __main__ - INFO - Challenge already exists: Role-Based Cookie Manipulation
+2026-04-22 11:43:48,027 - __main__ - INFO - Challenge already exists: Base64 Encoded Session Cookie
+2026-04-22 11:43:48,030 - __main__ - INFO - Challenge already exists: Cookie Integrity Flaw
+2026-04-22 11:43:48,032 - __main__ - INFO - Challenge already exists: JWT Misconfiguration
+2026-04-22 11:43:48,034 - __main__ - INFO - Challenge already exists: Hidden Cookie Behavior
+2026-04-22 11:43:48,036 - __main__ - INFO - Challenge already exists: Admin Panel Breach
+2026-04-22 11:43:48,037 - __main__ - INFO - Challenge already exists: Project Collaboration Workspace
+2026-04-22 11:43:48,039 - __main__ - INFO - Challenge already exists: Medical Records Portal
+2026-04-22 11:43:48,041 - __main__ - INFO - Challenge already exists: Invoice Management API
+2026-04-22 11:43:48,044 - __main__ - INFO - Challenge already exists: Private Messaging System
+2026-04-22 11:43:48,046 - __main__ - INFO - Challenge already exists: Task Management Board
+2026-04-22 11:43:48,049 - __main__ - INFO - Challenge already exists: Multi-Field Cookie Manipulation
+2026-04-22 11:43:48,050 - __main__ - INFO - Challenge already exists: Signed Cookie (Weak Validation)
+2026-04-22 11:43:48,053 - __main__ - INFO - Challenge already exists: Time-Based Cookie Access
+2026-04-22 11:43:48,055 - __main__ - INFO - Challenge already exists: Nested Encoding Cookie
+2026-04-22 11:43:48,057 - __main__ - INFO - Challenge already exists: Feature Flag Cookie
+2026-04-22 11:43:48,061 - __main__ - INFO - Challenge already exists: Secure API Gateway Breach
+2026-04-22 11:43:48,072 - __main__ - INFO - Total challenges in database: 23
+2026-04-22 11:43:48,072 - __main__ - INFO - Initializing IDOR challenge data...
+2026-04-22 11:43:48,102 - __main__ - INFO - IDOR challenge data initialization complete
+2026-04-22 11:43:48,103 - __main__ - INFO - Initializing advanced challenge data...
+2026-04-22 11:43:48,133 - __main__ - INFO - Advanced challenge data initialization complete
+2026-04-22 11:43:49,051 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.55:5000
+2026-04-22 11:43:49,054 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-04-22 11:43:49,061 - werkzeug - INFO -  * Restarting with stat
+2026-04-22 11:43:50,511 - __main__ - INFO - Initializing challenges...
+2026-04-22 11:43:50,551 - __main__ - INFO - Challenge already exists: Internal Ticket System
+2026-04-22 11:43:50,554 - __main__ - INFO - Challenge already exists: Employee Payroll Portal
+2026-04-22 11:43:50,556 - __main__ - INFO - Challenge already exists: Cloud Storage Viewer
+2026-04-22 11:43:50,557 - __main__ - INFO - Challenge already exists: API Profile Viewer
+2026-04-22 11:43:50,560 - __main__ - INFO - Challenge already exists: Order Management System
+2026-04-22 11:43:50,562 - __main__ - INFO - Challenge already exists: Role-Based Cookie Manipulation
+2026-04-22 11:43:50,563 - __main__ - INFO - Challenge already exists: Base64 Encoded Session Cookie
+2026-04-22 11:43:50,565 - __main__ - INFO - Challenge already exists: Cookie Integrity Flaw
+2026-04-22 11:43:50,570 - __main__ - INFO - Challenge already exists: JWT Misconfiguration
+2026-04-22 11:43:50,571 - __main__ - INFO - Challenge already exists: Hidden Cookie Behavior
+2026-04-22 11:43:50,574 - __main__ - INFO - Challenge already exists: Admin Panel Breach
+2026-04-22 11:43:50,577 - __main__ - INFO - Challenge already exists: Project Collaboration Workspace
+2026-04-22 11:43:50,579 - __main__ - INFO - Challenge already exists: Medical Records Portal
+2026-04-22 11:43:50,582 - __main__ - INFO - Challenge already exists: Invoice Management API
+2026-04-22 11:43:50,583 - __main__ - INFO - Challenge already exists: Private Messaging System
+2026-04-22 11:43:50,586 - __main__ - INFO - Challenge already exists: Task Management Board
+2026-04-22 11:43:50,586 - __main__ - INFO - Challenge already exists: Multi-Field Cookie Manipulation
+2026-04-22 11:43:50,589 - __main__ - INFO - Challenge already exists: Signed Cookie (Weak Validation)
+2026-04-22 11:43:50,590 - __main__ - INFO - Challenge already exists: Time-Based Cookie Access
+2026-04-22 11:43:50,593 - __main__ - INFO - Challenge already exists: Nested Encoding Cookie
+2026-04-22 11:43:50,596 - __main__ - INFO - Challenge already exists: Feature Flag Cookie
+2026-04-22 11:43:50,598 - __main__ - INFO - Challenge already exists: Secure API Gateway Breach
+2026-04-22 11:43:50,607 - __main__ - INFO - Total challenges in database: 23
+2026-04-22 11:43:50,608 - __main__ - INFO - Initializing IDOR challenge data...
+2026-04-22 11:43:50,639 - __main__ - INFO - IDOR challenge data initialization complete
+2026-04-22 11:43:50,640 - __main__ - INFO - Initializing advanced challenge data...
+2026-04-22 11:43:50,674 - __main__ - INFO - Advanced challenge data initialization complete
+2026-04-22 11:43:50,713 - werkzeug - WARNING -  * Debugger is active!
+2026-04-22 11:43:50,720 - werkzeug - INFO -  * Debugger PIN: 623-192-245
+2026-04-22 11:43:56,504 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:43:56] "[32mGET / HTTP/1.1[0m" 302 -
+2026-04-22 11:43:56,766 - __main__ - INFO - Loading dashboard
+2026-04-22 11:43:56,806 - __main__ - INFO - Dashboard loaded for user GuildMaster
+2026-04-22 11:43:56,916 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:43:56] "GET /dashboard HTTP/1.1" 200 -
+2026-04-22 11:43:57,108 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:43:57] "GET /static/css/style.css HTTP/1.1" 200 -
+2026-04-22 11:43:57,260 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:43:57] "GET /static/js/main.js HTTP/1.1" 200 -
+2026-04-22 11:44:03,133 - __main__ - INFO - Fetching challenges list
+2026-04-22 11:44:03,140 - __main__ - INFO - Returning 23 challenges for user GuildMaster
+2026-04-22 11:44:03,164 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:44:03] "GET /challenges HTTP/1.1" 200 -
+2026-04-22 11:44:03,244 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:44:03] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 11:44:03,414 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:44:03] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-04-22 11:46:56,429 - __main__ - INFO - Viewing challenge 1
+2026-04-22 11:46:56,436 - __main__ - INFO - Rendering challenge Authentication & Enumeration for user GuildMaster
+2026-04-22 11:46:56,457 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:46:56] "GET /challenge/1 HTTP/1.1" 200 -
+2026-04-22 11:46:56,554 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:46:56] "GET /challenge-file/challenge-auth-enum.html HTTP/1.1" 200 -
+2026-04-22 11:46:56,696 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:46:56] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 11:46:56,899 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:46:56] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-04-22 11:46:57,045 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:46:57] "GET /challenge-file/challenge-auth-enum.js HTTP/1.1" 200 -
+2026-04-22 11:47:45,274 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:47:45] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 11:47:45,326 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:47:45] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2026-04-22 11:55:54,072 - app - INFO - Initializing challenges...
+2026-04-22 11:55:54,133 - app - INFO - Challenge already exists: Internal Ticket System
+2026-04-22 11:55:54,136 - app - INFO - Challenge already exists: Employee Payroll Portal
+2026-04-22 11:55:54,139 - app - INFO - Challenge already exists: Cloud Storage Viewer
+2026-04-22 11:55:54,142 - app - INFO - Challenge already exists: API Profile Viewer
+2026-04-22 11:55:54,145 - app - INFO - Challenge already exists: Order Management System
+2026-04-22 11:55:54,147 - app - INFO - Challenge already exists: Role-Based Cookie Manipulation
+2026-04-22 11:55:54,151 - app - INFO - Challenge already exists: Base64 Encoded Session Cookie
+2026-04-22 11:55:54,154 - app - INFO - Challenge already exists: Cookie Integrity Flaw
+2026-04-22 11:55:54,156 - app - INFO - Challenge already exists: JWT Misconfiguration
+2026-04-22 11:55:54,158 - app - INFO - Challenge already exists: Hidden Cookie Behavior
+2026-04-22 11:55:54,160 - app - INFO - Challenge already exists: Admin Panel Breach
+2026-04-22 11:55:54,162 - app - INFO - Challenge already exists: Project Collaboration Workspace
+2026-04-22 11:55:54,164 - app - INFO - Challenge already exists: Medical Records Portal
+2026-04-22 11:55:54,165 - app - INFO - Challenge already exists: Invoice Management API
+2026-04-22 11:55:54,168 - app - INFO - Challenge already exists: Private Messaging System
+2026-04-22 11:55:54,169 - app - INFO - Challenge already exists: Task Management Board
+2026-04-22 11:55:54,171 - app - INFO - Challenge already exists: Multi-Field Cookie Manipulation
+2026-04-22 11:55:54,173 - app - INFO - Challenge already exists: Signed Cookie (Weak Validation)
+2026-04-22 11:55:54,175 - app - INFO - Challenge already exists: Time-Based Cookie Access
+2026-04-22 11:55:54,176 - app - INFO - Challenge already exists: Nested Encoding Cookie
+2026-04-22 11:55:54,178 - app - INFO - Challenge already exists: Feature Flag Cookie
+2026-04-22 11:55:54,180 - app - INFO - Challenge already exists: Secure API Gateway Breach
+2026-04-22 11:55:54,188 - app - INFO - Total challenges in database: 23
+2026-04-22 11:55:54,189 - app - INFO - Initializing IDOR challenge data...
+2026-04-22 11:55:54,225 - app - INFO - IDOR challenge data initialization complete
+2026-04-22 11:55:54,225 - app - INFO - Initializing advanced challenge data...
+2026-04-22 11:55:54,271 - app - INFO - Advanced challenge data initialization complete
+2026-04-22 11:56:02,677 - app - INFO - Initializing challenges...
+2026-04-22 11:56:02,738 - app - INFO - Challenge already exists: Internal Ticket System
+2026-04-22 11:56:02,741 - app - INFO - Challenge already exists: Employee Payroll Portal
+2026-04-22 11:56:02,743 - app - INFO - Challenge already exists: Cloud Storage Viewer
+2026-04-22 11:56:02,746 - app - INFO - Challenge already exists: API Profile Viewer
+2026-04-22 11:56:02,749 - app - INFO - Challenge already exists: Order Management System
+2026-04-22 11:56:02,752 - app - INFO - Challenge already exists: Role-Based Cookie Manipulation
+2026-04-22 11:56:02,755 - app - INFO - Challenge already exists: Base64 Encoded Session Cookie
+2026-04-22 11:56:02,758 - app - INFO - Challenge already exists: Cookie Integrity Flaw
+2026-04-22 11:56:02,761 - app - INFO - Challenge already exists: JWT Misconfiguration
+2026-04-22 11:56:02,764 - app - INFO - Challenge already exists: Hidden Cookie Behavior
+2026-04-22 11:56:02,766 - app - INFO - Challenge already exists: Admin Panel Breach
+2026-04-22 11:56:02,768 - app - INFO - Challenge already exists: Project Collaboration Workspace
+2026-04-22 11:56:02,770 - app - INFO - Challenge already exists: Medical Records Portal
+2026-04-22 11:56:02,773 - app - INFO - Challenge already exists: Invoice Management API
+2026-04-22 11:56:02,775 - app - INFO - Challenge already exists: Private Messaging System
+2026-04-22 11:56:02,779 - app - INFO - Challenge already exists: Task Management Board
+2026-04-22 11:56:02,782 - app - INFO - Challenge already exists: Multi-Field Cookie Manipulation
+2026-04-22 11:56:02,785 - app - INFO - Challenge already exists: Signed Cookie (Weak Validation)
+2026-04-22 11:56:02,787 - app - INFO - Challenge already exists: Time-Based Cookie Access
+2026-04-22 11:56:02,789 - app - INFO - Challenge already exists: Nested Encoding Cookie
+2026-04-22 11:56:02,808 - app - INFO - Challenge already exists: Feature Flag Cookie
+2026-04-22 11:56:02,812 - app - INFO - Challenge already exists: Secure API Gateway Breach
+2026-04-22 11:56:02,845 - app - INFO - Total challenges in database: 23
+2026-04-22 11:56:02,846 - app - INFO - Initializing IDOR challenge data...
+2026-04-22 11:56:02,919 - app - INFO - IDOR challenge data initialization complete
+2026-04-22 11:56:02,919 - app - INFO - Initializing advanced challenge data...
+2026-04-22 11:56:02,965 - app - INFO - Advanced challenge data initialization complete
+2026-04-22 11:56:11,661 - app - INFO - Initializing challenges...
+2026-04-22 11:56:11,737 - app - INFO - Challenge already exists: Internal Ticket System
+2026-04-22 11:56:11,740 - app - INFO - Challenge already exists: Employee Payroll Portal
+2026-04-22 11:56:11,747 - app - INFO - Challenge already exists: Cloud Storage Viewer
+2026-04-22 11:56:11,749 - app - INFO - Challenge already exists: API Profile Viewer
+2026-04-22 11:56:11,761 - app - INFO - Challenge already exists: Order Management System
+2026-04-22 11:56:11,764 - app - INFO - Challenge already exists: Role-Based Cookie Manipulation
+2026-04-22 11:56:11,766 - app - INFO - Challenge already exists: Base64 Encoded Session Cookie
+2026-04-22 11:56:11,768 - app - INFO - Challenge already exists: Cookie Integrity Flaw
+2026-04-22 11:56:11,770 - app - INFO - Challenge already exists: JWT Misconfiguration
+2026-04-22 11:56:11,773 - app - INFO - Challenge already exists: Hidden Cookie Behavior
+2026-04-22 11:56:11,775 - app - INFO - Challenge already exists: Admin Panel Breach
+2026-04-22 11:56:11,778 - app - INFO - Challenge already exists: Project Collaboration Workspace
+2026-04-22 11:56:11,779 - app - INFO - Challenge already exists: Medical Records Portal
+2026-04-22 11:56:11,781 - app - INFO - Challenge already exists: Invoice Management API
+2026-04-22 11:56:11,783 - app - INFO - Challenge already exists: Private Messaging System
+2026-04-22 11:56:11,785 - app - INFO - Challenge already exists: Task Management Board
+2026-04-22 11:56:11,788 - app - INFO - Challenge already exists: Multi-Field Cookie Manipulation
+2026-04-22 11:56:11,791 - app - INFO - Challenge already exists: Signed Cookie (Weak Validation)
+2026-04-22 11:56:11,793 - app - INFO - Challenge already exists: Time-Based Cookie Access
+2026-04-22 11:56:11,796 - app - INFO - Challenge already exists: Nested Encoding Cookie
+2026-04-22 11:56:11,799 - app - INFO - Challenge already exists: Feature Flag Cookie
+2026-04-22 11:56:11,802 - app - INFO - Challenge already exists: Secure API Gateway Breach
+2026-04-22 11:56:11,814 - app - INFO - Total challenges in database: 23
+2026-04-22 11:56:11,815 - app - INFO - Initializing IDOR challenge data...
+2026-04-22 11:56:11,859 - app - INFO - IDOR challenge data initialization complete
+2026-04-22 11:56:11,859 - app - INFO - Initializing advanced challenge data...
+2026-04-22 11:56:11,913 - app - INFO - Advanced challenge data initialization complete
+2026-04-22 11:56:22,818 - app - INFO - Initializing challenges...
+2026-04-22 11:56:22,865 - app - INFO - Challenge already exists: Internal Ticket System
+2026-04-22 11:56:22,868 - app - INFO - Challenge already exists: Employee Payroll Portal
+2026-04-22 11:56:22,869 - app - INFO - Challenge already exists: Cloud Storage Viewer
+2026-04-22 11:56:22,872 - app - INFO - Challenge already exists: API Profile Viewer
+2026-04-22 11:56:22,874 - app - INFO - Challenge already exists: Order Management System
+2026-04-22 11:56:22,875 - app - INFO - Challenge already exists: Role-Based Cookie Manipulation
+2026-04-22 11:56:22,878 - app - INFO - Challenge already exists: Base64 Encoded Session Cookie
+2026-04-22 11:56:22,879 - app - INFO - Challenge already exists: Cookie Integrity Flaw
+2026-04-22 11:56:22,881 - app - INFO - Challenge already exists: JWT Misconfiguration
+2026-04-22 11:56:22,883 - app - INFO - Challenge already exists: Hidden Cookie Behavior
+2026-04-22 11:56:22,885 - app - INFO - Challenge already exists: Admin Panel Breach
+2026-04-22 11:56:22,887 - app - INFO - Challenge already exists: Project Collaboration Workspace
+2026-04-22 11:56:22,889 - app - INFO - Challenge already exists: Medical Records Portal
+2026-04-22 11:56:22,891 - app - INFO - Challenge already exists: Invoice Management API
+2026-04-22 11:56:22,893 - app - INFO - Challenge already exists: Private Messaging System
+2026-04-22 11:56:22,895 - app - INFO - Challenge already exists: Task Management Board
+2026-04-22 11:56:22,897 - app - INFO - Challenge already exists: Multi-Field Cookie Manipulation
+2026-04-22 11:56:22,900 - app - INFO - Challenge already exists: Signed Cookie (Weak Validation)
+2026-04-22 11:56:22,903 - app - INFO - Challenge already exists: Time-Based Cookie Access
+2026-04-22 11:56:22,905 - app - INFO - Challenge already exists: Nested Encoding Cookie
+2026-04-22 11:56:22,909 - app - INFO - Challenge already exists: Feature Flag Cookie
+2026-04-22 11:56:22,911 - app - INFO - Challenge already exists: Secure API Gateway Breach
+2026-04-22 11:56:22,921 - app - INFO - Total challenges in database: 23
+2026-04-22 11:56:22,921 - app - INFO - Initializing IDOR challenge data...
+2026-04-22 11:56:22,981 - app - INFO - IDOR challenge data initialization complete
+2026-04-22 11:56:22,982 - app - INFO - Initializing advanced challenge data...
+2026-04-22 11:56:23,050 - app - INFO - Advanced challenge data initialization complete
+2026-04-22 11:56:36,760 - app - INFO - Initializing challenges...
+2026-04-22 11:56:36,844 - app - INFO - Challenge already exists: Internal Ticket System
+2026-04-22 11:56:36,847 - app - INFO - Challenge already exists: Employee Payroll Portal
+2026-04-22 11:56:36,850 - app - INFO - Challenge already exists: Cloud Storage Viewer
+2026-04-22 11:56:36,858 - app - INFO - Challenge already exists: API Profile Viewer
+2026-04-22 11:56:36,862 - app - INFO - Challenge already exists: Order Management System
+2026-04-22 11:56:36,864 - app - INFO - Challenge already exists: Role-Based Cookie Manipulation
+2026-04-22 11:56:36,867 - app - INFO - Challenge already exists: Base64 Encoded Session Cookie
+2026-04-22 11:56:36,872 - app - INFO - Challenge already exists: Cookie Integrity Flaw
+2026-04-22 11:56:36,875 - app - INFO - Challenge already exists: JWT Misconfiguration
+2026-04-22 11:56:36,878 - app - INFO - Challenge already exists: Hidden Cookie Behavior
+2026-04-22 11:56:36,880 - app - INFO - Challenge already exists: Admin Panel Breach
+2026-04-22 11:56:36,883 - app - INFO - Challenge already exists: Project Collaboration Workspace
+2026-04-22 11:56:36,889 - app - INFO - Challenge already exists: Medical Records Portal
+2026-04-22 11:56:36,892 - app - INFO - Challenge already exists: Invoice Management API
+2026-04-22 11:56:36,896 - app - INFO - Challenge already exists: Private Messaging System
+2026-04-22 11:56:36,898 - app - INFO - Challenge already exists: Task Management Board
+2026-04-22 11:56:36,906 - app - INFO - Challenge already exists: Multi-Field Cookie Manipulation
+2026-04-22 11:56:36,910 - app - INFO - Challenge already exists: Signed Cookie (Weak Validation)
+2026-04-22 11:56:36,914 - app - INFO - Challenge already exists: Time-Based Cookie Access
+2026-04-22 11:56:36,916 - app - INFO - Challenge already exists: Nested Encoding Cookie
+2026-04-22 11:56:36,923 - app - INFO - Challenge already exists: Feature Flag Cookie
+2026-04-22 11:56:36,925 - app - INFO - Challenge already exists: Secure API Gateway Breach
+2026-04-22 11:56:36,941 - app - INFO - Total challenges in database: 23
+2026-04-22 11:56:36,942 - app - INFO - Initializing IDOR challenge data...
+2026-04-22 11:56:36,998 - app - INFO - IDOR challenge data initialization complete
+2026-04-22 11:56:36,999 - app - INFO - Initializing advanced challenge data...
+2026-04-22 11:56:37,060 - app - INFO - Advanced challenge data initialization complete
+2026-04-22 11:56:47,440 - app - INFO - Initializing challenges...
+2026-04-22 11:56:47,509 - app - INFO - Challenge already exists: Internal Ticket System
+2026-04-22 11:56:47,512 - app - INFO - Challenge already exists: Employee Payroll Portal
+2026-04-22 11:56:47,516 - app - INFO - Challenge already exists: Cloud Storage Viewer
+2026-04-22 11:56:47,519 - app - INFO - Challenge already exists: API Profile Viewer
+2026-04-22 11:56:47,521 - app - INFO - Challenge already exists: Order Management System
+2026-04-22 11:56:47,524 - app - INFO - Challenge already exists: Role-Based Cookie Manipulation
+2026-04-22 11:56:47,527 - app - INFO - Challenge already exists: Base64 Encoded Session Cookie
+2026-04-22 11:56:47,529 - app - INFO - Challenge already exists: Cookie Integrity Flaw
+2026-04-22 11:56:47,532 - app - INFO - Challenge already exists: JWT Misconfiguration
+2026-04-22 11:56:47,534 - app - INFO - Challenge already exists: Hidden Cookie Behavior
+2026-04-22 11:56:47,538 - app - INFO - Challenge already exists: Admin Panel Breach
+2026-04-22 11:56:47,540 - app - INFO - Challenge already exists: Project Collaboration Workspace
+2026-04-22 11:56:47,543 - app - INFO - Challenge already exists: Medical Records Portal
+2026-04-22 11:56:47,546 - app - INFO - Challenge already exists: Invoice Management API
+2026-04-22 11:56:47,549 - app - INFO - Challenge already exists: Private Messaging System
+2026-04-22 11:56:47,552 - app - INFO - Challenge already exists: Task Management Board
+2026-04-22 11:56:47,555 - app - INFO - Challenge already exists: Multi-Field Cookie Manipulation
+2026-04-22 11:56:47,559 - app - INFO - Challenge already exists: Signed Cookie (Weak Validation)
+2026-04-22 11:56:47,562 - app - INFO - Challenge already exists: Time-Based Cookie Access
+2026-04-22 11:56:47,565 - app - INFO - Challenge already exists: Nested Encoding Cookie
+2026-04-22 11:56:47,569 - app - INFO - Challenge already exists: Feature Flag Cookie
+2026-04-22 11:56:47,572 - app - INFO - Challenge already exists: Secure API Gateway Breach
+2026-04-22 11:56:47,585 - app - INFO - Total challenges in database: 23
+2026-04-22 11:56:47,586 - app - INFO - Initializing IDOR challenge data...
+2026-04-22 11:56:47,635 - app - INFO - IDOR challenge data initialization complete
+2026-04-22 11:56:47,636 - app - INFO - Initializing advanced challenge data...
+2026-04-22 11:56:47,692 - app - INFO - Advanced challenge data initialization complete
+2026-04-22 11:56:56,805 - app - INFO - Initializing challenges...
+2026-04-22 11:56:56,866 - app - INFO - Challenge already exists: Internal Ticket System
+2026-04-22 11:56:56,869 - app - INFO - Challenge already exists: Employee Payroll Portal
+2026-04-22 11:56:56,871 - app - INFO - Challenge already exists: Cloud Storage Viewer
+2026-04-22 11:56:56,873 - app - INFO - Challenge already exists: API Profile Viewer
+2026-04-22 11:56:56,875 - app - INFO - Challenge already exists: Order Management System
+2026-04-22 11:56:56,878 - app - INFO - Challenge already exists: Role-Based Cookie Manipulation
+2026-04-22 11:56:56,881 - app - INFO - Challenge already exists: Base64 Encoded Session Cookie
+2026-04-22 11:56:56,883 - app - INFO - Challenge already exists: Cookie Integrity Flaw
+2026-04-22 11:56:56,885 - app - INFO - Challenge already exists: JWT Misconfiguration
+2026-04-22 11:56:56,887 - app - INFO - Challenge already exists: Hidden Cookie Behavior
+2026-04-22 11:56:56,889 - app - INFO - Challenge already exists: Admin Panel Breach
+2026-04-22 11:56:56,891 - app - INFO - Challenge already exists: Project Collaboration Workspace
+2026-04-22 11:56:56,893 - app - INFO - Challenge already exists: Medical Records Portal
+2026-04-22 11:56:56,895 - app - INFO - Challenge already exists: Invoice Management API
+2026-04-22 11:56:56,898 - app - INFO - Challenge already exists: Private Messaging System
+2026-04-22 11:56:56,901 - app - INFO - Challenge already exists: Task Management Board
+2026-04-22 11:56:56,903 - app - INFO - Challenge already exists: Multi-Field Cookie Manipulation
+2026-04-22 11:56:56,905 - app - INFO - Challenge already exists: Signed Cookie (Weak Validation)
+2026-04-22 11:56:56,908 - app - INFO - Challenge already exists: Time-Based Cookie Access
+2026-04-22 11:56:56,910 - app - INFO - Challenge already exists: Nested Encoding Cookie
+2026-04-22 11:56:56,911 - app - INFO - Challenge already exists: Feature Flag Cookie
+2026-04-22 11:56:56,914 - app - INFO - Challenge already exists: Secure API Gateway Breach
+2026-04-22 11:56:56,923 - app - INFO - Total challenges in database: 23
+2026-04-22 11:56:56,923 - app - INFO - Initializing IDOR challenge data...
+2026-04-22 11:56:56,962 - app - INFO - IDOR challenge data initialization complete
+2026-04-22 11:56:56,962 - app - INFO - Initializing advanced challenge data...
+2026-04-22 11:56:56,996 - app - INFO - Advanced challenge data initialization complete
+2026-04-22 11:57:07,235 - app - INFO - Initializing challenges...
+2026-04-22 11:57:07,297 - app - INFO - Challenge already exists: Internal Ticket System
+2026-04-22 11:57:07,300 - app - INFO - Challenge already exists: Employee Payroll Portal
+2026-04-22 11:57:07,303 - app - INFO - Challenge already exists: Cloud Storage Viewer
+2026-04-22 11:57:07,305 - app - INFO - Challenge already exists: API Profile Viewer
+2026-04-22 11:57:07,308 - app - INFO - Challenge already exists: Order Management System
+2026-04-22 11:57:07,311 - app - INFO - Challenge already exists: Role-Based Cookie Manipulation
+2026-04-22 11:57:07,313 - app - INFO - Challenge already exists: Base64 Encoded Session Cookie
+2026-04-22 11:57:07,316 - app - INFO - Challenge already exists: Cookie Integrity Flaw
+2026-04-22 11:57:07,319 - app - INFO - Challenge already exists: JWT Misconfiguration
+2026-04-22 11:57:07,321 - app - INFO - Challenge already exists: Hidden Cookie Behavior
+2026-04-22 11:57:07,324 - app - INFO - Challenge already exists: Admin Panel Breach
+2026-04-22 11:57:07,327 - app - INFO - Challenge already exists: Project Collaboration Workspace
+2026-04-22 11:57:07,330 - app - INFO - Challenge already exists: Medical Records Portal
+2026-04-22 11:57:07,332 - app - INFO - Challenge already exists: Invoice Management API
+2026-04-22 11:57:07,336 - app - INFO - Challenge already exists: Private Messaging System
+2026-04-22 11:57:07,338 - app - INFO - Challenge already exists: Task Management Board
+2026-04-22 11:57:07,341 - app - INFO - Challenge already exists: Multi-Field Cookie Manipulation
+2026-04-22 11:57:07,344 - app - INFO - Challenge already exists: Signed Cookie (Weak Validation)
+2026-04-22 11:57:07,346 - app - INFO - Challenge already exists: Time-Based Cookie Access
+2026-04-22 11:57:07,349 - app - INFO - Challenge already exists: Nested Encoding Cookie
+2026-04-22 11:57:07,351 - app - INFO - Challenge already exists: Feature Flag Cookie
+2026-04-22 11:57:07,354 - app - INFO - Challenge already exists: Secure API Gateway Breach
+2026-04-22 11:57:07,366 - app - INFO - Total challenges in database: 23
+2026-04-22 11:57:07,367 - app - INFO - Initializing IDOR challenge data...
+2026-04-22 11:57:07,413 - app - INFO - IDOR challenge data initialization complete
+2026-04-22 11:57:07,414 - app - INFO - Initializing advanced challenge data...
+2026-04-22 11:57:07,461 - app - INFO - Advanced challenge data initialization complete
+2026-04-22 11:57:14,381 - app - INFO - Initializing challenges...
+2026-04-22 11:57:14,462 - app - INFO - Challenge already exists: Internal Ticket System
+2026-04-22 11:57:14,465 - app - INFO - Challenge already exists: Employee Payroll Portal
+2026-04-22 11:57:14,470 - app - INFO - Challenge already exists: Cloud Storage Viewer
+2026-04-22 11:57:14,473 - app - INFO - Challenge already exists: API Profile Viewer
+2026-04-22 11:57:14,475 - app - INFO - Challenge already exists: Order Management System
+2026-04-22 11:57:14,477 - app - INFO - Challenge already exists: Role-Based Cookie Manipulation
+2026-04-22 11:57:14,479 - app - INFO - Challenge already exists: Base64 Encoded Session Cookie
+2026-04-22 11:57:14,481 - app - INFO - Challenge already exists: Cookie Integrity Flaw
+2026-04-22 11:57:14,483 - app - INFO - Challenge already exists: JWT Misconfiguration
+2026-04-22 11:57:14,488 - app - INFO - Challenge already exists: Hidden Cookie Behavior
+2026-04-22 11:57:14,490 - app - INFO - Challenge already exists: Admin Panel Breach
+2026-04-22 11:57:14,492 - app - INFO - Challenge already exists: Project Collaboration Workspace
+2026-04-22 11:57:14,494 - app - INFO - Challenge already exists: Medical Records Portal
+2026-04-22 11:57:14,495 - app - INFO - Challenge already exists: Invoice Management API
+2026-04-22 11:57:14,496 - app - INFO - Challenge already exists: Private Messaging System
+2026-04-22 11:57:14,499 - app - INFO - Challenge already exists: Task Management Board
+2026-04-22 11:57:14,504 - app - INFO - Challenge already exists: Multi-Field Cookie Manipulation
+2026-04-22 11:57:14,507 - app - INFO - Challenge already exists: Signed Cookie (Weak Validation)
+2026-04-22 11:57:14,509 - app - INFO - Challenge already exists: Time-Based Cookie Access
+2026-04-22 11:57:14,511 - app - INFO - Challenge already exists: Nested Encoding Cookie
+2026-04-22 11:57:14,513 - app - INFO - Challenge already exists: Feature Flag Cookie
+2026-04-22 11:57:14,515 - app - INFO - Challenge already exists: Secure API Gateway Breach
+2026-04-22 11:57:14,528 - app - INFO - Total challenges in database: 23
+2026-04-22 11:57:14,529 - app - INFO - Initializing IDOR challenge data...
+2026-04-22 11:57:14,577 - app - INFO - IDOR challenge data initialization complete
+2026-04-22 11:57:14,577 - app - INFO - Initializing advanced challenge data...
+2026-04-22 11:57:14,629 - app - INFO - Advanced challenge data initialization complete
+2026-04-22 11:57:26,417 - app - INFO - Initializing challenges...
+2026-04-22 11:57:26,461 - app - INFO - Challenge already exists: Internal Ticket System
+2026-04-22 11:57:26,464 - app - INFO - Challenge already exists: Employee Payroll Portal
+2026-04-22 11:57:26,466 - app - INFO - Challenge already exists: Cloud Storage Viewer
+2026-04-22 11:57:26,469 - app - INFO - Challenge already exists: API Profile Viewer
+2026-04-22 11:57:26,472 - app - INFO - Challenge already exists: Order Management System
+2026-04-22 11:57:26,475 - app - INFO - Challenge already exists: Role-Based Cookie Manipulation
+2026-04-22 11:57:26,477 - app - INFO - Challenge already exists: Base64 Encoded Session Cookie
+2026-04-22 11:57:26,479 - app - INFO - Challenge already exists: Cookie Integrity Flaw
+2026-04-22 11:57:26,480 - app - INFO - Challenge already exists: JWT Misconfiguration
+2026-04-22 11:57:26,483 - app - INFO - Challenge already exists: Hidden Cookie Behavior
+2026-04-22 11:57:26,484 - app - INFO - Challenge already exists: Admin Panel Breach
+2026-04-22 11:57:26,486 - app - INFO - Challenge already exists: Project Collaboration Workspace
+2026-04-22 11:57:26,488 - app - INFO - Challenge already exists: Medical Records Portal
+2026-04-22 11:57:26,490 - app - INFO - Challenge already exists: Invoice Management API
+2026-04-22 11:57:26,491 - app - INFO - Challenge already exists: Private Messaging System
+2026-04-22 11:57:26,493 - app - INFO - Challenge already exists: Task Management Board
+2026-04-22 11:57:26,495 - app - INFO - Challenge already exists: Multi-Field Cookie Manipulation
+2026-04-22 11:57:26,497 - app - INFO - Challenge already exists: Signed Cookie (Weak Validation)
+2026-04-22 11:57:26,499 - app - INFO - Challenge already exists: Time-Based Cookie Access
+2026-04-22 11:57:26,501 - app - INFO - Challenge already exists: Nested Encoding Cookie
+2026-04-22 11:57:26,504 - app - INFO - Challenge already exists: Feature Flag Cookie
+2026-04-22 11:57:26,507 - app - INFO - Challenge already exists: Secure API Gateway Breach
+2026-04-22 11:57:26,515 - app - INFO - Total challenges in database: 23
+2026-04-22 11:57:26,515 - app - INFO - Initializing IDOR challenge data...
+2026-04-22 11:57:26,544 - app - INFO - IDOR challenge data initialization complete
+2026-04-22 11:57:26,544 - app - INFO - Initializing advanced challenge data...
+2026-04-22 11:57:26,581 - app - INFO - Advanced challenge data initialization complete
+2026-04-22 11:57:35,119 - app - INFO - Initializing challenges...
+2026-04-22 11:57:35,189 - app - INFO - Challenge already exists: Internal Ticket System
+2026-04-22 11:57:35,191 - app - INFO - Challenge already exists: Employee Payroll Portal
+2026-04-22 11:57:35,194 - app - INFO - Challenge already exists: Cloud Storage Viewer
+2026-04-22 11:57:35,195 - app - INFO - Challenge already exists: API Profile Viewer
+2026-04-22 11:57:35,198 - app - INFO - Challenge already exists: Order Management System
+2026-04-22 11:57:35,203 - app - INFO - Challenge already exists: Role-Based Cookie Manipulation
+2026-04-22 11:57:35,205 - app - INFO - Challenge already exists: Base64 Encoded Session Cookie
+2026-04-22 11:57:35,208 - app - INFO - Challenge already exists: Cookie Integrity Flaw
+2026-04-22 11:57:35,210 - app - INFO - Challenge already exists: JWT Misconfiguration
+2026-04-22 11:57:35,212 - app - INFO - Challenge already exists: Hidden Cookie Behavior
+2026-04-22 11:57:35,213 - app - INFO - Challenge already exists: Admin Panel Breach
+2026-04-22 11:57:35,215 - app - INFO - Challenge already exists: Project Collaboration Workspace
+2026-04-22 11:57:35,219 - app - INFO - Challenge already exists: Medical Records Portal
+2026-04-22 11:57:35,221 - app - INFO - Challenge already exists: Invoice Management API
+2026-04-22 11:57:35,222 - app - INFO - Challenge already exists: Private Messaging System
+2026-04-22 11:57:35,224 - app - INFO - Challenge already exists: Task Management Board
+2026-04-22 11:57:35,226 - app - INFO - Challenge already exists: Multi-Field Cookie Manipulation
+2026-04-22 11:57:35,229 - app - INFO - Challenge already exists: Signed Cookie (Weak Validation)
+2026-04-22 11:57:35,230 - app - INFO - Challenge already exists: Time-Based Cookie Access
+2026-04-22 11:57:35,235 - app - INFO - Challenge already exists: Nested Encoding Cookie
+2026-04-22 11:57:35,237 - app - INFO - Challenge already exists: Feature Flag Cookie
+2026-04-22 11:57:35,239 - app - INFO - Challenge already exists: Secure API Gateway Breach
+2026-04-22 11:57:35,248 - app - INFO - Total challenges in database: 23
+2026-04-22 11:57:35,248 - app - INFO - Initializing IDOR challenge data...
+2026-04-22 11:57:35,292 - app - INFO - IDOR challenge data initialization complete
+2026-04-22 11:57:35,292 - app - INFO - Initializing advanced challenge data...
+2026-04-22 11:57:35,339 - app - INFO - Advanced challenge data initialization complete
+2026-04-22 11:57:43,166 - app - INFO - Initializing challenges...
+2026-04-22 11:57:43,209 - app - INFO - Challenge already exists: Internal Ticket System
+2026-04-22 11:57:43,212 - app - INFO - Challenge already exists: Employee Payroll Portal
+2026-04-22 11:57:43,213 - app - INFO - Challenge already exists: Cloud Storage Viewer
+2026-04-22 11:57:43,215 - app - INFO - Challenge already exists: API Profile Viewer
+2026-04-22 11:57:43,217 - app - INFO - Challenge already exists: Order Management System
+2026-04-22 11:57:43,219 - app - INFO - Challenge already exists: Role-Based Cookie Manipulation
+2026-04-22 11:57:43,220 - app - INFO - Challenge already exists: Base64 Encoded Session Cookie
+2026-04-22 11:57:43,223 - app - INFO - Challenge already exists: Cookie Integrity Flaw
+2026-04-22 11:57:43,225 - app - INFO - Challenge already exists: JWT Misconfiguration
+2026-04-22 11:57:43,226 - app - INFO - Challenge already exists: Hidden Cookie Behavior
+2026-04-22 11:57:43,228 - app - INFO - Challenge already exists: Admin Panel Breach
+2026-04-22 11:57:43,230 - app - INFO - Challenge already exists: Project Collaboration Workspace
+2026-04-22 11:57:43,232 - app - INFO - Challenge already exists: Medical Records Portal
+2026-04-22 11:57:43,233 - app - INFO - Challenge already exists: Invoice Management API
+2026-04-22 11:57:43,235 - app - INFO - Challenge already exists: Private Messaging System
+2026-04-22 11:57:43,238 - app - INFO - Challenge already exists: Task Management Board
+2026-04-22 11:57:43,240 - app - INFO - Challenge already exists: Multi-Field Cookie Manipulation
+2026-04-22 11:57:43,243 - app - INFO - Challenge already exists: Signed Cookie (Weak Validation)
+2026-04-22 11:57:43,246 - app - INFO - Challenge already exists: Time-Based Cookie Access
+2026-04-22 11:57:43,248 - app - INFO - Challenge already exists: Nested Encoding Cookie
+2026-04-22 11:57:43,251 - app - INFO - Challenge already exists: Feature Flag Cookie
+2026-04-22 11:57:43,253 - app - INFO - Challenge already exists: Secure API Gateway Breach
+2026-04-22 11:57:43,265 - app - INFO - Total challenges in database: 23
+2026-04-22 11:57:43,266 - app - INFO - Initializing IDOR challenge data...
+2026-04-22 11:57:43,301 - app - INFO - IDOR challenge data initialization complete
+2026-04-22 11:57:43,301 - app - INFO - Initializing advanced challenge data...
+2026-04-22 11:57:43,346 - app - INFO - Advanced challenge data initialization complete
+2026-04-22 11:57:50,957 - app - INFO - Initializing challenges...
+2026-04-22 11:57:51,012 - app - INFO - Challenge already exists: Internal Ticket System
+2026-04-22 11:57:51,015 - app - INFO - Challenge already exists: Employee Payroll Portal
+2026-04-22 11:57:51,017 - app - INFO - Challenge already exists: Cloud Storage Viewer
+2026-04-22 11:57:51,019 - app - INFO - Challenge already exists: API Profile Viewer
+2026-04-22 11:57:51,021 - app - INFO - Challenge already exists: Order Management System
+2026-04-22 11:57:51,023 - app - INFO - Challenge already exists: Role-Based Cookie Manipulation
+2026-04-22 11:57:51,025 - app - INFO - Challenge already exists: Base64 Encoded Session Cookie
+2026-04-22 11:57:51,027 - app - INFO - Challenge already exists: Cookie Integrity Flaw
+2026-04-22 11:57:51,029 - app - INFO - Challenge already exists: JWT Misconfiguration
+2026-04-22 11:57:51,031 - app - INFO - Challenge already exists: Hidden Cookie Behavior
+2026-04-22 11:57:51,034 - app - INFO - Challenge already exists: Admin Panel Breach
+2026-04-22 11:57:51,035 - app - INFO - Challenge already exists: Project Collaboration Workspace
+2026-04-22 11:57:51,037 - app - INFO - Challenge already exists: Medical Records Portal
+2026-04-22 11:57:51,039 - app - INFO - Challenge already exists: Invoice Management API
+2026-04-22 11:57:51,042 - app - INFO - Challenge already exists: Private Messaging System
+2026-04-22 11:57:51,044 - app - INFO - Challenge already exists: Task Management Board
+2026-04-22 11:57:51,046 - app - INFO - Challenge already exists: Multi-Field Cookie Manipulation
+2026-04-22 11:57:51,049 - app - INFO - Challenge already exists: Signed Cookie (Weak Validation)
+2026-04-22 11:57:51,052 - app - INFO - Challenge already exists: Time-Based Cookie Access
+2026-04-22 11:57:51,054 - app - INFO - Challenge already exists: Nested Encoding Cookie
+2026-04-22 11:57:51,057 - app - INFO - Challenge already exists: Feature Flag Cookie
+2026-04-22 11:57:51,059 - app - INFO - Challenge already exists: Secure API Gateway Breach
+2026-04-22 11:57:51,068 - app - INFO - Total challenges in database: 23
+2026-04-22 11:57:51,069 - app - INFO - Initializing IDOR challenge data...
+2026-04-22 11:57:51,104 - app - INFO - IDOR challenge data initialization complete
+2026-04-22 11:57:51,105 - app - INFO - Initializing advanced challenge data...
+2026-04-22 11:57:51,144 - app - INFO - Advanced challenge data initialization complete
+2026-04-22 11:58:02,773 - app - INFO - Initializing challenges...
+2026-04-22 11:58:02,862 - app - INFO - Challenge already exists: Internal Ticket System
+2026-04-22 11:58:02,874 - app - INFO - Challenge already exists: Employee Payroll Portal
+2026-04-22 11:58:02,876 - app - INFO - Challenge already exists: Cloud Storage Viewer
+2026-04-22 11:58:02,879 - app - INFO - Challenge already exists: API Profile Viewer
+2026-04-22 11:58:02,884 - app - INFO - Challenge already exists: Order Management System
+2026-04-22 11:58:02,888 - app - INFO - Challenge already exists: Role-Based Cookie Manipulation
+2026-04-22 11:58:02,892 - app - INFO - Challenge already exists: Base64 Encoded Session Cookie
+2026-04-22 11:58:02,895 - app - INFO - Challenge already exists: Cookie Integrity Flaw
+2026-04-22 11:58:02,898 - app - INFO - Challenge already exists: JWT Misconfiguration
+2026-04-22 11:58:02,909 - app - INFO - Challenge already exists: Hidden Cookie Behavior
+2026-04-22 11:58:02,913 - app - INFO - Challenge already exists: Admin Panel Breach
+2026-04-22 11:58:02,917 - app - INFO - Challenge already exists: Project Collaboration Workspace
+2026-04-22 11:58:02,922 - app - INFO - Challenge already exists: Medical Records Portal
+2026-04-22 11:58:02,926 - app - INFO - Challenge already exists: Invoice Management API
+2026-04-22 11:58:02,929 - app - INFO - Challenge already exists: Private Messaging System
+2026-04-22 11:58:02,931 - app - INFO - Challenge already exists: Task Management Board
+2026-04-22 11:58:02,934 - app - INFO - Challenge already exists: Multi-Field Cookie Manipulation
+2026-04-22 11:58:02,939 - app - INFO - Challenge already exists: Signed Cookie (Weak Validation)
+2026-04-22 11:58:02,942 - app - INFO - Challenge already exists: Time-Based Cookie Access
+2026-04-22 11:58:02,945 - app - INFO - Challenge already exists: Nested Encoding Cookie
+2026-04-22 11:58:02,950 - app - INFO - Challenge already exists: Feature Flag Cookie
+2026-04-22 11:58:02,956 - app - INFO - Challenge already exists: Secure API Gateway Breach
+2026-04-22 11:58:02,971 - app - INFO - Total challenges in database: 23
+2026-04-22 11:58:02,972 - app - INFO - Initializing IDOR challenge data...
+2026-04-22 11:58:03,036 - app - INFO - IDOR challenge data initialization complete
+2026-04-22 11:58:03,037 - app - INFO - Initializing advanced challenge data...
+2026-04-22 11:58:03,116 - app - INFO - Advanced challenge data initialization complete
+2026-04-22 11:58:07,712 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:58:07] "[32mGET / HTTP/1.1[0m" 302 -
+2026-04-22 11:58:07,961 - __main__ - INFO - Loading dashboard
+2026-04-22 11:58:07,976 - __main__ - INFO - Dashboard loaded for user GuildMaster
+2026-04-22 11:58:07,983 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:58:07] "GET /dashboard HTTP/1.1" 200 -
+2026-04-22 11:58:08,262 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:58:08] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-22 11:58:08,571 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:58:08] "[36mGET /static/js/main.js HTTP/1.1[0m" 304 -
+2026-04-22 11:58:12,927 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:58:12] "[32mGET /logout HTTP/1.1[0m" 302 -
+2026-04-22 11:58:13,052 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:58:13] "GET / HTTP/1.1" 200 -
+2026-04-22 11:58:13,235 - werkzeug - INFO - 127.0.0.1 - - [22/Apr/2026 11:58:13] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -

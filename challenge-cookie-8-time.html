@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time-Based Cookie Access</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="challenge-layout">
+        <div class="challenge-main">
+            <div class="challenge-header">
+                <h2>Time-Based Cookie Access</h2>
+                <p class="subtitle">Timestamp-Based Session Control</p>
+            </div>
+
+            <div class="card">
+                <h3 style="margin-bottom: 16px;">Current Session</h3>
+                <p style="color: var(--text-secondary);">Session includes a timestamp value. Access control depends on the time value in the session data.</p>
+                
+                <div style="margin-top: 20px;">
+                    <p style="font-size: 0.9em; color: var(--text-secondary);">Current Session Cookie:</p>
+                    <div class="console-output">
+                        <pre id="sessionDisplay">eyJyb2xlIjoidXNlciIsInRpbWUiOjE3MTM3MjgwMDB9</pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 style="margin-bottom: 16px;">Decoded Session Data</h3>
+                <div class="console-output">
+                    <pre id="decodedOutput">{"role":"user","time":1713728000}</pre>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 style="margin-bottom: 16px;">Session Configuration</h3>
+                <div class="form-group">
+                    <label>role</label>
+                    <input type="text" id="roleInput" class="form-control" value="user">
+                </div>
+                <div class="form-group" style="margin-top: 12px;">
+                    <label>time (timestamp)</label>
+                    <input type="number" id="timeInput" class="form-control" value="1713728000">
+                </div>
+            </div>
+
+            <div class="card" id="adminPanel" style="display: none;">
+                <h3 style="margin-bottom: 16px; color: var(--accent-green);">Admin Access Granted</h3>
+                <p style="color: var(--text-secondary);">Timestamp threshold exceeded. Administrative privileges confirmed.</p>
+                <div class="console-output" style="margin-top: 16px;">
+                    <pre id="flagOutput"></pre>
+                </div>
+            </div>
+
+            <div class="card" id="accessDenied">
+                <h3 style="margin-bottom: 16px; color: var(--accent-red);">Access Denied</h3>
+                <p style="color: var(--text-secondary);">Timestamp or role invalid. Access requires role=admin and time > 1000000.</p>
+            </div>
+
+            <button type="button" class="btn" onclick="updateSession()">Update Session</button>
+            <button type="button" class="btn" onclick="checkAccess()">Verify Access</button>
+        </div>
+
+        <div class="challenge-sidebar">
+            <div class="security-advisory">
+                <h4>Security Advisory</h4>
+                <p>Session access control is based on a timestamp value. The system checks if the time value exceeds a threshold. This can be manipulated by setting a large timestamp.</p>
+            </div>
+
+            <div class="security-advisory">
+                <h4>System Notes</h4>
+                <p>For admin access: role must be "admin" and time must be greater than 1000000. Set a large timestamp value to bypass the time-based restriction.</p>
+            </div>
+
+            <div class="card">
+                <h4 style="margin-bottom: 12px; color: var(--text-primary);">Access Requirements</h4>
+                <p style="font-size: 0.85em; color: var(--text-secondary);">
+                    role: <span class="mono">admin</span><br>
+                    time: <span class="mono">> 1000000</span><br>
+                    Current time: <span class="mono">1713728000</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            return null;
+        }
+
+        function setCookie(name, value, days) {
+            const expires = new Date();
+            expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+            document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+        }
+
+        function base64Encode(str) {
+            return btoa(str);
+        }
+
+        function base64Decode(str) {
+            try {
+                return atob(str);
+            } catch (e) {
+                return null;
+            }
+        }
+
+        function updateSession() {
+            const role = document.getElementById('roleInput').value;
+            const time = document.getElementById('timeInput').value;
+
+            const sessionData = { role, time: parseInt(time) };
+            const encodedSession = base64Encode(JSON.stringify(sessionData));
+
+            setCookie('session', encodedSession, 7);
+
+            document.getElementById('sessionDisplay').textContent = encodedSession;
+            document.getElementById('decodedOutput').textContent = JSON.stringify(sessionData);
+        }
+
+        async function checkAccess() {
+            const sessionCookie = getCookie('session');
+
+            if (sessionCookie) {
+                document.getElementById('sessionDisplay').textContent = sessionCookie;
+                const decoded = base64Decode(sessionCookie);
+                if (decoded) {
+                    document.getElementById('decodedOutput').textContent = decoded;
+                    try {
+                        const sessionData = JSON.parse(decoded);
+                        document.getElementById('roleInput').value = sessionData.role || '';
+                        document.getElementById('timeInput').value = sessionData.time || '';
+                    } catch (e) {}
+                }
+            }
+
+            try {
+                const response = await fetch('/challenge/cookie-time-based');
+                const data = await response.json();
+
+                if (data.flag) {
+                    document.getElementById('adminPanel').style.display = 'block';
+                    document.getElementById('accessDenied').style.display = 'none';
+                    document.getElementById('flagOutput').innerHTML = `<span class="success">${data.flag}</span>`;
+                } else {
+                    document.getElementById('adminPanel').style.display = 'none';
+                    document.getElementById('accessDenied').style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!getCookie('session')) {
+                const defaultSession = base64Encode(JSON.stringify({role: 'user', time: 1713728000}));
+                setCookie('session', defaultSession, 7);
+            }
+            checkAccess();
+        });
+    </script>
+</body>
+</html>

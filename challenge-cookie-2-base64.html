@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session Management - Encoded Session</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="challenge-layout">
+        <div class="challenge-main">
+            <div class="challenge-header">
+                <h2>Session Management</h2>
+                <p class="subtitle">Base64 Encoded Session System</p>
+            </div>
+
+            <div class="card">
+                <h3 style="margin-bottom: 16px;">Current Session</h3>
+                <p style="color: var(--text-secondary);">Session data is encoded using Base64. Access level is determined by the role field in the decoded session object.</p>
+                
+                <div style="margin-top: 20px;">
+                    <p style="font-size: 0.9em; color: var(--text-secondary);">Session Cookie:</p>
+                    <div class="console-output">
+                        <pre id="sessionCookie">eyJyb2xlIjogInVzZXIiLCAidXNlcl9pZCI6IDEwMjN9</pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" id="adminPanel" style="display: none;">
+                <h3 style="margin-bottom: 16px; color: var(--accent-green);">Admin Access Granted</h3>
+                <p style="color: var(--text-secondary);">Session decoded successfully. Administrative privileges confirmed.</p>
+                <div class="console-output" style="margin-top: 16px;">
+                    <pre id="flagOutput"></pre>
+                </div>
+            </div>
+
+            <div class="card" id="userPanel">
+                <h3 style="margin-bottom: 16px;">User Access</h3>
+                <p style="color: var(--text-secondary);">Standard user session. Limited functionality available.</p>
+                <div class="console-output" style="margin-top: 16px;">
+                    <pre id="decodedOutput"></pre>
+                </div>
+            </div>
+
+            <button type="button" class="btn" onclick="checkSession()">Verify Session</button>
+        </div>
+
+        <div class="challenge-sidebar">
+            <div class="security-advisory">
+                <h4>Security Advisory</h4>
+                <p>Session data is stored in a Base64 encoded cookie. The server decodes the cookie and evaluates the content. The encoding is not signed or encrypted.</p>
+            </div>
+
+            <div class="security-advisory">
+                <h4>System Notes</h4>
+                <p>Decode the Base64 string, modify the role field, and re-encode to escalate privileges. The server accepts any valid Base64 encoded session data.</p>
+            </div>
+
+            <div class="card">
+                <h4 style="margin-bottom: 12px; color: var(--text-primary);">Session Format</h4>
+                <p style="font-size: 0.85em; color: var(--text-secondary);">
+                    Cookie Name: <span class="mono">session</span><br>
+                    Encoding: <span class="mono">Base64</span><br>
+                    Format: <span class="mono">JSON object</span><br>
+                    Key Field: <span class="mono">role</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            return null;
+        }
+
+        function setCookie(name, value, days) {
+            const expires = new Date();
+            expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+            document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+        }
+
+        function base64Encode(str) {
+            return btoa(str);
+        }
+
+        function base64Decode(str) {
+            try {
+                return atob(str);
+            } catch (e) {
+                return null;
+            }
+        }
+
+        async function checkSession() {
+            const sessionCookie = getCookie('session');
+            
+            if (!sessionCookie) {
+                const defaultSession = base64Encode(JSON.stringify({role: 'user', user_id: 1023}));
+                setCookie('session', defaultSession, 7);
+                document.getElementById('sessionCookie').textContent = defaultSession;
+            }
+
+            const currentSession = getCookie('session') || sessionCookie;
+            document.getElementById('sessionCookie').textContent = currentSession;
+
+            const decoded = base64Decode(currentSession);
+            if (decoded) {
+                try {
+                    const sessionData = JSON.parse(decoded);
+                    document.getElementById('decodedOutput').innerHTML = `<span class="info">${JSON.stringify(sessionData, null, 2)}</span>`;
+                } catch (e) {
+                    document.getElementById('decodedOutput').textContent = decoded;
+                }
+            }
+
+            try {
+                const response = await fetch('/challenge/cookie-base64');
+                const data = await response.json();
+
+                if (data.flag) {
+                    document.getElementById('adminPanel').style.display = 'block';
+                    document.getElementById('userPanel').style.display = 'none';
+                    document.getElementById('flagOutput').innerHTML = `<span class="success">${data.flag}</span>`;
+                } else {
+                    document.getElementById('adminPanel').style.display = 'none';
+                    document.getElementById('userPanel').style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!getCookie('session')) {
+                const defaultSession = base64Encode(JSON.stringify({role: 'user', user_id: 1023}));
+                setCookie('session', defaultSession, 7);
+            }
+            checkSession();
+        });
+    </script>
+</body>
+</html>

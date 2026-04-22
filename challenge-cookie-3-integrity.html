@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Protected Panel - Cookie Integrity</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="challenge-layout">
+        <div class="challenge-main">
+            <div class="challenge-header">
+                <h2>Login Protected Panel</h2>
+                <p class="subtitle">Cookie-Based Authorization System</p>
+            </div>
+
+            <div class="card">
+                <h3 style="margin-bottom: 16px;">Authentication Status</h3>
+                <p style="color: var(--text-secondary);">Access to this panel is controlled by cookie-based authentication. The system validates user identity and authentication status separately.</p>
+                
+                <div style="margin-top: 20px;">
+                    <p style="font-size: 0.9em; color: var(--text-secondary);">Current Cookies:</p>
+                    <div class="console-output">
+                        <pre id="cookieDisplay">user: guest
+auth: false</pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" id="adminPanel" style="display: none;">
+                <h3 style="margin-bottom: 16px; color: var(--accent-green);">Admin Access Granted</h3>
+                <p style="color: var(--text-secondary);">Authentication bypassed. Administrative privileges confirmed.</p>
+                <div class="console-output" style="margin-top: 16px;">
+                    <pre id="flagOutput"></pre>
+                </div>
+            </div>
+
+            <div class="card" id="accessDenied">
+                <h3 style="margin-bottom: 16px; color: var(--accent-red);">Access Denied</h3>
+                <p style="color: var(--text-secondary);">Insufficient privileges. Authentication required.</p>
+            </div>
+
+            <button type="button" class="btn" onclick="checkAccess()">Verify Access</button>
+        </div>
+
+        <div class="challenge-sidebar">
+            <div class="security-advisory">
+                <h4>Security Advisory</h4>
+                <p>The authorization check has inconsistent logic. The system verifies the user cookie but does not properly validate the authentication status in conjunction with the user identity.</p>
+            </div>
+
+            <div class="security-advisory">
+                <h4>System Notes</h4>
+                <p>The validation logic checks if user=admin and auth=false simultaneously. This logical inconsistency may allow unauthorized access under specific cookie configurations.</p>
+            </div>
+
+            <div class="card">
+                <h4 style="margin-bottom: 12px; color: var(--text-primary);">Cookie Configuration</h4>
+                <p style="font-size: 0.85em; color: var(--text-secondary);">
+                    Cookie 1: <span class="mono">user</span><br>
+                    Cookie 2: <span class="mono">auth</span><br>
+                    Vulnerability: <span class="mono">Logic flaw</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            return null;
+        }
+
+        function setCookie(name, value, days) {
+            const expires = new Date();
+            expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+            document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+        }
+
+        async function checkAccess() {
+            const userCookie = getCookie('user') || 'guest';
+            const authCookie = getCookie('auth') || 'false';
+            
+            document.getElementById('cookieDisplay').textContent = `user: ${userCookie}\nauth: ${authCookie}`;
+
+            try {
+                const response = await fetch('/challenge/cookie-integrity');
+                const data = await response.json();
+
+                if (data.flag) {
+                    document.getElementById('adminPanel').style.display = 'block';
+                    document.getElementById('accessDenied').style.display = 'none';
+                    document.getElementById('flagOutput').innerHTML = `<span class="success">${data.flag}</span>`;
+                } else {
+                    document.getElementById('adminPanel').style.display = 'none';
+                    document.getElementById('accessDenied').style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!getCookie('user')) {
+                setCookie('user', 'guest', 7);
+            }
+            if (!getCookie('auth')) {
+                setCookie('auth', 'false', 7);
+            }
+            checkAccess();
+        });
+    </script>
+</body>
+</html>

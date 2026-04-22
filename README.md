@@ -2,9 +2,6 @@
 
 A comprehensive Capture The Flag (CTF) platform designed for learning and practicing web security vulnerabilities, including IDOR (Insecure Direct Object Reference), cookie manipulation, and hybrid exploitation techniques.
 
-<img width="1366" height="870" alt="screencapture-localhost-5000-2026-04-22-11_58_19" src="https://github.com/user-attachments/assets/87095f1d-47df-46c9-8e7d-8ffc84738d58" />
-
-
 ## Features
 
 - **20 Interactive Challenges** across multiple vulnerability categories

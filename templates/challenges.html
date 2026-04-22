@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Challenges - VOID PROTOCOL{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>// CHALLENGES</h1>
+    <p style="color: var(--text-secondary); margin-bottom: 30px;">Test your cybersecurity skills</p>
+    
+    {% if challenges and challenges|length > 0 %}
+    <div class="challenges-grid">
+        {% for item in challenges %}
+        {% if item and item.challenge %}
+        <div class="challenge-card {% if item.is_solved %}solved{% endif %}" onclick="window.location.href='{{ url_for('view_challenge', challenge_id=item.challenge.id) }}'">
+            <div class="challenge-category">{{ item.challenge.category or 'General' }}</div>
+            <div class="challenge-title">{{ item.challenge.title or 'Untitled Challenge' }}</div>
+            <div class="challenge-description">{{ item.challenge.description or 'No description available' }}</div>
+            <div class="challenge-footer">
+                <span class="challenge-points">{{ item.challenge.points or 0 }} pts</span>
+                <span class="challenge-difficulty {{ item.challenge.difficulty or 'medium' }}">{{ item.challenge.difficulty or 'medium' }}</span>
+            </div>
+            {% if item.is_solved %}
+            <div class="challenge-status solved-badge">✓ SOLVED</div>
+            {% endif %}
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="card">
+        <p style="color: var(--text-secondary); text-align: center; padding: 40px;">No challenges available at this time.</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

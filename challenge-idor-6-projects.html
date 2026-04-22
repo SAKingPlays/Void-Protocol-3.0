@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Collaboration Workspace</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="challenge-layout">
+        <div class="challenge-main">
+            <div class="challenge-header">
+                <h2>Project Collaboration Workspace</h2>
+                <p class="subtitle">Team Project Management System</p>
+            </div>
+
+            <div class="api-endpoint">
+                <span class="method get">GET</span>
+                <span class="mono">/api/projects?team_id=</span>
+            </div>
+
+            <div class="form-group">
+                <label for="teamId">Team ID</label>
+                <div class="input-group">
+                    <span class="input-prefix">team_id=</span>
+                    <input type="number" id="teamId" class="form-control" placeholder="Enter team ID" value="45">
+                </div>
+            </div>
+
+            <button type="button" class="btn" onclick="fetchProjects()">View Projects</button>
+
+            <div id="projectResults" class="console-output" style="display: none;">
+                <pre id="projectOutput"></pre>
+            </div>
+
+            <div id="errorMessage" class="message error" style="display: none;"></div>
+        </div>
+
+        <div class="challenge-sidebar">
+            <div class="security-advisory">
+                <h4>Security Advisory</h4>
+                <p>Projects are grouped by team ID. Users can only access projects belonging to their team. The API endpoint accepts team_id parameters without verifying team membership.</p>
+            </div>
+
+            <div class="security-advisory">
+                <h4>System Notes</h4>
+                <p>Team IDs are sequential integers starting from 1. Administrative workspaces may be associated with low-numbered team IDs. Access requires discovering your team_id first.</p>
+            </div>
+
+            <div class="card">
+                <h4 style="margin-bottom: 12px; color: var(--text-primary);">Current Session</h4>
+                <p style="font-size: 0.85em; color: var(--text-secondary);">
+                    User ID: <span class="mono">1023</span><br>
+                    Team ID: <span class="mono">45</span><br>
+                    Role: <span class="mono">member</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function fetchProjects() {
+            const teamId = document.getElementById('teamId').value;
+            const output = document.getElementById('projectOutput');
+            const results = document.getElementById('projectResults');
+            const errorMsg = document.getElementById('errorMessage');
+
+            if (!teamId) {
+                errorMsg.textContent = 'Please enter a team ID';
+                errorMsg.style.display = 'block';
+                results.style.display = 'none';
+                return;
+            }
+
+            errorMsg.style.display = 'none';
+            results.style.display = 'block';
+            output.textContent = 'Loading...';
+
+            try {
+                const response = await fetch(`/api/projects?team_id=${teamId}`);
+                const data = await response.json();
+
+                if (response.ok) {
+                    if (data.length === 0) {
+                        output.textContent = 'No projects found for this team ID.';
+                    } else {
+                        output.innerHTML = `<span class="info">Found ${data.length} project(s):</span>\n\n`;
+                        data.forEach((project, index) => {
+                            output.innerHTML += `<span class="info">Project #${index + 1}:</span>\n`;
+                            output.innerHTML += `  Project ID: <span class="mono">${project.project_id}</span>\n`;
+                            output.innerHTML += `  Name: ${project.name}\n`;
+                            output.innerHTML += `  Description: ${project.description}\n`;
+                            output.innerHTML += `  Status: <span class="mono">${project.status}</span>\n`;
+                            output.innerHTML += `  Documents: ${project.documents}\n\n`;
+                        });
+                    }
+                } else {
+                    output.textContent = `Error: ${data.error || 'Failed to fetch projects'}`;
+                }
+            } catch (error) {
+                output.textContent = `Error: ${error.message}`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchProjects();
+        });
+    </script>
+</body>
+</html>

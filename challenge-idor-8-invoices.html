@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Management API</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="challenge-layout">
+        <div class="challenge-main">
+            <div class="challenge-header">
+                <h2>Invoice Management API</h2>
+                <p class="subtitle">Invoice Processing System</p>
+            </div>
+
+            <div class="api-endpoint">
+                <span class="method get">GET</span>
+                <span class="mono">/api/invoices/</span>
+            </div>
+
+            <div class="form-group">
+                <label for="invoiceNumber">Invoice Number</label>
+                <div class="input-group">
+                    <span class="input-prefix">/api/invoices/</span>
+                    <input type="text" id="invoiceNumber" class="form-control" placeholder="INV-2026-1045" value="INV-2026-1045">
+                </div>
+            </div>
+
+            <button type="button" class="btn" onclick="fetchInvoice()">View Invoice</button>
+
+            <div id="invoiceResults" class="console-output" style="display: none;">
+                <pre id="invoiceOutput"></pre>
+            </div>
+
+            <div id="errorMessage" class="message error" style="display: none;"></div>
+        </div>
+
+        <div class="challenge-sidebar">
+            <div class="security-advisory">
+                <h4>Security Advisory</h4>
+                <p>Invoice IDs follow a structured format: INV-[YEAR]-[NUMBER]. The API endpoint does not verify authorization before returning invoice data. Confidential invoices may have specific number patterns.</p>
+            </div>
+
+            <div class="security-advisory">
+                <h4>System Notes</h4>
+                <p>Understand the numbering pattern and modify the last digits to access restricted invoices. Internal or confidential invoices may use special number ranges.</p>
+            </div>
+
+            <div class="card">
+                <h4 style="margin-bottom: 12px; color: var(--text-primary);">Invoice Format</h4>
+                <p style="font-size: 0.85em; color: var(--text-secondary);">
+                    Format: <span class="mono">INV-2026-XXXX</span><br>
+                    Year: <span class="mono">2026</span><br>
+                    Number: <span class="mono">Sequential</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function fetchInvoice() {
+            const invoiceNumber = document.getElementById('invoiceNumber').value;
+            const output = document.getElementById('invoiceOutput');
+            const results = document.getElementById('invoiceResults');
+            const errorMsg = document.getElementById('errorMessage');
+
+            if (!invoiceNumber) {
+                errorMsg.textContent = 'Please enter an invoice number';
+                errorMsg.style.display = 'block';
+                results.style.display = 'none';
+                return;
+            }
+
+            errorMsg.style.display = 'none';
+            results.style.display = 'block';
+            output.textContent = 'Loading...';
+
+            try {
+                const response = await fetch(`/api/invoices/${invoiceNumber}`);
+                const data = await response.json();
+
+                if (response.ok) {
+                    output.innerHTML = `<span class="success">Invoice Details:</span>\n\n`;
+                    output.innerHTML += `Invoice Number: <span class="mono">${data.invoice_number}</span>\n`;
+                    output.innerHTML += `Client Name: ${data.client_name}\n`;
+                    output.innerHTML += `Amount: $${data.amount.toFixed(2)}\n`;
+                    output.innerHTML += `Status: <span class="mono">${data.status}</span>\n`;
+                    output.innerHTML += `Items: ${data.items}\n`;
+                    output.innerHTML += `Metadata: ${data.metadata}\n`;
+                } else {
+                    output.textContent = `Error: ${data.error || 'Failed to fetch invoice'}`;
+                }
+            } catch (error) {
+                output.textContent = `Error: ${error.message}`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchInvoice();
+        });
+    </script>
+</body>
+</html>

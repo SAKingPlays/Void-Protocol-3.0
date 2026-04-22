@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - VOID PROTOCOL{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>// DASHBOARD</h1>
+    <p style="color: var(--text-secondary); margin-bottom: 30px;">Welcome back, <span style="color: var(--accent-green);">{{ user.username or 'User' }}</span></p>
+    
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-value">{{ user.score or 0 }}</div>
+            <div class="stat-label">Total Points</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">{{ solved_challenges or 0 }}</div>
+            <div class="stat-label">Challenges Solved</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">{{ total_challenges or 0 }}</div>
+            <div class="stat-label">Total Challenges</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">{{ "%.0f"|format((solved_challenges / total_challenges * 100) if total_challenges and total_challenges > 0 else 0) }}%</div>
+            <div class="stat-label">Progress</div>
+        </div>
+    </div>
+    
+    <div class="card">
+        <h2 style="margin-bottom: 20px;">Recent Solves</h2>
+        {% if recent_solves and recent_solves|length > 0 %}
+        <div class="scoreboard-table-wrapper">
+            <table class="scoreboard-table">
+                <thead>
+                    <tr>
+                        <th>Challenge</th>
+                        <th>Points</th>
+                        <th>Bonus</th>
+                        <th>Solved At</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for solve in recent_solves %}
+                    {% if solve and solve.challenge %}
+                    <tr>
+                        <td style="color: var(--accent-green);">{{ solve.challenge.title or 'Unknown' }}</td>
+                        <td>{{ solve.points_earned or 0 }}</td>
+                        <td style="color: var(--accent-yellow);">+{{ solve.bonus_points or 0 }}</td>
+                        <td style="color: var(--text-secondary); font-size: 0.85em;">{{ solve.solved_at.strftime('%Y-%m-%d %H:%M') if solve.solved_at else 'N/A' }}</td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p style="color: var(--text-secondary); text-align: center; padding: 30px;">No challenges solved yet. Start hacking!</p>
+        {% endif %}
+    </div>
+    
+    <div class="card">
+        <h2 style="margin-bottom: 20px;">Quick Actions</h2>
+        <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+            <a href="{{ url_for('challenges') }}" class="btn">View Challenges</a>
+            <a href="{{ url_for('scoreboard') }}" class="btn btn-secondary">Scoreboard</a>
+            <a href="{{ url_for('profile') }}" class="btn btn-secondary">My Profile</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

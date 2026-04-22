@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management Board</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="challenge-layout">
+        <div class="challenge-main">
+            <div class="challenge-header">
+                <h2>Task Management Board</h2>
+                <p class="subtitle">Project Task Tracking System</p>
+            </div>
+
+            <div class="api-endpoint">
+                <span class="method get">GET</span>
+                <span class="mono">/api/tasks?project=</span>
+            </div>
+
+            <div class="form-group">
+                <label for="projectName">Project Name</label>
+                <div class="input-group">
+                    <span class="input-prefix">project=</span>
+                    <input type="text" id="projectName" class="form-control" placeholder="Enter project name" value="alpha">
+                </div>
+            </div>
+
+            <button type="button" class="btn" onclick="fetchTasks()">View Tasks</button>
+
+            <div id="taskResults" class="console-output" style="display: none;">
+                <pre id="taskOutput"></pre>
+            </div>
+
+            <div id="errorMessage" class="message error" style="display: none;"></div>
+        </div>
+
+        <div class="challenge-sidebar">
+            <div class="security-advisory">
+                <h4>Security Advisory</h4>
+                <p>Tasks are organized by project name. The API accepts project names without authorization. Hidden projects exist beyond the standard alpha project. Guess project names based on system hints.</p>
+            </div>
+
+            <div class="security-advisory">
+                <h4>System Notes</h4>
+                <p>Standard project is "alpha". Hidden projects may include "beta", "internal", "admin", and others. Internal projects may contain high-priority tasks with sensitive information.</p>
+            </div>
+
+            <div class="card">
+                <h4 style="margin-bottom: 12px; color: var(--text-primary);">Known Projects</h4>
+                <p style="font-size: 0.85em; color: var(--text-secondary);">
+                    Standard: <span class="mono">alpha</span><br>
+                    Hidden: <span class="mono">beta, internal, admin</span><br>
+                    Access: <span class="mono">no authorization check</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function fetchTasks() {
+            const projectName = document.getElementById('projectName').value;
+            const output = document.getElementById('taskOutput');
+            const results = document.getElementById('taskResults');
+            const errorMsg = document.getElementById('errorMessage');
+
+            if (!projectName) {
+                errorMsg.textContent = 'Please enter a project name';
+                errorMsg.style.display = 'block';
+                results.style.display = 'none';
+                return;
+            }
+
+            errorMsg.style.display = 'none';
+            results.style.display = 'block';
+            output.textContent = 'Loading...';
+
+            try {
+                const response = await fetch(`/api/tasks?project=${projectName}`);
+                const data = await response.json();
+
+                if (response.ok) {
+                    if (data.length === 0) {
+                        output.textContent = `No tasks found for project "${projectName}".`;
+                    } else {
+                        output.innerHTML = `<span class="info">Found ${data.length} task(s) for project "${projectName}":</span>\n\n`;
+                        data.forEach((task, index) => {
+                            output.innerHTML += `<span class="info">Task #${index + 1}:</span>\n`;
+                            output.innerHTML += `  Task ID: <span class="mono">${task.task_id}</span>\n`;
+                            output.innerHTML += `  Title: ${task.title}\n`;
+                            output.innerHTML += `  Description: ${task.description}\n`;
+                            output.innerHTML += `  Priority: <span class="mono">${task.priority}</span>\n`;
+                            output.innerHTML += `  Status: <span class="mono">${task.status}</span>\n`;
+                            output.innerHTML += `  Assignee: ${task.assignee}\n\n`;
+                        });
+                    }
+                } else {
+                    output.textContent = `Error: ${data.error || 'Failed to fetch tasks'}`;
+                }
+            } catch (error) {
+                output.textContent = `Error: ${error.message}`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchTasks();
+        });
+    </script>
+</body>
+</html>

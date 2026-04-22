@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block title %}{{ challenge.title or 'Challenge' }} - VOID PROTOCOL{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>// {{ challenge.title or 'Challenge' }}</h1>
+    <p style="color: var(--text-secondary); margin-bottom: 30px;">{{ challenge.category or 'General' }} // {{ challenge.difficulty or 'medium' }}</p>
+    
+    <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h2 style="margin: 0;">Challenge Details</h2>
+            <span style="color: var(--accent-green); font-weight: bold; font-size: 1.2em;">{{ challenge.points or 0 }} pts</span>
+        </div>
+        
+        <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 30px;">{{ challenge.description or 'No description available.' }}</p>
+        
+        {% if challenge.file_path %}
+        <div style="margin-bottom: 30px;">
+            <h3 style="margin-bottom: 15px; color: var(--accent-cyan);">Challenge Interface</h3>
+            <iframe src="{{ url_for('serve_challenge_file', filename=challenge.file_path) }}" 
+                    style="width: 100%; height: 600px; border: 1px solid rgba(0, 255, 136, 0.3); border-radius: 10px; background: rgba(0, 0, 0, 0.5);"></iframe>
+        </div>
+        {% endif %}
+        
+        {% if is_solved %}
+        <div style="background: rgba(0, 255, 136, 0.1); border: 1px solid rgba(0, 255, 136, 0.3); border-radius: 10px; padding: 20px; text-align: center;">
+            <span style="color: var(--accent-green); font-weight: bold; font-size: 1.2em;">✓ Challenge Already Solved</span>
+        </div>
+        {% else %}
+        <div style="margin-top: 30px;">
+            <h3 style="margin-bottom: 15px; color: var(--accent-cyan);">Submit Flag</h3>
+            <form id="flagForm" style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <input type="text" id="flagInput" name="flag" placeholder="Enter flag..." 
+                       style="flex: 1; min-width: 200px; padding: 12px; background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(0, 255, 136, 0.3); border-radius: 5px; color: #00ff88; font-family: 'Courier New', monospace;">
+                <button type="submit" class="btn">Submit</button>
+            </form>
+            <div id="flagMessage" style="margin-top: 15px; display: none;"></div>
+        </div>
+        {% endif %}
+    </div>
+    
+    <div style="margin-top: 20px;">
+        <a href="{{ url_for('challenges') }}" class="btn btn-secondary">← Back to Challenges</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.getElementById('flagForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const flagInput = document.getElementById('flagInput');
+    const flagMessage = document.getElementById('flagMessage');
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const flag = flagInput.value.trim();
+    
+    if (!flag) {
+        flagMessage.style.display = 'block';
+        flagMessage.style.color = '#ff4444';
+        flagMessage.textContent = 'Please enter a flag';
+        return;
+    }
+    
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+    flagMessage.style.display = 'block';
+    flagMessage.style.color = '#ffc107';
+    flagMessage.textContent = 'Checking flag...';
+    
+    try {
+        const response = await fetch('/submit-flag', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: `challenge_id={{ challenge.id }}&flag=${encodeURIComponent(flag)}`
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            flagMessage.style.color = '#00ff88';
+            flagMessage.textContent = data.message + ' Refreshing...';
+            flagInput.disabled = true;
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000);
+        } else {
+            flagMessage.style.color = '#ff4444';
+            flagMessage.textContent = data.message;
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Submit';
+            
+            // Shake animation
+            flagInput.style.animation = 'none';
+            flagInput.offsetHeight;
+            flagInput.style.animation = 'shake 0.5s';
+        }
+    } catch (error) {
+        flagMessage.style.color = '#ff4444';
+        flagMessage.textContent = 'Error submitting flag. Please try again.';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit';
+    }
+});
+</script>
+{% endblock %}

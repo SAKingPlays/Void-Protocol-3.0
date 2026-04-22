@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOID PROTOCOL - CTF Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .landing-container {
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        .landing-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: var(--accent-green);
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+        }
+        
+        .landing-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            font-size: 0.9em;
+        }
+        
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .auth-tab {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            font-weight: 500;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .auth-tab:hover {
+            color: var(--accent-green);
+        }
+        
+        .auth-tab.active {
+            color: var(--accent-green);
+            border-bottom-color: var(--accent-green);
+        }
+        
+        .auth-form {
+            display: none;
+        }
+        
+        .auth-form.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .cyber-decoration {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.8em;
+        }
+        
+        .cyber-decoration span {
+            color: var(--accent-green);
+        }
+    </style>
+</head>
+<body>
+    <div class="landing-container">
+        <h1 class="landing-title">VOID PROTOCOL</h1>
+        <p class="landing-subtitle">Professional Cyber Competition Platform</p>
+        
+        {% if error %}
+        <div class="message error">{{ error }}</div>
+        {% endif %}
+        
+        {% if login_error %}
+        <div class="message error">{{ login_error }}</div>
+        {% endif %}
+        
+        {% if banned %}
+        <div class="message error">Your account has been banned. Contact an administrator.</div>
+        {% endif %}
+        
+        <div class="auth-tabs">
+            <div class="auth-tab active" data-tab="login">LOGIN</div>
+            <div class="auth-tab" data-tab="register">REGISTER</div>
+        </div>
+        
+        <div class="card">
+            <!-- Login Form -->
+            <form class="auth-form active" id="loginForm" method="POST" action="{{ url_for('login') }}">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" name="username" class="form-control" placeholder="Enter your username" required>
+                    <div class="validation-message" id="loginUsernameMsg"></div>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="password" class="form-control" placeholder="Enter your password" required>
+                    <div class="validation-message" id="loginPasswordMsg"></div>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">LOGIN</button>
+            </form>
+            
+            <!-- Register Form -->
+            <form class="auth-form" id="registerForm" method="POST" action="{{ url_for('register') }}">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" name="username" class="form-control" placeholder="Choose a username (min 3 chars)" required minlength="3">
+                    <div class="validation-message" id="registerUsernameMsg"></div>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+                    <div class="validation-message" id="registerEmailMsg"></div>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="password" class="form-control" id="registerPassword" placeholder="Choose a password (min 6 chars)" required minlength="6">
+                    <div class="password-strength-meter">
+                        <div class="password-strength-bar">
+                            <div class="password-strength-fill" id="passwordStrengthFill"></div>
+                        </div>
+                        <div class="password-strength-text" id="passwordStrengthText"></div>
+                    </div>
+                    <div class="password-requirements">
+                        <ul>
+                            <li id="req-length">At least 6 characters</li>
+                            <li id="req-uppercase">At least one uppercase letter</li>
+                            <li id="req-lowercase">At least one lowercase letter</li>
+                            <li id="req-number">At least one number</li>
+                        </ul>
+                    </div>
+                    <div class="validation-message" id="registerPasswordMsg"></div>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">REGISTER</button>
+            </form>
+        </div>
+        
+        <div class="cyber-decoration">
+            <span>//</span> SECURE ACCESS TERMINAL <span>//</span>
+        </div>
+    </div>
+    
+    <script>
+        // Tab switching
+        const tabs = document.querySelectorAll('.auth-tab');
+        const forms = document.querySelectorAll('.auth-form');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                forms.forEach(f => f.classList.remove('active'));
+                
+                tab.classList.add('active');
+                const targetForm = document.getElementById(tab.dataset.tab + 'Form');
+                if (targetForm) {
+                    targetForm.classList.add('active');
+                }
+            });
+        });
+        
+        // Password strength validation
+        const registerPassword = document.getElementById('registerPassword');
+        const passwordStrengthFill = document.getElementById('passwordStrengthFill');
+        const passwordStrengthText = document.getElementById('passwordStrengthText');
+        const reqLength = document.getElementById('req-length');
+        const reqUppercase = document.getElementById('req-uppercase');
+        const reqLowercase = document.getElementById('req-lowercase');
+        const reqNumber = document.getElementById('req-number');
+        
+        function checkPasswordStrength(password) {
+            let strength = 0;
+            
+            // Check length
+            if (password.length >= 6) {
+                strength += 1;
+                reqLength.classList.add('met');
+            } else {
+                reqLength.classList.remove('met');
+            }
+            
+            // Check uppercase
+            if (/[A-Z]/.test(password)) {
+                strength += 1;
+                reqUppercase.classList.add('met');
+            } else {
+                reqUppercase.classList.remove('met');
+            }
+            
+            // Check lowercase
+            if (/[a-z]/.test(password)) {
+                strength += 1;
+                reqLowercase.classList.add('met');
+            } else {
+                reqLowercase.classList.remove('met');
+            }
+            
+            // Check number
+            if (/[0-9]/.test(password)) {
+                strength += 1;
+                reqNumber.classList.add('met');
+            } else {
+                reqNumber.classList.remove('met');
+            }
+            
+            // Update strength meter
+            passwordStrengthFill.className = 'password-strength-fill';
+            passwordStrengthText.className = 'password-strength-text';
+            
+            if (password.length === 0) {
+                passwordStrengthFill.style.width = '0';
+                passwordStrengthText.textContent = '';
+            } else if (strength <= 1) {
+                passwordStrengthFill.classList.add('weak');
+                passwordStrengthText.classList.add('weak');
+                passwordStrengthText.textContent = 'Weak';
+            } else if (strength <= 2) {
+                passwordStrengthFill.classList.add('weak');
+                passwordStrengthText.classList.add('weak');
+                passwordStrengthText.textContent = 'Weak';
+            } else if (strength <= 3) {
+                passwordStrengthFill.classList.add('medium');
+                passwordStrengthText.classList.add('medium');
+                passwordStrengthText.textContent = 'Medium';
+            } else {
+                passwordStrengthFill.classList.add('strong');
+                passwordStrengthText.classList.add('strong');
+                passwordStrengthText.textContent = 'Strong';
+            }
+            
+            return strength >= 2; // Minimum strength requirement
+        }
+        
+        if (registerPassword) {
+            registerPassword.addEventListener('input', function() {
+                const isValid = checkPasswordStrength(this.value);
+                const msgElement = document.getElementById('registerPasswordMsg');
+                
+                if (this.value.length > 0 && !isValid) {
+                    this.classList.add('invalid');
+                    this.classList.remove('valid');
+                    msgElement.textContent = 'Password is too weak';
+                    msgElement.className = 'validation-message error';
+                } else if (this.value.length > 0 && isValid) {
+                    this.classList.remove('invalid');
+                    this.classList.add('valid');
+                    msgElement.textContent = 'Password strength acceptable';
+                    msgElement.className = 'validation-message success';
+                } else {
+                    this.classList.remove('invalid', 'valid');
+                    msgElement.textContent = '';
+                }
+            });
+        }
+        
+        // Email validation
+        const registerEmail = document.querySelector('#registerForm input[name="email"]');
+        
+        function validateEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+        
+        if (registerEmail) {
+            registerEmail.addEventListener('input', function() {
+                const isValid = validateEmail(this.value);
+                const msgElement = document.getElementById('registerEmailMsg');
+                
+                if (this.value.length > 0 && !isValid) {
+                    this.classList.add('invalid');
+                    this.classList.remove('valid');
+                    msgElement.textContent = 'Please enter a valid email address';
+                    msgElement.className = 'validation-message error';
+                } else if (this.value.length > 0 && isValid) {
+                    this.classList.remove('invalid');
+                    this.classList.add('valid');
+                    msgElement.textContent = 'Email format is valid';
+                    msgElement.className = 'validation-message success';
+                } else {
+                    this.classList.remove('invalid', 'valid');
+                    msgElement.textContent = '';
+                }
+            });
+        }
+        
+        // Username validation for register form
+        const registerUsername = document.querySelector('#registerForm input[name="username"]');
+        
+        if (registerUsername) {
+            registerUsername.addEventListener('input', function() {
+                const msgElement = document.getElementById('registerUsernameMsg');
+                
+                if (this.value.length > 0 && this.value.length < 3) {
+                    this.classList.add('invalid');
+                    this.classList.remove('valid');
+                    msgElement.textContent = 'Username must be at least 3 characters';
+                    msgElement.className = 'validation-message error';
+                } else if (this.value.length >= 3) {
+                    this.classList.remove('invalid');
+                    this.classList.add('valid');
+                    msgElement.textContent = 'Username is available';
+                    msgElement.className = 'validation-message success';
+                } else {
+                    this.classList.remove('invalid', 'valid');
+                    msgElement.textContent = '';
+                }
+            });
+        }
+        
+        // Form submission validation
+        const registerForm = document.getElementById('registerForm');
+        if (registerForm) {
+            registerForm.addEventListener('submit', function(e) {
+                const password = registerPassword.value;
+                const email = registerEmail.value;
+                const username = registerUsername.value;
+                
+                // Check password strength
+                if (!checkPasswordStrength(password)) {
+                    e.preventDefault();
+                    registerPassword.classList.add('invalid');
+                    document.getElementById('registerPasswordMsg').textContent = 'Password is too weak';
+                    document.getElementById('registerPasswordMsg').className = 'validation-message error';
+                    return;
+                }
+                
+                // Check email format
+                if (!validateEmail(email)) {
+                    e.preventDefault();
+                    registerEmail.classList.add('invalid');
+                    document.getElementById('registerEmailMsg').textContent = 'Please enter a valid email address';
+                    document.getElementById('registerEmailMsg').className = 'validation-message error';
+                    return;
+                }
+                
+                // Check username length
+                if (username.length < 3) {
+                    e.preventDefault();
+                    registerUsername.classList.add('invalid');
+                    document.getElementById('registerUsernameMsg').textContent = 'Username must be at least 3 characters';
+                    document.getElementById('registerUsernameMsg').className = 'validation-message error';
+                    return;
+                }
+            });
+        }
+    </script>
+</body>
+</html>
